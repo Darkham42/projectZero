@@ -1,18 +1,18 @@
 form {
 	position: relative;
 	width: 375px;
-	margin: 50px 15px;
+	margin: 15px 15px;
 }
 
 .form-group {
   position: relative;
-  margin-top: 35px;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
 .form-control {
   display: block;
-  height: 36px;
+  height: 30px;
   width: 100%;
   border: none;
   border-radius: 0 !important;
@@ -29,16 +29,6 @@ form {
   border-bottom: 2px solid rgb(66, 133, 244);
   outline: none;
   box-shadow: none;
-}
-
-.form-highlight {
-  position: absolute;
-  height: 60%;
-  width: 60px;
-  top: 25%;
-  left: 0;
-  pointer-events: none;
-  opacity: 0.4;
 }
 
 .form-control:focus ~ .form-highlight {

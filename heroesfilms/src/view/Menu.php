@@ -11,9 +11,14 @@ class Menu {
 		
 		$this->table = array(
 			"Accueil" => $this->router->homePage(),
-			"Films" => $this->router->allFilmsPage(),
-			"Nouveau film" => $this->router->filmCreationPage(),
-			"Mes films" => $this->router->mesFilmsPage(),
+			"Movies" => $this->router->allFilmsPage(),
+			//"MARVEL" => $this->router->filmsMARVELPage(),
+			//"DC" => $this->router->filmsDCPage(),
+			//Page profile seulement si connecté
+			//"Profile" => $this->router->profilePage(),
+			//Page de connection
+			//"Log In" => $this->router->logIn(),
+			//sinon il faudrait afficher juste un lien de logout
 		);
 		
 	}
