@@ -18,16 +18,17 @@ class Film {
 	 * Le nom et le code hexa doivent être valides, au sens
 	 * de isNameValid et isHexValid, sinon une exception est levée. */
 	public function __construct($name, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null) {
-		echo "Creation film ";
+		//echo "Creation film ";
 		if (!self::isValidName($name)){
 			echo "Invalid Name";
 			throw new Exception("Invalid film name");
 		}
 		$this->name = $name;
+		/*
 		if (!self::isValidDate($date_sortie)){
 			echo "Invalid Date" ;
 			throw new Exception("Invalid date");
-		}
+		}*/
 		$this->duree = $duree;
 		$this->date_sortie = $date_sortie;
 		$this->realisateur = $realisateur;
@@ -37,7 +38,7 @@ class Film {
 		$this->creationDate = $creationDate !== null? $creationDate: new DateTime();
 		$this->modifDate = $modifDate !== null? $modifDate: new DateTime();
 
-		echo "film ok";
+		//echo "film ok";
 	}
 
 	public function getName() {

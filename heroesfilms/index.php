@@ -2,13 +2,14 @@
 
 set_include_path("./src");
 
-require_once("model/FilmStorageFile.php");
+//require_once("model/FilmStorageFile.php");
+require_once("model/FilmStorageDB.php");
 require_once("Router.php");
 
-$r = new Router(new FilmStorageFile($_SERVER['TMPDIR'].'/film_db.txt'));
+//$r = new Router(new FilmStorageFile($_SERVER['TMPDIR'].'/film_db.txt'));
+
+$r = new Router(new FilmStorageDB());
 $r->main();
-
-
 
 include_once ('model/PDO/db.class.php');
 
@@ -16,6 +17,7 @@ $db = new Db();
 $searchProject = $db->query("SELECT * FROM FILMS");
 $db->CloseConnection();
 
+/*
 $json_data=array();
 
 foreach($searchProject as $projet) {
@@ -44,5 +46,5 @@ $update =  $db->query("UPDATE FILMS SET titre = :t WHERE Id = :id", array("t"=>"
 $insert =  $db->query("INSERT INTO FILMS(Titre,Annee) VALUES(:t,:annee)", array("t"=>"ebvebe","anne"=>"2020"));
 
 $db->CloseConnection();
-
+*/
 ?>

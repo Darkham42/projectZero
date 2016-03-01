@@ -1,0 +1,265 @@
+Time : 12:28:51
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :r
+
+Time : 12:24:16
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :r
+
+Time : 12:22:23
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO REALISATEUR(direc) VALUES( :r)
+
+Time : 12:19:26
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 12:18:27
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 12:14:19
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT id FROM FILMS WHERE titre = :titre
+
+Time : 12:14:05
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 12:12:52
+SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 12:10:50
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 12:10:22
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'realisateur' in 'where clause'
+Raw SQL : SELECT id FROM REALISATEUR WHERE realisateur = :r
+
+Time : 12:09:43
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO REALISATEUR(direc) VALUES( :r)
+
+Time : 12:09:01
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO REALISATEUR(direc) VALUES( :r)
+
+Time : 12:08:17
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO REALISATEUR(direc) VALUES( :r)
+
+Time : 12:07:47
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO REALISATEUR(direc) VALUES( :r)
+
+Time : 12:07:26
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO REALISATEUR(direc) VALUES( :r)
+
+Time : 12:06:02
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO REALISATEUR(direc) VALUES( :r)
+
+Time : 12:05:45
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'realisateur' in 'where clause'
+Raw SQL : SELECT id FROM REALISATEUR WHERE realisateur = :r
+
+Time : 12:05:24
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cast' in 'field list'
+Raw SQL : INSERT INTO REALISATEUR(cast) VALUES( :r)
+
+Time : 12:03:46
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'field list'
+Raw SQL : SELECT id FROM CASTING WHERE realisateur = :r
+
+Time : 12:03:06
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_2` FOREIGN KEY (`realisateur`) REFERENCES `realisateur` (`id`))
+Raw SQL : INSERT INTO FILMS(nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 12:02:51
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_2` FOREIGN KEY (`realisateur`) REFERENCES `realisateur` (`id`))
+Raw SQL : INSERT INTO FILMS(nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 12:01:01
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_2` FOREIGN KEY (`realisateur`) REFERENCES `realisateur` (`id`))
+Raw SQL : INSERT INTO FILMS(nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 11:53:37
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_2` FOREIGN KEY (`realisateur`) REFERENCES `realisateur` (`id`))
+Raw SQL : INSERT INTO FILMS(nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 11:52:26
+SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+Raw SQL : INSERT INTO FILMS(nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1, genre2, genre3) 
+			VALUES(:name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 11:52:01
+SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+Raw SQL : INSERT INTO CASTING(idFilm, cast) VALUES( :r)
+
+Time : 11:38:52
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'f.id' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE f.id = :i
+
+Time : 11:28:09
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'
+Raw SQL : SELECT * FROM CASTING WHERE id = :i
+
+Time : 11:27:47
+SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+Raw SQL : SELECT * FROM FILMS as f, REALISATEUR as r WHERE id = :i AND f.realisateur = r.id
+
+Time : 11:27:21
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '== r.id' at line 1
+Raw SQL : SELECT * FROM FILMS as f, REALISATEUR as r WHERE id = :i AND f.realisateur == r.id
+
+Time : 11:26:56
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '== r.id' at line 1
+Raw SQL : SELECT * FROM FILMS as f, REALISATEUR as r WHERE id = :i AND f.realisateur == r.id
+
+Time : 11:26:34
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 11:26:28
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 11:26:19
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 11:25:58
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 11:24:10
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 11:17:42
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'
+Raw SQL : SELECT * FROM CASTING WHERE id = :i
+
+Time : 11:16:56
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'
+Raw SQL : SELECT * FROM CASTING WHERE id = :i
+
+Time : 11:16:19
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'
+Raw SQL : SELECT * FROM CASTING WHERE id = :i
+
+Time : 11:16:02
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'
+Raw SQL : SELECT * FROM CASTING WHERE id = :i
+
+Time : 11:14:13
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '== r.id' at line 1
+Raw SQL : SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur == r.id
+
+Time : 11:13:48
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '== r.id' at line 1
+Raw SQL : SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur == r.id
+
+Time : 11:13:28
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '== r.id' at line 1
+Raw SQL : SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur == r.id
+
+Time : 10:24:41
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:24:40
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:19:37
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:18:16
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:18:14
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:18:10
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:17:39
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:17:37
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:17:31
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:17:00
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:16:58
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:16:55
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:16:54
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:16:53
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:16:52
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:16:49
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:16:47
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:15:01
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:14:54
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:14:52
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 10:14:49
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'titre' in 'where clause'
+Raw SQL : SELECT * FROM FILMS WHERE titre = :titre AND id = :id
+
+Time : 09:03:35
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'heroesfilms.persons' doesn't exist
+Raw SQL : SELECT * FROM Persons WHERE firstname = :firstname AND id = :id
