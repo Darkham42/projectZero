@@ -89,11 +89,11 @@ class MainView {
 	public function makeGalleryPage(array $films) {
 		$this->title = "Tous les films";
 		$this->content = "<p>Cliquer sur une film pour voir des détails.</p>\n";
-		$this->content .= "<ul class=\"gallery\">\n";
 		foreach ($films as $id=>$f) {
+			$this->content .= "<ul class=\"googleCard\">\n<li><div class=\"card\">\n";
 			$this->content .= $this->galleryFilm($id, $f);
+			$this->content .= "<div>\n<li>\n</ul>\n";
 		}
-		$this->content .= "</ul>\n";
 	}
 
 	public function makeUnknownFilmPage() {
@@ -123,11 +123,10 @@ class MainView {
 	}
 
 	protected function galleryFilm($id, $f) {
-		
 		$cclass = "film".$id;
-		$res = '<li><a href="'.$this->router->filmPage($id).'">';
-		$res .= '<h3>'.self::htmlesc($f->getName()).'</h3>';
-		$res .= '<div class="date_sortie">('.self::htmlesc($f->getDateSortie()).')</div>';
+		$res = '<p class="card-title">'.self::htmlesc($f->getName()).' ('.substr(self::htmlesc($f->getDateSortie()), 0, 4).')</p>';
+		$res .= '<img src="'.self::htmlesc($f->getPoster()).'" class="full" />';
+		$res .= '<p class="plus"><a href="'.$this->router->filmPage($id).'">More details</a></p>';
 		$res .= '</a></li>'."\n";
 		return $res;
 	}

@@ -1,7 +1,16 @@
 body {
+  font: normal 14px 'Roboto',arial,sans-serif;
+  min-height: 100%;
+  margin: auto;
   padding: 0;
-  margin: 0;
 }
+
+.main {
+  margin: auto;
+  width: 70%;
+  padding: 10px;
+}
+
 .containerNavbar {
   margin: 0 auto;
 }

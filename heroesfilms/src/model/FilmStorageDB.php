@@ -134,19 +134,21 @@ class FilmStorageDB implements FilmStorage {
 			$real .= $projet['direc'] . " ";
 		}
 		$name = "";
+		$poster = "";
 	    $date_sortie = "";
 	    $duree = "";
 	    $univers = "";
 	    $genre = "";
 		foreach($searchProject as $projet) {
 		    $name = $projet['nom'];
+		    $poster = $projet['poster'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
 		    $realisateur = $real;
 		    $univers = $this->findUnivers($projet['univers']);
 		    $genre = $this->findGenre($projet['genre1']) . $this->findGenre($projet['genre2']) . $this->findGenre($projet['genre3']);  
 		}
-		return new Film($name, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate=null, $modifDate=null);
+		return new Film($name, $poster, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate=null, $modifDate=null);
 	}
 
 	/* Renvoie un tableau associatif id => Film
@@ -163,6 +165,7 @@ class FilmStorageDB implements FilmStorage {
 				$casting = $casting . " " . $acteur['cast'] . " ";
 			}
 		    $name = $projet['nom'];
+		    $poster = $projet['poster'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
 		    $realisateur = $projet['realisateur'];
@@ -171,7 +174,7 @@ class FilmStorageDB implements FilmStorage {
 		    $genre = $this->findGenre($projet['genre1']) . $this->findGenre($projet['genre2']) . $this->findGenre($projet['genre3']);
 		   
 		    
-		    array_push($array, new Film($name, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
+		    array_push($array, new Film($name, $poster, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
 		}
 		return $array;
 	}

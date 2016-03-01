@@ -10,7 +10,6 @@ class Menu {
 		$this->router = $router;
 		
 		$this->table = array(
-			"Accueil" => $this->router->homePage(),
 			"Movies" => $this->router->allFilmsPage(),
 			//"MARVEL" => $this->router->filmsMARVELPage(),
 			//"DC" => $this->router->filmsDCPage(),
