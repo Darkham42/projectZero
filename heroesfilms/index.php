@@ -28,4 +28,9 @@ foreach($searchProject as $projet) {
 
 echo json_encode($json_data);
 
+// cas de recherche spécifique pour éviter injection SQL
+$db = new Db();
+$person = $db->query("SELECT * FROM Persons WHERE firstname = :firstname AND id = :id",array("firstname"=>"John","id"=>"1"));
+$db->CloseConnection();
+
 ?>
