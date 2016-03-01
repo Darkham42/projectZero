@@ -30,7 +30,19 @@ echo json_encode($json_data);
 
 // cas de recherche spécifique pour éviter injection SQL
 $db = new Db();
-$person = $db->query("SELECT * FROM Persons WHERE firstname = :firstname AND id = :id",array("firstname"=>"John","id"=>"1"));
+
+// Select
+$person = $db->query("SELECT * FROM FILMS WHERE titre = :titre AND id = :id",array("titre"=>"Deadpool","id"=>"1"));
+
+// Delete
+$delete =  $db->query("DELETE FROM FILMS WHERE Id = :id", array("id"=>"1"));
+
+// Update
+$update =  $db->query("UPDATE FILMS SET titre = :t WHERE Id = :id", array("t"=>"dadadad","id"=>"32122"));
+
+// Insert
+$insert =  $db->query("INSERT INTO FILMS(Titre,Annee) VALUES(:t,:annee)", array("t"=>"ebvebe","anne"=>"2020"));
+
 $db->CloseConnection();
 
 ?>
