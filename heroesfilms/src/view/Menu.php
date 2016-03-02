@@ -11,6 +11,8 @@ class Menu {
 		
 		$this->table = array(
 			"Movies" => $this->router->allFilmsPage(),
+			"Ajouter un film" => $this->router->filmCreationPage(),
+			
 			//"MARVEL" => $this->router->filmsMARVELPage(),
 			//"DC" => $this->router->filmsDCPage(),
 			//Page profile seulement si connecté

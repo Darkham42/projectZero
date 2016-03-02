@@ -41,6 +41,7 @@ class MainView {
 		$this->title = "Le film $cname";
 		$s = "" ;
 		$s .= '<h3>'.self::htmlesc($f->getName()).'</h3>';
+		$s .= "<img src='".self::htmlesc($f->getPoster())."'>\n";
 		$s .= '<div class="vueFilm realisateur"> <span class="labelChamp"> Réalisateur :</span> '.self::htmlesc($f->getRealisateur()).'</div>';
 		$s .= '<div class="vueFilm duree"> <span class="labelChamp"> Duree :</span> '.self::htmlesc($f->getDuree()).'</div>';
 		$s .= '<div class="vueFilm date_sortie"> <span class="labelChamp"> Date de sortie :</span> '.self::htmlesc($f->getDateSortie()).'</div>';
