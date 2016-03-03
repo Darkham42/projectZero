@@ -12,13 +12,13 @@ class Menu {
 		$this->table = array(
 			"Movies" => $this->router->allFilmsPage(),
 			"Ajouter un film" => $this->router->filmCreationPage(),
-			
+
 			//"MARVEL" => $this->router->filmsMARVELPage(),
 			//"DC" => $this->router->filmsDCPage(),
 			//Page profile seulement si connecté
 			//"Profile" => $this->router->profilePage(),
 			//Page de connection
-			//"Log In" => $this->router->logIn(),
+			"Log In" => $this->router->logIn(),
 			//sinon il faudrait afficher juste un lien de logout
 		);
 		

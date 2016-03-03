@@ -98,6 +98,10 @@ class Router {
 				$view->makeHomePage();
 				break;
 
+			case "login":
+				$view->makeLoginPage();
+				break;
+
 			default:
 				/* L'internaute a demandé une action non prévue. */
 				$view->makeUnknownActionPage();
@@ -116,6 +120,11 @@ class Router {
 	/* URL de la page d'accueil */
 	public function homePage() {
 		return ".";
+	}
+
+	/* URL de la page de log in */
+	public function logIn() {
+		return ".?action=login";
 	}
 
 	/* URL de la page de la film d'identifiant $id */

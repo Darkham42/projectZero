@@ -8,6 +8,7 @@
 		<?php echo $this->style; ?>
 	</style>
 	<link rel="stylesheet" href="skin/navbar.css">
+	<link rel="stylesheet" href="skin/cardsFilms.css">
 	<link rel="stylesheet" href="skin/cards.css">
 	<link rel="stylesheet" href="skin/form.css">
 </head>
