@@ -1,0 +1,35 @@
+/* Styling the bar itself */
+#topbar {
+	position: fixed;
+	bottom: -100px;
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+	background-color: #323232;
+	color: #ffffff;
+	font-size: 14px;
+	border-radius: 5px;
+	margin-left: 10px;
+	max-width: 40%;
+	/* verif si marche toujours sans une fois intégré*/
+	font: normal 14px 'Roboto',arial,sans-serif;
+}
+
+#checkbox {
+ /*display: none;*/
+}
+
+#hideTop {
+ float: right;
+ display: inline-block;
+ cursor: pointer;
+ padding: 2px 6px;
+ color: red;
+ font-weight: bold;
+ transition: all .4s cubic-bezier(.25, .8, .25, 1);
+}
+
+#checkbox:checked + #topbar {
+ bottom: 100px;
+}

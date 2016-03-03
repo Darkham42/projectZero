@@ -10,8 +10,8 @@ class Menu {
 		$this->router = $router;
 		
 		$this->table = array(
-			"Movies" => $this->router->allFilmsPage(),
-			"Ajouter un film" => $this->router->filmCreationPage(),
+			"All Movies" => $this->router->allFilmsPage(),
+			"DEBUGAjouter un film" => $this->router->filmCreationPage(),
 
 			//"MARVEL" => $this->router->filmsMARVELPage(),
 			//"DC" => $this->router->filmsDCPage(),

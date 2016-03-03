@@ -27,8 +27,8 @@ class MainView {
 	/******************************************************************************/
 
 	public function makeHomePage() {
-		$this->title = "Proposez vos films !";
-		$this->content = "Bienvenue sur ce site de partage de films.";
+		$this->title = "HeroesMovies";
+		$this->content = "Soon in theatres\nListe horizontal des prochains films";
 	}
 
 	public function makeFilmPage($id, Film $f) {
@@ -108,7 +108,7 @@ class MainView {
 	}
 
 	public function makeLoginPage() {
-		$this->title = "";
+		$this->title = "Login";
 		$this->content = '
 			<div class="card">
         		<p class="card-title">Log In</p>

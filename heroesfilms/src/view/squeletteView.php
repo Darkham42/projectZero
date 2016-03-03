@@ -35,7 +35,6 @@
 		<div class="feedback"><?php echo $this->feedback; ?></div>
 	<?php } ?>
 	<main class="main">
-		<h1><?php echo $this->title; ?></h1>
 		<?php
 		echo $this->content;
 		?>
