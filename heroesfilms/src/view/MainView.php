@@ -91,7 +91,7 @@ class MainView {
 		$this->title = "Tous les films";
 		$this->content = "<p>Cliquer sur une film pour voir des détails.</p>\n";
 		foreach ($films as $id=>$f) {
-			$this->content .= "<ul class=\"googleCard\">\n<li><div class=\"card\">\n";
+			$this->content .= "<ul class=\"googleCardFilms\">\n<li><div class=\"cardFilms\">\n";
 			$this->content .= $this->galleryFilm($id, $f);
 			$this->content .= "<div>\n<li>\n</ul>\n";
 		}

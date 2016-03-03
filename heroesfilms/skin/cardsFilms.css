@@ -1,19 +1,17 @@
-ul.googleCard {
-	width: 450px;
+ul.googleCardFilms {
+	width: 300px;
 	height: 100%;
 	float: left;
-	margin-left: -25px;
+	margin-left: -5px;
 }
-ul.googleCard li {
-	width: 430px;
-	float: left;
+ul.googleCardFilms li {
+	width: 320px;
 	list-style: none;
 }
-div.card {
+div.cardFilms {
 	background: #fff;
-	width: 400px;
-	position: relative;
-	padding: 15px;
+	width: 280px;
+	padding: 10px;
 	box-shadow: 0px 1px rgba( 0, 0, 0, 0.1 );
 	color: #444;
 	font-size: 14px;
@@ -22,13 +20,13 @@ div.card {
 	-webkit-border-radius: 3px 3px 0px 0px;
 	border-radius: 3px 3px 0px 0px;
 }
-div.card p {
+div.cardFilms p {
 	margin: 0 0 15px 0;
 }
-div.card p.card-title {
+div.cardFilms p.card-title {
 	font-size: 20px;
 }
-div.card p.lock {
+div.cardFilms p.lock {
 	border-top: 1px solid #e5e5e5;
 	background-image: url('http://darkham.net/iconeLock.png');
 	background-repeat: no-repeat;
@@ -38,7 +36,7 @@ div.card p.lock {
 	margin-top: 5px;
 	margin-bottom: -10px;
 }
-div.card p.plus {
+div.cardFilms p.plus {
 	border-top: 1px solid #e5e5e5;
 	background-image: url('http://darkham.net/iconePlus.png');
 	background-repeat: no-repeat;
@@ -48,7 +46,7 @@ div.card p.plus {
 	margin-top: 5px;
 	margin-bottom: -10px;
 }
-div.card p.lock a {
+div.cardFilms p.lock a {
 	color: #4285F4;
 	text-decoration: none;
 	top: 4px;
@@ -56,16 +54,7 @@ div.card p.lock a {
 	display: block;
 	position: relative;
 }
-div.card p.plus a {
-	color: #4285F4;
-	text-decoration: none;
-	top: 4px;
-	margin-left: 8px;
-	width: 385px;
-	display: block;
-	position: relative;
-}
-div.card p.url a {
+div.cardFilms p.plus a {
 	color: #4285F4;
 	text-decoration: none;
 	top: 4px;
@@ -74,7 +63,16 @@ div.card p.url a {
 	display: block;
 	position: relative;
 }
-div.card img.full {
-	width: 430px;
-	margin: 0 0 15px -15px;
+div.cardFilms p.url a {
+	color: #4285F4;
+	text-decoration: none;
+	top: 4px;
+	margin-left: 8px;
+	width: 385px;
+	display: block;
+	position: relative;
+}
+div.cardFilms img.full {
+	width: 300px;
+	margin: 0 0 10px -10px;
 }
