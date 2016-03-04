@@ -33,7 +33,6 @@ div.cardFilms p.lock {
 	padding: 6px 0 0 30px;
 	height: 30px;
 	display: block;
-	margin-top: 5px;
 	margin-bottom: -10px;
 }
 div.cardFilms p.plus {
@@ -43,7 +42,6 @@ div.cardFilms p.plus {
 	padding: 6px 0 0 30px;
 	height: 30px;
 	display: block;
-	margin-top: 5px;
 	margin-bottom: -10px;
 }
 div.cardFilms p.lock a {
