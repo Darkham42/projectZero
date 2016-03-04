@@ -164,46 +164,65 @@ class MainView {
 	protected function getFormFields(FilmBuilder $builder) {
 		$nameRef = $builder->getNameRef();
 		$s = "";
-
-		$s .= '<p><label>Nom de la film : <input type="text" name="'.$nameRef.'" value="';
-		$s .= self::htmlesc($builder->getData($nameRef));
-		$s .= "\" />";
+		$s .= '<p><label><span class="titrelabel">Nom du film : </span><input type="text" name="'.$nameRef.'" value="';
+		$s .= self::htmlesc($builder->getData($nameRef)) . "\" />";
 		$err = $builder->getErrors($nameRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
 		$s .="</label></p>\n";
 
 		$realRef = $builder->getRealisateurRef();
-		$s .= '<p><label>Realisateur : <input type="text" name="'.$realRef.'" value="';
+		$s .= '<p><label><span class="titrelabel">Realisateur : </span><input type="text" name="'.$realRef.'" value="';
 		$s .= self::htmlesc($builder->getData($realRef));
-		$s .= '" ';
+		$s .= "\" />";
 		$err = $builder->getErrors($realRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
 		$s .="</label></p>\n";
 
 		$dateRef = $builder->getDateSortieRef();
-		$s .= '<p><label>Date de sortie : <input type="date" name="'.$dateRef.'" value="';
+		$s .= '<p><label><span class="titrelabel">Date de sortie : </span><input type="date" name="'.$dateRef.'" placeholder="AAAA-MM-JJ" value="';
 		$s .= self::htmlesc($builder->getData($dateRef));
-		$s .= '" ';
+		$s .= "\" />";
 		$err = $builder->getErrors($dateRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
 		$s .="</label></p>\n";
 
+		$poster = $builder->getPosterRef();
+		$s .= '<p><label><span class="titrelabel">Lien URL de l\'affiche : </span><input type="date" name="'.$dateRef.'" value="';
+		$s .= self::htmlesc($builder->getData($poster));
+		$s .= "\" />";
+		$err = $builder->getErrors($poster);
+		if ($err !== null)
+			$s .= ' <span class="error">'.$err.'</span>';
+		$s .="</label></p>\n";
+
 		$dureeRef = $builder->getDureeRef();
-		$s .= '<p><label>Duree : <input type="int" name="'.$dureeRef.'" value="';
+     	
+
+		$s .= '<p><label><span class="titrelabel">Duree : </span><input type="date" name="'.$dureeRef.'" value="';
 		$s .= self::htmlesc($builder->getData($dureeRef));
-		$s .= '" ';
+		$s .= "\" />";
 		$err = $builder->getErrors($dureeRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
 		$s .="</label></p>\n";
 
 		$castRef = $builder->getCastingRef();
-		$s .= '<p><label>Casting : <input type="date" name="'.$castRef.'" value="';
-		$s .= self::htmlesc($builder->getData($castRef));
-		$s .= '" ';
+		
+
+		ob_start();
+		include 'addForm.php';
+		$s .= ob_get_clean(); //note on ob_get_contents below
+	
+	/*
+		$s .= '<div id="dynamicInput">
+				<p><label><span class="titrelabel">Casting : </span>
+					<input type="int" name="'.$dureeRef.'" placeholder="Acteur" value="' . self::htmlesc($builder->getData($castRef)) . "\" />
+				</div>
+				<input type='button' value='Add another text input' onClick=\"addInput('dynamicInput');\">";
+	*/
 		$err = $builder->getErrors($castRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
@@ -211,7 +230,7 @@ class MainView {
 
 
 		$universRef = $builder->getUniversRef();
-		$s .= '<p> Univers : <select name="'.$universRef.'">';
+		$s .= '<p><span class="titrelabel"> Univers : </span><select name="'.$universRef.'">';
 		$s .= '<option value="Marvel">Marvel</option>';
 		$s .= '<option value="DC Comics">DC Comics</option>';
 		$s .= '<option value="Autre">Autres</option>';
@@ -224,7 +243,7 @@ class MainView {
 
 		$genreRef = $builder->getGenreRef();
 		//$s .= '<p><label>Genre du film : <input type="date" name="'.$genreRef.'" value="' ;
-		$s .= '<P><label>Indiquez les genres : ';
+		$s .= '<P><label><span class="titrelabel">Indiquez les genres : </span>';
 		$s .= '	<LABEL ACCESSKEY=C><INPUT TYPE=checkbox name="'.$genreRef.'" VALUE="1" CHECKED> Action </LABEL>' ;
 		$s .= '	<LABEL ACCESSKEY=D><INPUT TYPE=checkbox name="'.$genreRef.'" VALUE="2"> Aventure </LABEL>';
 		$s .= '	<LABEL ACCESSKEY=M><INPUT TYPE=checkbox name="'.$genreRef.'" VALUE="3"> Comédie </LABEL>';
@@ -243,6 +262,8 @@ class MainView {
 	protected static function fmtDate(DateTime $date) {
 		return "le " . $date->format("Y-m-d") . " à " . $date->format("H:i:s");
 	}
+
+
 
 	/* Une fonction pour échapper les caractères spéciaux de HTML,
 	* car celle de PHP nécessite trop d'options. */

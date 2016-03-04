@@ -1,6 +1,6 @@
 form {
 	position: relative;
-	width: 375px;
+	width: 80%px;
 	margin: 15px 15px;
 }
 
@@ -71,4 +71,11 @@ button[type="submit"] {
 
 button[type="submit"]:focus {
 	outline: none;
+}
+
+.titrelabel {
+  /*display:block;*/
+  width:150px;
+  border-color: red;
+  float:left;
 }

@@ -25,17 +25,21 @@ class Film {
 			throw new Exception("Invalid film name");
 		}
 		$this->name = $name;
-		/*
+		
 		if (!self::isValidDate($date_sortie)){
 			echo "Invalid Date" ;
 			throw new Exception("Invalid date");
-		}*/
+		}
 		$this->duree = $duree;
 		$this->date_sortie = $date_sortie;
 		$this->realisateur = $realisateur;
 		$this->casting = $casting;
 		$this->univers = $univers;
 		$this->genre = $genre;
+		/*if(!self::isValidURL($poster)){
+			echo "Invalid URL";
+			throw new Exception("Invalid url link");
+		}*/
 		$this->poster = $poster;
 		$this->creationDate = $creationDate !== null? $creationDate: new DateTime();
 		$this->modifDate = $modifDate !== null? $modifDate: new DateTime();
@@ -150,6 +154,14 @@ class Film {
 	public static function isValidDate($date){
 	    $d = DateTime::createFromFormat('Y-m-d', $date);
 	    return $d && $d->format('Y-m-d') == $date;
+	}
+
+	public static function isValidURL($url){
+		if (preg_match('#^http://[w-]+[w.-]+.[a-zA-Z]{2,6}#i', $url)) {
+		    return true;
+		} else {
+		    return false;
+		}
 	}
 
 }

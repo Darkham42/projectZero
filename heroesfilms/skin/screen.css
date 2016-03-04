@@ -68,6 +68,12 @@ label .error {
 	font-weight: bold;
 }
 
+label {
+	display:block;
+	width:200px;
+	float:left;
+}
+
 .feedback {
 	text-align: center;
 	font-weight: bold;

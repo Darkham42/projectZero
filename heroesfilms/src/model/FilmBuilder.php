@@ -16,9 +16,10 @@ class FilmBuilder {
 			$data = array(
 				"name" => "",
 				"date_sortie" => "",
-				"duree" => "00:00",
+				"duree" => "",
+				"poster" => "",
 				"realisateur" => "",
-				"casting" => "",
+				"casting[]" => "",
 				"univers" => "",
 				"genre" => "",
 			);
@@ -34,8 +35,9 @@ class FilmBuilder {
 			"name" => $film->getName(),
 			"date_sortie" => $film->getDateSortie(),
 			"duree" => $film->getDuree(),
+			"poster" => $film->getPoster(),
 			"realisateur" => $film->getRealisateur(),
-			"casting" => $film->getCasting(),
+			"casting[]" => $film->getCasting(),
 			"univers" => $film->getUnivers(),
 			"genre" => $film->getGenre(),
 		));
@@ -87,7 +89,11 @@ class FilmBuilder {
 	}
 
 	public function getCastingRef() {
-		return "casting";
+		return "casting[]";
+	}
+
+	public function getPosterRef() {
+		return "poster";
 	}
 
 	/* Renvoie la valeur d'un champ en fonction de la référence passée en argument. */
@@ -132,13 +138,13 @@ class FilmBuilder {
 			echo "\n erreur univers";
 		}
 		*/
-		if (!isset($this->data["name"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting"],
-			$this->data["genre"], $this->data["univers"])){
+		if (!isset($this->data["name"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting[]"],
+			$this->data["genre"], $this->data["univers"], $this->data["poster"])){
 			echo "Erreur builder";
 			throw new Exception("Missing fields for film creation");
 		}
 		echo "<br/> => Builder OK. <br/>";
-		return new Film($this->data["name"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting"], $this->data["univers"], $this->data["genre"]);
+		return new Film($this->data["name"], $this->data["poster"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting[]"], $this->data["univers"], $this->data["genre"]);
 	}
 
 	/* Met à jour une instance de Film avec les données
@@ -153,6 +159,14 @@ class FilmBuilder {
 	public function isValidDate($date){
 	    $d = DateTime::createFromFormat('Y-m-d', $date);
 	    return $d && $d->format('Y-m-d') == $date;
+	}
+
+	public static function isValidURL($url){
+		if (preg_match('#^http://[w-]+[w.-]+.[a-zA-Z]{2,6}#i', $url)) {
+		    return true;
+		} else {
+		    return false;
+		}
 	}
 
 }
