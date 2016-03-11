@@ -1,0 +1,3 @@
+Time : 12:47:14
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :r

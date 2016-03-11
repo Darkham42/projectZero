@@ -190,7 +190,7 @@ class MainView {
 		$s .="</label></p>\n";
 
 		$poster = $builder->getPosterRef();
-		$s .= '<p><label><span class="titrelabel">Lien URL de l\'affiche : </span><input type="date" name="'.$dateRef.'" value="';
+		$s .= '<p><label><span class="titrelabel">Lien URL de l\'affiche : </span><input type="date" name="'.$poster.'" value="';
 		$s .= self::htmlesc($builder->getData($poster));
 		$s .= "\" />";
 		$err = $builder->getErrors($poster);

@@ -19,7 +19,7 @@ class FilmBuilder {
 				"duree" => "",
 				"poster" => "",
 				"realisateur" => "",
-				"casting[]" => "",
+				"casting" => "",
 				"univers" => "",
 				"genre" => "",
 			);
@@ -37,7 +37,7 @@ class FilmBuilder {
 			"duree" => $film->getDuree(),
 			"poster" => $film->getPoster(),
 			"realisateur" => $film->getRealisateur(),
-			"casting[]" => $film->getCasting(),
+			"casting" => $film->getCasting(),
 			"univers" => $film->getUnivers(),
 			"genre" => $film->getGenre(),
 		));
@@ -89,7 +89,7 @@ class FilmBuilder {
 	}
 
 	public function getCastingRef() {
-		return "casting[]";
+		return "casting";
 	}
 
 	public function getPosterRef() {
@@ -98,7 +98,7 @@ class FilmBuilder {
 
 	/* Renvoie la valeur d'un champ en fonction de la référence passée en argument. */
 	public function getData($ref) {
-		echo "\n ajout : " . $ref ;
+		//echo "\n ajout : " . $ref ;
 		return isset($this->data[$ref])? $this->data[$ref]: '';
 	}
 
@@ -118,12 +118,15 @@ class FilmBuilder {
 		echo '<br/>';
 		var_dump($this->errors);
 		echo '<br/>';
-		/*
+		
 		if(!isset($this->data["name"])){
 			echo "\n erreur nom";
 		}
 		if(!isset($this->data["date_sortie"])){
 			echo "\n erreur date";
+		}
+		if(!isset($this->data["duree"])){
+			echo "\n erreur duree";
 		}
 		if(!isset($this->data["realisateur"])){
 			echo "\n erreur realisateur";
@@ -137,14 +140,17 @@ class FilmBuilder {
 		if(!isset($this->data["univers"])){
 			echo "\n erreur univers";
 		}
-		*/
-		if (!isset($this->data["name"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting[]"],
+		if(!isset($this->data["poster"])){
+			echo "\n erreur poster";
+		}
+		
+		if (!isset($this->data["name"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting"],
 			$this->data["genre"], $this->data["univers"], $this->data["poster"])){
 			echo "Erreur builder";
 			throw new Exception("Missing fields for film creation");
 		}
 		echo "<br/> => Builder OK. <br/>";
-		return new Film($this->data["name"], $this->data["poster"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting[]"], $this->data["univers"], $this->data["genre"]);
+		return new Film($this->data["name"], $this->data["poster"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting"], $this->data["univers"], $this->data["genre"]);
 	}
 
 	/* Met à jour une instance de Film avec les données
