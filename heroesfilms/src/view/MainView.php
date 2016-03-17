@@ -155,7 +155,7 @@ class MainView {
 	protected function galleryFilm($id, $f) {
 		$cclass = "film".$id;
 		$res = '<p class="card-title">'.self::htmlesc($f->getName()).' ('.substr(self::htmlesc($f->getDateSortie()), 0, 4).')</p>';
-		$res .= '<img src="'.self::htmlesc($f->getPoster()).'" class="full" alt="'.self::htmlesc($f->getName()).' poster" />';
+		$res .= '<img src="'.self::htmlesc($f->getPoster()).'" class="posterSize" alt="'.self::htmlesc($f->getName()).' poster" />';
 		$res .= '<p class="plus"><a href="'.$this->router->filmPage($id).'">More details</a></p>';
 		$res .= '</a></li>'."\n";
 		return $res;

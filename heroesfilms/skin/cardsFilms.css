@@ -70,7 +70,11 @@ div.cardFilms p.url a {
 	display: block;
 	position: relative;
 }
-div.cardFilms img.full {
+div.cardFilms img.posterSize {
 	width: 300px;
 	margin: 0 0 10px -10px;
+}
+
+.bright {
+    -webkit-filter: brightness(25%);
 }

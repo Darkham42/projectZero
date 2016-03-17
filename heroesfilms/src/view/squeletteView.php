@@ -39,5 +39,7 @@
 		echo $this->content;
 		?>
 	</main>
+
+<script src="src/view/poster.js"></script>
 </body>
 </html>
