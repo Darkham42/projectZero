@@ -27,6 +27,7 @@ class Router {
 
 		/* Analyse de l'URL */
 		$filmId = isset($_GET['film'])? $_GET['film']: null;
+		echo $filmId;
 		$action = isset($_GET['action'])? $_GET['action']: null;
 		if ($action === null) {
 			/* Pas d'action demandée : par défaut on affiche
@@ -55,17 +56,23 @@ class Router {
 				break;
 
 			case "supprimer":
+				//echo $filmId;
 				if ($filmId === null) {
+					//echo "NULL";
 					$view->makeUnknownActionPage();
 				} else {
+					//echo "DELETEFILM";
 					$ctl->deleteFilm($filmId);
 				}
 				break;
 
 			case "confirmerSuppression":
+				echo $filmId;
 				if ($filmId === null) {
+					echo "NULL";
 					$view->makeUnknownActionPage();
 				} else {
+					echo "DELETEFILM";
 					$ctl->confirmFilmDeletion($filmId);
 				}
 				break;

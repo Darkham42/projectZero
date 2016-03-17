@@ -1,0 +1,98 @@
+Time : 15:28:01
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_4` FOREIGN KEY (`genre2`) REFERENCES `genres` (`id`))
+Raw SQL : INSERT INTO FILMS VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre, 'NULL','NULL')
+
+Time : 15:27:19
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_4` FOREIGN KEY (`genre2`) REFERENCES `genres` (`id`))
+Raw SQL : INSERT INTO FILMS VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre, 'a','a')
+
+Time : 15:26:34
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_3` FOREIGN KEY (`genre1`) REFERENCES `genres` (`id`))
+Raw SQL : INSERT INTO FILMS VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre, 'a','a')
+
+Time : 15:25:26
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_3` FOREIGN KEY (`genre1`) REFERENCES `genres` (`id`))
+Raw SQL : INSERT INTO FILMS VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre, 'a','a')
+
+Time : 15:24:10
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : INSERT INTO FILMS VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre, 'a','a')
+
+Time : 15:20:15
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : INSERT INTO FILMS
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre, '','')
+
+Time : 15:19:41
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:18:31
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:07:23
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:07:20
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:07:12
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:06:39
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:06:29
+SQLSTATE[HY093]: Invalid parameter number
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:06:01
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:05:28
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:04:33
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:03:03
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:01:45
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 15:00:47
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :r
+
+Time : 14:49:30
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '8' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)
+
+Time : 14:33:26
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '8' for key 'PRIMARY'
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) 
+			VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)

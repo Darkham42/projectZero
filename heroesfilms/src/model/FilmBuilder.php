@@ -47,7 +47,7 @@ class FilmBuilder {
 	 * et renvoie un tableau des erreurs à corriger. */
 	public function isValid() {
 		$this->errors = array();
-		/*
+		
 		if (!isset($this->data["name"]) || $this->data["name"] === "")
 			$this->errors["name"] = "Vous devez entrer un nom";
 		else if (!isset($this->data["date_sortie"]) )					//&& isValidDate($this->data["name"])
@@ -60,7 +60,7 @@ class FilmBuilder {
 			$this->errors["genre"] = "Vous devez entrer un genrer";
 		else if (mb_strlen($this->data["name"], 'UTF-8') >= 30)
 			$this->errors["name"] = "Le nom doit faire moins de 30 caractères";
-		*/
+		
 		return count($this->errors) === 0;
 	}
 
@@ -121,6 +121,7 @@ class FilmBuilder {
 		
 		if(!isset($this->data["name"])){
 			echo "\n erreur nom";
+			sayError("Erreur nom");
 		}
 		if(!isset($this->data["date_sortie"])){
 			echo "\n erreur date";
@@ -133,6 +134,7 @@ class FilmBuilder {
 		}
 		if(!isset($this->data["casting"])){
 			echo "\n erreur casting";
+			sayError("Erreur casting");
 		}
 		if(!isset($this->data["genre"])){
 			echo "\n erreur genre";
@@ -149,8 +151,12 @@ class FilmBuilder {
 			echo "Erreur builder";
 			throw new Exception("Missing fields for film creation");
 		}
-		echo "<br/> => Builder OK. <br/>";
+		echo "<br/> => Builder pour le Film. <br/>";
 		return new Film($this->data["name"], $this->data["poster"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting"], $this->data["univers"], $this->data["genre"]);
+	}
+
+	function sayError($txt){
+		trigger_error($txt, E_USER_ERROR);
 	}
 
 	/* Met à jour une instance de Film avec les données
