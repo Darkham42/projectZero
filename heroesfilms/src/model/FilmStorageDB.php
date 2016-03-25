@@ -31,13 +31,12 @@ class FilmStorageDB implements FilmStorage {
 	 * de la nouvelle film. */
 	public function create(Film $f) {
 		//ajout dans REALISATEUR
-		var_dump($f->getRealisateur());
-		$requestreal = $this->db->query("SELECT id FROM REALISATEUR WHERE direc = :r", array("r"=> $f->getRealisateur()));
+
+		$tab = array();
+		$tab["reali"] = $f->getRealisateur();
+		$requestreal = $this->db->query("SELECT id FROM REALISATEUR WHERE direc = :reali", $tab);
 		$json_data=array();
 		$idreal = -1;
-		echo "<br/> REQUEST ";
-		var_dump($requestreal);
-		echo "<br/>";
 		foreach($requestreal as $recherche) {
 			var_dump($recherche);
 			if(isset($recherche['id'])) $idreal = $recherche['id'];
@@ -45,15 +44,17 @@ class FilmStorageDB implements FilmStorage {
 		//si on n'a pas trouve un realisateur, on l'ajoute
 		if($idreal == -1){
 			$tab = array();
-			$tab["r"] = $f->getRealisateur();
+			$tab["real2"] = $f->getRealisateur();
 
 			foreach($this->db->query("SELECT count(*) as nb FROM REALISATEUR") as $count) {
 				$tab["id"] = $count['nb'];
 			}
 
-			$this->db->query("INSERT INTO REALISATEUR(id, direc) VALUES(:id,:r)", $tab);
-
-			$requestid = $this->db->query("SELECT id FROM REALISATEUR WHERE direc = :r", $tab);
+			$this->db->query("INSERT INTO REALISATEUR(id, direc) VALUES(:id,:real2)", $tab);
+			
+			$newtab = array();
+			$newtab["real2"] = $f->getRealisateur();
+			$requestid = $this->db->query("SELECT id FROM REALISATEUR WHERE direc = :real2", $newtab);
 			foreach($requestid as $recherche) {
 				$idreal = $recherche['id'];
 			}
@@ -92,17 +93,10 @@ class FilmStorageDB implements FilmStorage {
 		}*/
 		//$tab["creation"] = $f->getCreationDate();
 		//$tab["modif"] = $f->getModifDate();
-
-		//manque date crea et date modif
-		//ajout dans FILMS
-		echo "<br/>";
-		var_dump($idreal);
-		echo "<br/>";
-		// Get size from array
 		
 		$id = 0;
 		foreach($this->db->query("SELECT id FROM FILMS ORDER BY id") as $idFilms) {
-			echo $id . " " .  $idFilms['id'] . "<br/>";
+			//echo $id . " " .  $idFilms['id'] . "<br/>";
 			if($id != $idFilms['id']){
 				$tab["id"] = $idFilms['id'];
 				break;
@@ -112,7 +106,7 @@ class FilmStorageDB implements FilmStorage {
 		if(!isset($tab["id"])) {
 			$tab["id"] = $id;
 		}
-		echo $id . "<br/>END</br>";
+		//echo $id . "<br/>END</br>";
 
 		$this->db->query("INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)", $tab);
 
@@ -126,16 +120,15 @@ class FilmStorageDB implements FilmStorage {
 
 		//ajout dans CASTING
 		$tab = array();
-		$tab["id"] = $f->getCasting();
+		$tab["id"] = $id;
 		//$tab["casting"] = $f->getCasting();
 		foreach($f->getCasting() as $act) {
-			$tab["act"] = $f->getCasting();
+			$tab["act"] = $act;
 			$this->db->query("INSERT INTO CASTING(idFilm, cast) VALUES(:id, :act)", $tab);
 		}
 
-		
-
 		echo "FIN INSERT";
+		return $id;
 	}
 
 	/* Renvoie la film d'identifiant $id, ou null
@@ -150,15 +143,11 @@ class FilmStorageDB implements FilmStorage {
 		foreach($searchCasting as $projet){
 			$casting .= $projet['cast'] . " ";
 		}
-		$searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $id));
-		$real = "";
-		foreach($searchReal as $projet){
-			$real .= $projet['direc'] . " ";
-		}
 		$name = "";
 		$poster = "";
 	    $date_sortie = "";
 	    $duree = "";
+	    $idreal = "";
 	    $univers = "";
 	    $genre = "";
 		foreach($searchProject as $projet) {
@@ -166,9 +155,15 @@ class FilmStorageDB implements FilmStorage {
 		    $poster = $projet['poster'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
-		    $realisateur = $real;
+		    $idreal = $projet['realisateur'];
 		    $univers = $this->findUnivers($projet['univers']);
 		    $genre = $this->findGenre($projet['genre1']) . $this->findGenre($projet['genre2']) . $this->findGenre($projet['genre3']);  
+		}
+
+		$searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $idreal));
+		$real = "";
+		foreach($searchReal as $projet){
+			$real .= $projet['direc'];
 		}
 		return new Film($name, $poster, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate=null, $modifDate=null);
 	}

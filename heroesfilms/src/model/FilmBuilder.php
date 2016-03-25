@@ -152,6 +152,7 @@ class FilmBuilder {
 			throw new Exception("Missing fields for film creation");
 		}
 		echo "<br/> => Builder pour le Film. <br/>";
+		var_dump($this->data["casting"]);
 		return new Film($this->data["name"], $this->data["poster"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting"], $this->data["univers"], $this->data["genre"]);
 	}
 

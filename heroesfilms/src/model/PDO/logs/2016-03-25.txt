@@ -1,0 +1,35 @@
+Time : 14:48:17
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :real2
+
+Time : 14:47:36
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :real2
+
+Time : 14:46:16
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :real2
+
+Time : 14:40:59
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :r
+
+Time : 14:35:06
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :r
+
+Time : 14:33:02
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :r
+
+Time : 14:26:42
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :r
+
+Time : 14:23:24
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :r
+
+Time : 14:13:41
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :r
