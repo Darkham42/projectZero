@@ -80,17 +80,19 @@ class FilmStorageDB implements FilmStorage {
 		$tab["duree"] = $f->getDuree();
 		$tab["univers"] = $idUnivers;
 		$tab["reali"] = $idreal;
-		$tab["genre"] = $f->getGenre();
-		echo "<br/>" . $f->getGenre() . "<br/>";
+		//$tab["genre"] = $f->getGenre();
+		//echo "<br/>GENRE : " . $f->getGenre() . "<br/>";
 
-		/*
+		var_dump($f->getGenre());
 		$i = 1;
 		foreach($f->getGenre() as $genre){
+			echo " <br/> genre <br/>";
 			$tab["genre".$i] = $genre;
+			$i ++;
 		}
-		for($i = 3; $i > $f->getGenre().length; $i++){
+		for($i = 3; $i > count($f->getGenre()); $i++){
 			$tab["genre".$i] = "";
-		}*/
+		}
 		//$tab["creation"] = $f->getCreationDate();
 		//$tab["modif"] = $f->getModifDate();
 		
@@ -108,7 +110,7 @@ class FilmStorageDB implements FilmStorage {
 		}
 		//echo $id . "<br/>END</br>";
 
-		$this->db->query("INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1) VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre)", $tab);
+		$this->db->query("INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1, genre2, genre3) VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre1, :genre2, :genre3)", $tab);
 
 		//recuperation de l'id du film
 		$requestid = $this->db->query("SELECT id FROM FILMS WHERE nom = :titre", array("titre"=> $f->getName()));

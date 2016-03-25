@@ -246,13 +246,13 @@ class MainView {
 		$genreRef = $builder->getGenreRef();
 		//$s .= '<p><label>Genre du film : <input type="date" name="'.$genreRef.'" value="' ;
 		$s .= '<P><label><span class="titrelabel">Indiquez les genres : </span>';
-		$s .= '	<LABEL ACCESSKEY=C><INPUT TYPE=checkbox name="'.$genreRef.'" VALUE="1" CHECKED> Action </LABEL>' ;
-		$s .= '	<LABEL ACCESSKEY=D><INPUT TYPE=checkbox name="'.$genreRef.'" VALUE="2"> Aventure </LABEL>';
-		$s .= '	<LABEL ACCESSKEY=M><INPUT TYPE=checkbox name="'.$genreRef.'" VALUE="3"> Comédie </LABEL>';
-		$s .= ' <LABEL ACCESSKEY=M><INPUT TYPE=checkbox name="'.$genreRef.'" VALUE="4"> Sci-Fi </LABEL>';
-		$s .= ' <LABEL ACCESSKEY=M><INPUT TYPE=checkbox name="'.$genreRef.'" VALUE="5"> Fantasy </LABEL>';
+		$s .= '	<LABEL ACCESSKEY=C><INPUT TYPE=checkbox name="'.$genreRef.'[]" VALUE="1" CHECKED> Action </LABEL>' ;
+		$s .= '	<LABEL ACCESSKEY=D><INPUT TYPE=checkbox name="'.$genreRef.'[]" VALUE="2"> Aventure </LABEL>';
+		$s .= '	<LABEL ACCESSKEY=M><INPUT TYPE=checkbox name="'.$genreRef.'[]" VALUE="3"> Comédie </LABEL>';
+		$s .= ' <LABEL ACCESSKEY=M><INPUT TYPE=checkbox name="'.$genreRef.'[]" VALUE="4"> Sci-Fi </LABEL>';
+		$s .= ' <LABEL ACCESSKEY=M><INPUT TYPE=checkbox name="'.$genreRef.'[]" VALUE="5"> Fantasy </LABEL>';
 		$s .= '</label></P>';
-		$s .= self::htmlesc($builder->getData($genreRef));
+		//$s .= $builder->getData($genreRef);
 		$err = $builder->getErrors($genreRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';

@@ -1,3 +1,19 @@
+Time : 17:15:43
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1, genre2, genre3) VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre1, :genre2, :genre3)
+
+Time : 17:15:24
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1, genre2, genre3) VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre1, :genre2, :genre3)
+
+Time : 16:57:30
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1, genre2, genre3) VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre1, :genre2, :genre3)
+
+Time : 16:54:56
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO FILMS(id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, genre1, genre2, genre3) VALUES(:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :genre1, :genre2, :genre3)
+
 Time : 14:48:17
 SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
 Raw SQL : SELECT id FROM REALISATEUR WHERE direc = :real2
