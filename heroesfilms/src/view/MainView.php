@@ -15,7 +15,7 @@ class MainView {
 	public function __construct(Router $router, $feedback, Menu $menu) {
 		$this->feedback = $feedback;
 		$this->router = $router;
-		$this->style = "";
+		$this->style = array();
 		$this->title = null;
 		$this->content = null;
 		$this->menu = $menu;
@@ -29,16 +29,16 @@ class MainView {
 	public function makeHomePage() {
 		$this->title = "HeroesMovies";
 		$this->content = "Soon in theatres\nListe horizontal des prochains films";
+		array_push($this->style, "navbar.css");
 	}
 
 	public function makeFilmPage($id, Film $f) {
-		$cname = self::htmlesc($f->getName());
-		$cclass = "film$id";
-		$cdatec = self::fmtDate($f->getCreationDate());
+		$fname = self::htmlesc($f->getName());
+		$fclass = "film$id";
+		$fdatec = self::fmtDate($f->getCreationDate());
 		$cdatem = self::fmtDate($f->getModifDate());
 
-		//$this->style .= ".$cclass { background-film: #$chex; }";
-		$this->title = "Le film $cname";
+		$this->title = "Le film $fname";
 		$s = "" ;
 		$s .= '<h3>'.self::htmlesc($f->getName()).'</h3>';
 		$s .= "<img src='".self::htmlesc($f->getPoster())."'>\n";
@@ -53,29 +53,39 @@ class MainView {
 		$s .= '<li><a href="'.$this->router->filmDeletionPage($id).'">Supprimer</a></li>'."\n";
 		$s .= "</ul>\n";
 		$this->content = $s;
+
+		array_push($this->style, "navbar.css");
 	}
 
 	public function makeFilmCreationPage(FilmBuilder $builder) {
 		$this->title = "Ajouter votre film";
-		$s = '<form action="'.$this->router->saveCreatedFilm().'" method="POST">'."\n";
+		$s = '<form action="'.$this->router->saveCreatedFilm().'" method="POST" class="form-group">'."\n";
 		$s .= self::getFormFields($builder);
 		$s .= "<button>Créer</button>\n";
 		$s .= "</form>\n";
 		$this->content = $s;
+
+		array_push($this->style, "cards.css");
+		array_push($this->style, "navbar.css");
+		array_push($this->style, "form.css");
 	}
 
 	public function makeFilmDeletionPage($id, Film $c) {
-		$cname = self::htmlesc($c->getName());
+		$fname = self::htmlesc($c->getName());
 
-		$this->title = "Suppression de la film $cname";
-		$this->content = "<p>Le film « {$cname} » va être supprimée.</p>\n";
+		$this->title = "Suppression de la film $fname";
+		$this->content = "<p>Le film « {$fname} » va être supprimée.</p>\n";
 		$this->content .= '<form action="'.$this->router->confirmFilmDeletion($id).'" method="POST">'."\n";
 		$this->content .= "<button>Confirmer</button>\n</form>\n";
+
+		array_push($this->style, "navbar.css");
 	}
 
 	public function makeFilmDeletedPage() {
 		$this->title = "Suppression effectuée";
 		$this->content = "<p>La film a été correctement supprimée.</p>";
+
+		array_push($this->style, "navbar.css");
 	}
 
 	public function makeFilmModifPage($id, FilmBuilder $builder) {
@@ -85,6 +95,8 @@ class MainView {
 		$this->content .= self::getFormFields($builder);
 		$this->content .= '<button>Modifier</button>'."\n";
 		$this->content .= '</form>'."\n";
+
+		array_push($this->style, "navbar.css");
 	}
 
 	public function makeGalleryPage(array $films) {
@@ -95,45 +107,38 @@ class MainView {
 			$this->content .= $this->galleryFilm($id, $f);
 			$this->content .= "<div>\n<li>\n</ul>\n";
 		}
+
+		array_push($this->style, "navbar.css");
+		array_push($this->style, "cardsFilms.css");
 	}
 
 	public function makeUnknownFilmPage() {
 		$this->title = "Erreur";
 		$this->content = "La film demandée n'existe pas.";
+
+		array_push($this->style, "navbar.css");
 	}
 
 	public function makeUnknownActionPage() {
 		$this->title = "Erreur";
 		$this->content = "La page demandée n'existe pas.";
+
+		array_push($this->style, "navbar.css");
 	}
 
 	public function makeLoginPage() {
 		$this->title = "Login";
-		$this->content = '
-			<div class="card">
-        		<p class="card-title">Log In</p>
-				<img src="http://s3.foxfilm.com/foxmovies/production/films/103/images/gallery/deadpool1-gallery-image.jpg" class="full" />
-				<form action="" id="login-form">
-					<div id="u" class="form-group">
-					<input id="username" spellcheck=false class="form-control" name="username" type="email" size="20" alt="login" required="">
-					<span class="form-highlight"></span>
-					<span class="form-bar"></span>
-					<label for="username" class="float-label">Email</label>
-					</div>
-					<div id="p" class="form-group">
-						<input id="password" class="form-control" spellcheck=false name="password" type="password" size="20" alt="login" required="">
-						<span class="form-highlight"></span>
-						<span class="form-bar"></span>
-						<label for="password" class="float-label">Password</label>
-					</div>
-					<div class="form-group">
-						<button id="submit" type="submit" ripple>Sign in</button>
-					</div>
-				</form>
-				<p class="url"><a href="#">Need new account ?</a></p>
-				<p class="lock"><a href="#">Forgot Password ?</a></p>
-      		</div>
-		';
+		
+		array_push($this->style, "form.css");
+		array_push($this->style, "cards.css");
+		array_push($this->style, "navbar.css");
+		ob_start();
+		include 'loginpage.php';
+		$this->content = ob_get_clean(); 
+
+		array_push($this->style, "navbar.css");
+			
+	
 	}
 
 	/* Génère une page d'erreur inattendue. Peut optionnellement
@@ -142,6 +147,8 @@ class MainView {
 	public function makeUnexpectedErrorPage(Exception $e=null) {
 		$this->title = "Erreur";
 		$this->content = "Une erreur inattendue s'est produite.";
+
+		array_push($this->style, "navbar.css");
 	}
 
 	/******************************************************************************/
@@ -153,7 +160,7 @@ class MainView {
 	}
 
 	protected function galleryFilm($id, $f) {
-		$cclass = "film".$id;
+		$fclass = "film".$id;
 		$res = '<p class="card-title">'.self::htmlesc($f->getName()).' ('.substr(self::htmlesc($f->getDateSortie()), 0, 4).')</p>';
 		$res .= '<div class = "text"><br>'.self::htmlesc($f->getName()).'<br><br>Resume<br>BLABLABLA<br><br>Casting<br>'.self::htmlesc($f->getCasting()).'</div>';
 		$res .= '<img src="'.self::htmlesc($f->getPoster()).'" class="posterSize" alt="'.self::htmlesc($f->getName()).' poster" />';
@@ -165,7 +172,8 @@ class MainView {
 	protected function getFormFields(FilmBuilder $builder) {
 		$nameRef = $builder->getNameRef();
 		$s = "";
-		$s .= '<p><label><span class="titrelabel">Nom du film : </span><input type="text" name="'.$nameRef.'" value="';
+		$s .= '<p><label><span class="titrelabel">Nom du film : </span><input type="text" name="'.$nameRef.'" class="form-control" value="';
+		//<input id="username" spellcheck=false class="form-control" name="username" type="email" size="20" alt="login" required="">
 		$s .= self::htmlesc($builder->getData($nameRef)) . "\" />";
 		$err = $builder->getErrors($nameRef);
 		if ($err !== null)
@@ -212,18 +220,11 @@ class MainView {
 
 		$castRef = $builder->getCastingRef();
 		
-
+		//ajout du script js pour ajouter des champs acteurs
 		ob_start();
-		include 'addForm.php';
-		$s .= ob_get_clean(); //note on ob_get_contents below
-	
-	/*
-		$s .= '<div id="dynamicInput">
-				<p><label><span class="titrelabel">Casting : </span>
-					<input type="int" name="'.$dureeRef.'" placeholder="Acteur" value="' . self::htmlesc($builder->getData($castRef)) . "\" />
-				</div>
-				<input type='button' value='Add another text input' onClick=\"addInput('dynamicInput');\">";
-	*/
+		include 'addActorForm.php';
+		$s .= ob_get_clean();
+
 		$err = $builder->getErrors($castRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';

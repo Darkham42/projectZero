@@ -4,13 +4,11 @@
 	<title><?php echo $this->title; ?></title>
 	<meta charset="UTF-8" />
 	<!-- <link rel="stylesheet" href="skin/screen.css" /> -->
-	<style>
-		<?php echo $this->style; ?>
-	</style>
-	<link rel="stylesheet" href="skin/navbar.css">
-	<link rel="stylesheet" href="skin/cardsFilms.css">
-	<link rel="stylesheet" href="skin/cards.css">
-	<link rel="stylesheet" href="skin/form.css">
+	
+	<?php foreach($this->style as $link){
+		echo '<link rel="stylesheet" href="skin/' . $link . '">';
+	} ?>
+
 </head>
 <body>
 
