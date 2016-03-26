@@ -30,7 +30,7 @@ class Menu {
 
 	public function setMenuConnected($name){
 		$this->table = array(
-			"All Movies" => $this->router->allFilmsPage(),
+			//"All Movies" => $this->router->allFilmsPage(),
 			"MARVEL" => $this->router->filmsMARVELPage(),
 			"DC" => $this->router->filmsDCPage(),
 			"Logout " . $name  => $this->router->logout(),
@@ -40,7 +40,7 @@ class Menu {
 
 	public function setMenuDisconnected(){
 		$this->table = array(
-			"All Movies" => $this->router->allFilmsPage(),
+			//"All Movies" => $this->router->allFilmsPage(),
 			"MARVEL" => $this->router->filmsMARVELPage(),
 			"DC" => $this->router->filmsDCPage(),
 			"Ajouter un film" => $this->router->filmCreationPage(),

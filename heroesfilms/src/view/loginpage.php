@@ -65,5 +65,5 @@
 		</div>
 	</form>
 	<p class="url"><a href=".?action=register">Need new account ?</a></p>
-	<p class="lock"><a href="#" onclick="alert('It\'s a feature)">Forgot Password ?</a></p>
+	<p class="lock"><a href="#" onclick="alert('It\'s a feature')">Forgot Password ?</a></p>
 </div>

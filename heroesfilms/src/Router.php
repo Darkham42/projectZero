@@ -32,7 +32,6 @@ class Router {
 
 		/* Analyse de l'URL */
 		$filmId = isset($_GET['film'])? $_GET['film']: null;
-		echo $filmId;
 		$action = isset($_GET['action'])? $_GET['action']: null;
 		if ($action === null) {
 			/* Pas d'action demandée : par défaut on affiche
@@ -114,7 +113,8 @@ class Router {
 				$ctl->about();
 				break;
 			case "accueil":
-				$view->makeHomePage();
+				//$view->makeHomePage();
+				$ctl->allFilmsPage();
 				break;
 
 			case "login":

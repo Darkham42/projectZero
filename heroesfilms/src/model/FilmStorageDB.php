@@ -178,6 +178,7 @@ class FilmStorageDB implements FilmStorage {
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
 		    $idreal = $projet['realisateur'];
+
 		    $univers = $this->findUnivers($projet['univers']);
 		    $synopsis = $projet['synopsis'];
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3'])); 
@@ -197,7 +198,7 @@ class FilmStorageDB implements FilmStorage {
 	 * contenant toutes les films de la base. */
 	public function readAll() {
 
-		$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id");
+		$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id ORDER BY date_sortie DESC");
 
 		$array = array();
 		foreach($searchProject as $projet) {
@@ -211,7 +212,7 @@ class FilmStorageDB implements FilmStorage {
 		    $background = $projet['background'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
-		    $realisateur = $projet['realisateur'];
+		    $realisateur = $projet['direc'];
 		    $casting = $casting;
 		    $univers = $this->findUnivers($projet['univers']);
 		    $synopsis = $projet['synopsis'];
@@ -225,7 +226,7 @@ class FilmStorageDB implements FilmStorage {
 
 	public function readAllMarvel() {
 
-		$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id AND univers = '2'");
+		$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id AND univers = '2' ORDER BY date_sortie DESC");
 
 		$array = array();
 		foreach($searchProject as $projet) {
@@ -253,7 +254,7 @@ class FilmStorageDB implements FilmStorage {
 
 	public function readAllDC() {
 
-		$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id AND univers = '1'");
+		$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id AND univers = '1' ORDER BY date_sortie DESC");
 
 		$array = array();
 		foreach($searchProject as $projet) {

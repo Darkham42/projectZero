@@ -27,9 +27,11 @@ class MainView {
 	/******************************************************************************/
 
 	public function makeHomePage() {
+		
 		$this->title = "HeroesMovies";
 		$this->content = "Soon in theatres\nListe horizontal des prochains films";
 		array_push($this->style, "navbar.css");
+
 	}
 
 	public function makeFilmPage($id, Film $f) {
