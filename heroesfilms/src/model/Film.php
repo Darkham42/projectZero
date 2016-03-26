@@ -13,14 +13,14 @@ class Film {
 	protected $modifDate;
 	protected $casting;
 	protected $poster;
+	protected $background;
 	protected $synopsis;
 
 	/* Construit une film. Si les paramètres de date ne sont pas passés,
 	 * la film est considérée comme étant toute nouvelle.
 	 * Le nom et le code hexa doivent être valides, au sens
 	 * de isNameValid et isHexValid, sinon une exception est levée. */
-	public function __construct($name, $poster, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null) {
-		//echo "Creation film ";
+	public function __construct($name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null) {
 		if (!self::isValidName($name)){
 			echo "Invalid Name";
 			throw new Exception("Invalid film name");
@@ -43,10 +43,9 @@ class Film {
 			throw new Exception("Invalid url link");
 		}*/
 		$this->poster = $poster;
+		$this->background = $background;
 		$this->creationDate = $creationDate !== null? $creationDate: new DateTime();
 		$this->modifDate = $modifDate !== null? $modifDate: new DateTime();
-
-		//echo "film ok";
 	}
 
 	public function getName() {
@@ -55,6 +54,10 @@ class Film {
 
 	public function getPoster(){
 		return $this->poster;
+	}
+
+	public function getBackground(){
+		return $this->background;
 	}
 
 	public function getDateSortie() {
@@ -143,6 +146,11 @@ class Film {
 
 	public function setPoster($poster){
 		$this->poster = $poster;
+		$this->modifDate = new DateTime();
+	}
+
+	public function setBackground($background){
+		$this->background = $background;
 		$this->modifDate = new DateTime();
 	}
 

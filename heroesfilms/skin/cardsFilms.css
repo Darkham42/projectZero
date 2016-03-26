@@ -30,7 +30,6 @@ div.cardFilms p.lock {
 	background-repeat: no-repeat;
 	padding: 6px 0 0 30px;
 	height: 30px;
-	display: block;
 	margin-bottom: -10px;
 }
 div.cardFilms p.plus {
@@ -39,35 +38,24 @@ div.cardFilms p.plus {
 	background-repeat: no-repeat;
 	padding: 6px 0 0 30px;
 	height: 30px;
-	display: block;
 	margin-bottom: -10px;
 }
+
 div.cardFilms p.lock a {
 	color: #4285F4;
 	text-decoration: none;
 	top: 4px;
 	width: 385px;
-	display: block;
 	position: relative;
 }
+
 div.cardFilms p.plus a {
 	color: #4285F4;
 	text-decoration: none;
-	top: 4px;
 	margin-left: 8px;
-	width: 385px;
-	display: block;
 	position: relative;
 }
-div.cardFilms p.url a {
-	color: #4285F4;
-	text-decoration: none;
-	top: 4px;
-	margin-left: 8px;
-	width: 385px;
-	display: block;
-	position: relative;
-}
+
 div.cardFilms img.posterSize {
 	width: 300px;
 	margin: 0 0 10px -10px;

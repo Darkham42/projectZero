@@ -38,27 +38,36 @@ class MainView {
 		$fdatec = self::fmtDate($f->getCreationDate());
 		$cdatem = self::fmtDate($f->getModifDate());
 
-		$this->title = "Le film $fname";
-		$s = "" ;
-		$s .= '<h3>'.self::htmlesc($f->getName()).'</h3>';
-		$s .= "<img src='".self::htmlesc($f->getPoster())."'>\n";
-		$s .= '<div class="vueFilm realisateur"> <span class="labelChamp"> Réalisateur :</span> '.self::htmlesc($f->getRealisateur()).'</div>';
-		$s .= '<div class="vueFilm duree"> <span class="labelChamp"> Duree :</span> '.self::htmlesc($f->getDuree()).'</div>';
-		$s .= '<div class="vueFilm date_sortie"> <span class="labelChamp"> Date de sortie :</span> '.self::htmlesc($f->getDateSortie()).'</div>';
-		$s .= '<div class="vueFilm casting"> <span class="labelChamp"> Casting :</span>'.self::htmlesc($f->getCasting()).'</div>';
-		$s .= '<div class="vueFilm univers"> <span class="labelChamp"> Univers :</span> '.self::htmlesc($f->getUnivers()).'</div>';
-		$s .= '<div class="vueFilm genre"> <span class="labelChamp"> Genre :</span> ';
+		$this->title = "$fname";
+    $alt = preg_replace('/\s+/', '', $fname);
+    $s = "<div class='film'>
+					<div class='background' style='background-image:url(".self::htmlesc($f->getBackground()).")'>
+						<h1>".self::htmlesc($f->getName())."</h1>
+						<img src=".self::htmlesc($f->getPoster())." alt=".$alt."/>
+					</div>";
+    $s .= '<div class="filmInfos">
+    				<span>Storyline :</span><br><p>'.self::htmlesc($f->getSynopsis()).'</p><br>
+    				<span>Director : </span> '.self::htmlesc($f->getRealisateur()).'<br>
+    				<span>Runtime :</span> '.self::htmlesc($f->getDuree()).'min<br>
+    				<span>Release date :</span> '.self::htmlesc($f->getDateSortie()).'<br>
+						<span>Cast :</span> '.self::htmlesc($f->getCasting()).'<br>
+						<span>Universe :</span> '.self::htmlesc($f->getUnivers()).'<br>
+  				</div>
+  				</div>';
+/*
+		$s .= '<div class="vueFilm genre"> <span> Genre :</span> ';
 		foreach($f->getGenre() as $genre){
 			$s .= self::htmlesc($genre) . "  ";
 		}
-		$s .= '<p class="synopsis"> ' . self::htmlesc($f->getSynopsis()) . '</p>' ;
+		$s .= ' ;
 		$s .= "</div> <ul>\n";
 		$s .= '<li><a href="'.$this->router->filmModifPage($id).'">Modifier</a></li>'."\n";
 		$s .= '<li><a href="'.$this->router->filmDeletionPage($id).'">Supprimer</a></li>'."\n";
-		$s .= "</ul>\n";
+		$s .= "</ul>\n";*/
 		$this->content = $s;
 
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "film.css");
 	}
 
 	public function makeFilmCreationPage(FilmBuilder $builder) {
