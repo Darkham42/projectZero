@@ -101,7 +101,7 @@ class MainView {
 
 	public function makeGalleryPage(array $films) {
 		$this->title = "Tous les films";
-		$this->content = "<p>Cliquer sur une film pour voir des détails.</p>\n";
+		$this->content = "<p>Click on a film for more details.</p>\n";
 		foreach ($films as $id=>$f) {
 			$this->content .= "<ul class=\"googleCardFilms\">\n<li><div class=\"cardFilms\">\n";
 			$this->content .= $this->galleryFilm($id, $f);
