@@ -45,20 +45,19 @@ class MainView {
 					<div class='background' style='background-image:url(".self::htmlesc($f->getBackground()).")'>
 						<h1>".self::htmlesc($f->getName())."</h1>
 						<img src=".self::htmlesc($f->getPoster())." alt=".$alt."/>
-					</div>";
-    $s .= '<div class="filmInfos">
-    				<h4>Storyline :</h4><p>'.self::htmlesc($f->getSynopsis()).'</p><br>
-    				<span>Director : </span> '.self::htmlesc($f->getRealisateur()).'<br>
-    				<span>Runtime :</span> '.self::htmlesc($f->getDuree()).'min<br>
-    				<span>Release date :</span> '.self::htmlesc($f->getDateSortie()).'<br>
-						<span>Cast :</span> '.self::htmlesc($f->getCasting()).'<br>
-						<span>Universe :</span> '.self::htmlesc($f->getUnivers()).'<br><br>';
-
-		if ($fdatem == '0000-00-00'){
-			$s.= '<span>Page created :</span> '.$fdatec;
-		} else {
-			$s.= '<span>Last modification :</span> '.$fdatem;
-		}
+					</div>
+					<div class='filmInfos'>
+    				<h4>Storyline :</h4><p>".self::htmlesc($f->getSynopsis())."</p><br>
+    				<span>Director : </span> ".self::htmlesc($f->getRealisateur())."<br>
+    				<span>Runtime :</span> ".self::htmlesc($f->getDuree())."min<br>
+    				<span>Release date :</span> ".self::htmlesc($f->getDateSortie())."<br>
+						<span>Cast :</span> ".self::htmlesc($f->getCasting())."<br>
+						<span>Universe :</span> ".self::htmlesc($f->getUnivers())."<br><br>";
+						if ($fdatem == '0000-00-00'){
+							$s.= '<span>Page created :</span> '.$fdatec;
+						} else {
+							$s.= '<span>Last modification :</span> '.$fdatem;
+						}
 		$s.='</div>
   			</div>';
 /*
