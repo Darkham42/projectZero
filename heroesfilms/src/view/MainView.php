@@ -124,10 +124,9 @@ class MainView {
 		$this->title = "Tous les films";
 		foreach ($films as $id=>$f) {
 			$this->content .= "<ul class=\"cardFilms\">\n<li><div class=\"cardFilms\">\n";
-			$this->content .= $this->galleryFilm($id, $f);
+			$this->content .= $this->galleryFilm($f->getId(), $f);
 			$this->content .= "<div>\n<li>\n</ul>\n";
 		}
-
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
 	}

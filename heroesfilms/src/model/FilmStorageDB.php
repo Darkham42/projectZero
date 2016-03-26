@@ -170,6 +170,8 @@ class FilmStorageDB implements FilmStorage {
 		$genre = "";
 		$creationDate = "";
 		$modifDate= "";
+		$idtable = "";
+		$synopsis = "";
 
 		foreach($searchProject as $projet) {
 		    $name = $projet['nom'];
@@ -178,12 +180,13 @@ class FilmStorageDB implements FilmStorage {
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
 		    $idreal = $projet['realisateur'];
-
 		    $univers = $this->findUnivers($projet['univers']);
 		    $synopsis = $projet['synopsis'];
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3'])); 
 		    $creationDate = $projet['date_creation'];
 		    $modifDate = $projet['date_last_modif'];
+		    $idtable = $projet['id'];
+
 		}
 
 		$searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $idreal));
@@ -191,7 +194,9 @@ class FilmStorageDB implements FilmStorage {
 		foreach($searchReal as $projet){
 			$real .= $projet['direc'];
 		}
-		return new Film($name, $poster, $background, $synopsis, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate, $modifDate);
+		$film = new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate, $modifDate);
+		//var_dump($film);
+		return $film;
 	}
 
 	/* Renvoie un tableau associatif id => Film
@@ -218,8 +223,8 @@ class FilmStorageDB implements FilmStorage {
 		    $synopsis = $projet['synopsis'];
 
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
-		    
-		    array_push($array, new Film($name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
+		    $idtable = $projet["id"];
+		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
 		}
 		return $array;
 	}
@@ -246,8 +251,8 @@ class FilmStorageDB implements FilmStorage {
 		    $synopsis = $projet['synopsis'];
 
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
-		    
-		    array_push($array, new Film($name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
+		    $idtable = $projet["id"];
+		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
 		}
 		return $array;
 	}
@@ -274,8 +279,8 @@ class FilmStorageDB implements FilmStorage {
 		    $synopsis = $projet['synopsis'];
 
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
-		    
-		    array_push($array, new Film($name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
+		    $idtable = $projet["id"];
+		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
 		}
 		return $array;
 	}
