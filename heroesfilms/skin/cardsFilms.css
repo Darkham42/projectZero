@@ -4,26 +4,30 @@ ul.googleCardFilms {
 	float: left;
 	margin-left: -5px;
 }
+
 ul.googleCardFilms li {
 	width: 320px;
 	list-style: none;
 }
+
 div.cardFilms {
 	background: #fff;
 	width: 280px;
 	padding: 10px;
-	box-shadow: 0px 1px rgba( 0, 0, 0, 0.1 );
 	color: #444;
 	font-size: 14px;
   border: 1px solid rgba( 0, 0, 0, 0.2 );
 	border-radius: 3px 3px 0px 0px;
 }
+
 div.cardFilms p {
 	margin: 0 0 15px 0;
 }
+
 div.cardFilms p.card-title {
 	font-size: 20px;
 }
+
 div.cardFilms p.lock {
 	border-top: 1px solid #e5e5e5;
 	background-image: url('http://darkham.net/iconeLock.png');
@@ -32,6 +36,7 @@ div.cardFilms p.lock {
 	height: 30px;
 	margin-bottom: -10px;
 }
+
 div.cardFilms p.plus {
 	border-top: 1px solid #e5e5e5;
 	background-image: url('http://darkham.net/iconePlus.png');
@@ -62,7 +67,6 @@ div.cardFilms img.posterSize {
 }
 
 .bright {
-	-webkit-filter: brightness(25%);
 	filter: brightness(25%);
 }
 

@@ -15,9 +15,7 @@ form {
   height: 30px;
   width: 100%;
   border: none;
-  border-radius: 0 !important;
   font-size: 15px;
-  font-family: inherit;
   font-weight: 300;
   padding: 0;
   box-shadow: none;
@@ -38,8 +36,6 @@ form {
   color: #999;
   font-weight: 300;
   transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -webkit-transition: 0.2s ease all;
 }
 
 .form-control:focus ~ .float-label, .form-control:valid ~ .float-label {
