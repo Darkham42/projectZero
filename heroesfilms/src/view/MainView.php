@@ -141,8 +141,31 @@ class MainView {
 		$this->content = ob_get_clean(); 
 
 		array_push($this->style, "navbar.css");
-			
-	
+	}
+
+	public function makeRegisterPage() {
+		$this->title = "Login";
+		
+		array_push($this->style, "form.css");
+		array_push($this->style, "cards.css");
+		array_push($this->style, "navbar.css");
+		ob_start();
+		include 'registerForm.php';
+		$this->content = ob_get_clean(); 
+
+	}
+
+	public function makeLogoutPage() {
+		$this->title = "Logout";
+		ob_start();
+		include 'logout.php';
+		$this->content = ob_get_clean(); 
+	}
+
+	public function makeDeconnectedPage() {
+		$this->title = "Disconnected";
+		$this->content = "You have been disconnected.";
+		array_push($this->style, "navbar.css");
 	}
 
 	/* Génère une page d'erreur inattendue. Peut optionnellement

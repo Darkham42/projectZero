@@ -22,6 +22,11 @@ class Router {
 		// ici, ce sera un objet User
 		
 		$menu = new Menu($this);
+		if(isset($_SESSION['user'])){
+			$menu->setMenuConnected($_SESSION['user']);
+		} else {
+			$menu->setMenuDisconnected();
+		}
 		$view = new MainView($this, $feedback, $menu);
 		$ctl = new Controller($this, $view, $this->filmdb);
 
@@ -109,6 +114,15 @@ class Router {
 				$view->makeLoginPage();
 				break;
 
+			case "register":
+				$view->makeRegisterPage();
+				break;
+			case "logout":
+				$view->makeLogoutPage();
+				break;
+			case "deconnecte":
+				$view->makeDeconnectedPage();
+				break;
 			default:
 				/* L'internaute a demandé une action non prévue. */
 				$view->makeUnknownActionPage();
@@ -132,6 +146,14 @@ class Router {
 	/* URL de la page de log in */
 	public function logIn() {
 		return ".?action=login";
+	}
+
+	public function register(){
+		return ".?action=register";
+	}
+
+	public function logout(){
+		return ".?action=logout";
 	}
 
 	/* URL de la page de la film d'identifiant $id */

@@ -18,13 +18,31 @@ class Menu {
 			//"Profile" => $this->router->profilePage(),
 			//Page de connection
 			"Log In" => $this->router->logIn(),
-			//sinon il faudrait afficher juste un lien de logout
+			"Register" => $this->router->register(),
+			"Logout" => $this->router->logout(),
 		);
 		
 	}
 	
 	public function getMenu(){
 		return $this->table;
+	}
+
+	public function setMenuConnected($name){
+		$this->table = array(
+			"All Movies" => $this->router->allFilmsPage(),
+			"Ajouter un film" => $this->router->filmCreationPage(),
+			"Logout " . $name  => $this->router->logout(),
+		);
+	}
+
+	public function setMenuDisconnected(){
+		$this->table = array(
+			"All Movies" => $this->router->allFilmsPage(),
+			"Ajouter un film" => $this->router->filmCreationPage(),
+			"Log In" => $this->router->logIn(),
+			"Register" => $this->router->register(),
+		);
 	}
 	
 }

@@ -111,8 +111,7 @@ INSERT INTO FILMS (id, nom, poster, synopsis, date_sortie, duree, univers, reali
  ( 5, 'Zoe Saldana'),
  ( 5, 'Dave Bautista'),
  ( 5, 'Vin Diesel'),
- ( 5, 'Bradley Cooper')
-;
+ ( 5, 'Bradley Cooper');
 
 ALTER TABLE `films` ADD `background` VARCHAR(150) NOT NULL AFTER `realisateur`, ADD `date_creation` DATE NOT NULL AFTER `background`, ADD `date_last_modif` DATE NOT NULL AFTER `date_creation`
 

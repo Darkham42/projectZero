@@ -1,3 +1,27 @@
+Time : 16:05:34
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Raw SQL : INSERT INTO users (id, pseudo, email, password) values (:id, :user, :mail, :pass)
+
+Time : 16:04:27
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as count FROM users' at line 1
+Raw SQL : SELECT * as count FROM users
+
+Time : 16:03:59
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as count FROM users' at line 1
+Raw SQL : SELECT * as count FROM users
+
+Time : 15:51:57
+SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+Raw SQL : INSERT INTO users (id, pseudo, email, password) values (:user, :mail, :pass)
+
+Time : 15:51:32
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'heroesfilms.members' doesn't exist
+Raw SQL : INSERT INTO members (id, pseudo, email, password) values (:user, :mail, :pass)
+
+Time : 15:51:05
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'username' in 'field list'
+Raw SQL : SELECT count(username) FROM users WHERE pseudo = :user
+
 Time : 15:12:41
 SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_3` FOREIGN KEY (`genre1`) REFERENCES `genres` (`id`))
 Raw SQL : INSERT INTO FILMS(

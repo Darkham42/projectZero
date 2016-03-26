@@ -2,7 +2,7 @@
 
 session_destroy();
 session_start();
-header('Location: .?action=galerie');
+header('Location: .?action=deconnecte');
 exit();
 
 ?>
