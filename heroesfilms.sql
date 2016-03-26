@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.3.11
 -- http://www.phpmyadmin.net
 --
@@ -59,13 +59,13 @@ INSERT INTO `casting` (`idFilm`, `cast`) VALUES
 (5, 'Dave Bautista'),
 (5, 'Vin Diesel'),
 (5, 'Bradley Cooper'),
-(6, 'Henry Cavill'),
-(6, 'Amy Adams'),
-(6, 'Michael Shannon'),
-(6, 'Diane Lane'),
-(6, 'Russell Crowe'),
-(6, 'Laurence Fishburne'),
-(6, 'Kevin Costner');
+(0, 'Henry Cavill'),
+(0, 'Amy Adams'),
+(0, 'Michael Shannon'),
+(0, 'Diane Lane'),
+(0, 'Russell Crowe'),
+(0, 'Laurence Fishburne'),
+(0, 'Kevin Costner');
 
 -- --------------------------------------------------------
 
@@ -88,6 +88,7 @@ CREATE TABLE IF NOT EXISTS `films` (
   `genre1` int(11) DEFAULT NULL,
   `genre2` int(11) DEFAULT NULL,
   `genre3` int(11) DEFAULT NULL
+  `idUser` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -100,7 +101,7 @@ INSERT INTO `films` (`id`, `nom`, `poster`, `synopsis`, `date_sortie`, `duree`, 
 (3, 'Ant-Man', 'https://image.tmdb.org/t/p/original/n2guSYqwSQfWJnh301xIfV8OjUm.jpg', 'BLABLA', '2015-07-17', 117, 2, 3, '', '0000-00-00', '0000-00-00', 1, 4, 3),
 (4, 'Iron Man', 'https://image.tmdb.org/t/p/original/mDTFL6zpd2y0UsqfEY4cG1NgBHI.jpg', 'TADA', '2008-05-02', 126, 2, 4, '', '0000-00-00', '0000-00-00', 1, 2, 5),
 (5, 'Guardians of the Galaxy', 'https://image.tmdb.org/t/p/original/9gm3lL8JMTTmc3W4BmNMCuRLdL8.jpg', 'I''m Groot !', '2014-07-21', 121, 2, 5, '', '0000-00-00', '0000-00-00', 1, 3, 4),
-(6, 'Man of Steel', 'https://image.tmdb.org/t/p/original/4tS3qHfYYB6C9I831pYQyLQivp8.jpg', 'I believe I can fly !', '2013-06-14', 143, 1, 6, '', '0000-00-00', '0000-00-00', 1, 2, 5);
+(0, 'Man of Steel', 'https://image.tmdb.org/t/p/original/4tS3qHfYYB6C9I831pYQyLQivp8.jpg', 'I believe I can fly !', '2013-06-14', 143, 1, 6, '', '0000-00-00', '0000-00-00', 1, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -145,7 +146,7 @@ INSERT INTO `realisateur` (`id`, `direc`) VALUES
 (3, 'Peyton Reed'),
 (4, 'Jon Favreau'),
 (5, 'James Gunn'),
-(6, 'Zack Snyder');
+(0, 'Zack Snyder');
 
 -- --------------------------------------------------------
 
