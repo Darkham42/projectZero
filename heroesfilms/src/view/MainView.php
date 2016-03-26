@@ -43,7 +43,7 @@ class MainView {
     $s = "<div class='film'>
 					<div class='background' style='background-image:url(".self::htmlesc($f->getBackground()).")'>
 						<h1>".self::htmlesc($f->getName())."</h1>
-						<img src=".self::htmlesc($f->getPoster())." alt=".$alt."
+						<img src=".self::htmlesc($f->getPoster())." alt=".$alt."/>
 					</div>";
     $s .= '<div class="filmInfos">
     				<span>Storyline :</span><br><p>'.self::htmlesc($f->getSynopsis()).'</p><br>

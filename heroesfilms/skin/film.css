@@ -31,5 +31,7 @@
 }
 
 .filmInfos {
-  position:  relative; top -100px
+  z-index: 1;
+  position:relative;
+  color:red;
 }

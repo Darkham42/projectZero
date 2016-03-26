@@ -46,8 +46,6 @@ class Film {
 		$this->background = $background;
 		$this->creationDate = $creationDate !== null? $creationDate: new DateTime();
 		$this->modifDate = $modifDate !== null? $modifDate: new DateTime();
-
-		echo "film ok";
 	}
 
 	public function getName() {
