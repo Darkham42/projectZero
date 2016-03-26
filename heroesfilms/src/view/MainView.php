@@ -40,19 +40,20 @@ class MainView {
 
 		$this->title = "$fname";
     $alt = preg_replace('/\s+/', '', $fname);
-    $s = "<div class='background' style='background-image:url(".self::htmlesc($f->getBackground()).")'>
-      <h1>".self::htmlesc($f->getName())."</h1>
-      <img src=".self::htmlesc($f->getPoster())." alt=".$alt."
-    </div>";
-    
-    $s .= '<div class="filmsInfos">
-    <span>Storyline :</span><br><p>'.self::htmlesc($f->getSynopsis()).'</p><br>
-    <span>Director : </span> '.self::htmlesc($f->getRealisateur()).'<br>
-    <span>Runtime :</span> '.self::htmlesc($f->getDuree()).'min<br>
-    <span>Release date :</span> '.self::htmlesc($f->getDateSortie()).'<br>
-		<span>Cast :</span> '.self::htmlesc($f->getCasting()).'<br>
-		<span>Universe :</span> '.self::htmlesc($f->getUnivers()).'<br>
-    </div>';
+    $s = "<div class='film'>
+					<div class='background' style='background-image:url(".self::htmlesc($f->getBackground()).")'>
+						<h1>".self::htmlesc($f->getName())."</h1>
+						<img src=".self::htmlesc($f->getPoster())." alt=".$alt."
+					</div>";
+    $s .= '<div class="filmInfos">
+    				<span>Storyline :</span><br><p>'.self::htmlesc($f->getSynopsis()).'</p><br>
+    				<span>Director : </span> '.self::htmlesc($f->getRealisateur()).'<br>
+    				<span>Runtime :</span> '.self::htmlesc($f->getDuree()).'min<br>
+    				<span>Release date :</span> '.self::htmlesc($f->getDateSortie()).'<br>
+						<span>Cast :</span> '.self::htmlesc($f->getCasting()).'<br>
+						<span>Universe :</span> '.self::htmlesc($f->getUnivers()).'<br>
+  				</div>
+  				</div>';
 /*
 		$s .= '<div class="vueFilm genre"> <span> Genre :</span> ';
 		foreach($f->getGenre() as $genre){

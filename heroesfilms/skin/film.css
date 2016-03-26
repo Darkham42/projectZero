@@ -16,7 +16,7 @@
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.background  > img {
+.background > img {
   min-width: 20%;
   min-height: auto;
   max-width: 100px;
@@ -28,5 +28,8 @@
   left: 77%;
   border-radius: 20px;
   border: 3px solid white;
+}
 
+.filmInfos {
+  position:  relative; top -100px
 }
