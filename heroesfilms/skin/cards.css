@@ -40,8 +40,7 @@ div.card p.plus {
 div.card p.lock a {
 	color: #4285F4;
 	text-decoration: none;
-	top: 4px;
-	width: 385px;
+	top: 2px;
 	display: block;
 	position: relative;
 }
@@ -49,9 +48,7 @@ div.card p.lock a {
 div.card p.plus a {
 	color: #4285F4;
 	text-decoration: none;
-	top: 4px;
 	margin-left: 8px;
-	width: 385px;
 	display: block;
 	position: relative;
 }
@@ -59,9 +56,7 @@ div.card p.plus a {
 div.card p.url a {
 	color: #4285F4;
 	text-decoration: none;
-	top: 4px;
 	margin-left: 8px;
-	width: 385px;
 	display: block;
 	position: relative;
 }

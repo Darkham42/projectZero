@@ -42,6 +42,7 @@ div.cardFilms p.plus {
 	display: block;
 	margin-bottom: -10px;
 }
+
 div.cardFilms p.lock a {
 	color: #4285F4;
 	text-decoration: none;
@@ -50,24 +51,15 @@ div.cardFilms p.lock a {
 	display: block;
 	position: relative;
 }
+
 div.cardFilms p.plus a {
 	color: #4285F4;
 	text-decoration: none;
-	top: 4px;
 	margin-left: 8px;
-	width: 385px;
 	display: block;
 	position: relative;
 }
-div.cardFilms p.url a {
-	color: #4285F4;
-	text-decoration: none;
-	top: 4px;
-	margin-left: 8px;
-	width: 385px;
-	display: block;
-	position: relative;
-}
+
 div.cardFilms img.posterSize {
 	width: 300px;
 	margin: 0 0 10px -10px;
