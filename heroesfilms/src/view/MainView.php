@@ -35,8 +35,9 @@ class MainView {
 	public function makeFilmPage($id, Film $f) {
 		$fname = self::htmlesc($f->getName());
 		$fclass = "film$id";
-		$fdatec = self::fmtDate($f->getCreationDate());
-		$cdatem = self::fmtDate($f->getModifDate());
+		$fdatec = self::htmlesc($f->getCreationDate());
+		$fdatem = self::htmlesc($f->getModifDate());
+		$length = strlen(self::htmlesc($f->getSynopsis()));
 
 		$this->title = "$fname";
     $alt = preg_replace('/\s+/', '', $fname);
@@ -46,14 +47,20 @@ class MainView {
 						<img src=".self::htmlesc($f->getPoster())." alt=".$alt."/>
 					</div>";
     $s .= '<div class="filmInfos">
-    				<h4>Storyline :</h4><br><p>'.self::htmlesc($f->getSynopsis()).'</p><br>
+    				<h4>Storyline :</h4><p>'.self::htmlesc($f->getSynopsis()).'</p><br>
     				<span>Director : </span> '.self::htmlesc($f->getRealisateur()).'<br>
     				<span>Runtime :</span> '.self::htmlesc($f->getDuree()).'min<br>
     				<span>Release date :</span> '.self::htmlesc($f->getDateSortie()).'<br>
 						<span>Cast :</span> '.self::htmlesc($f->getCasting()).'<br>
-						<span>Universe :</span> '.self::htmlesc($f->getUnivers()).'<br>
-  				</div>
-  				</div>';
+						<span>Universe :</span> '.self::htmlesc($f->getUnivers()).'<br><br>';
+
+		if ($fdatem == '0000-00-00'){
+			$s.= '<span>Page created :</span> '.$fdatec;
+		} else {
+			$s.= '<span>Last modification :</span> '.$fdatem;
+		}
+		$s.='</div>
+  			</div>';
 /*
 		$s .= '<div class="vueFilm genre"> <span> Genre :</span> ';
 		foreach($f->getGenre() as $genre){
@@ -307,12 +314,6 @@ class MainView {
 		$s .= "<br/>";
 		return $s;
 	}
-
-	protected static function fmtDate(DateTime $date) {
-		return "le " . $date->format("Y-m-d") . " à " . $date->format("H:i:s");
-	}
-
-
 
 	/* Une fonction pour échapper les caractères spéciaux de HTML,
 	* car celle de PHP nécessite trop d'options. */

@@ -168,6 +168,9 @@ class FilmStorageDB implements FilmStorage {
 		$idreal = "";
 		$univers = "";
 		$genre = "";
+		$creationDate = "";
+		$modifDate= "";
+
 		foreach($searchProject as $projet) {
 		    $name = $projet['nom'];
 		    $poster = $projet['poster'];
@@ -177,7 +180,9 @@ class FilmStorageDB implements FilmStorage {
 		    $idreal = $projet['realisateur'];
 		    $univers = $this->findUnivers($projet['univers']);
 		    $synopsis = $projet['synopsis'];
-		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));  
+		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3'])); 
+		    $creationDate = $projet['date_creation'];
+		    $modifDate = $projet['date_last_modif'];
 		}
 
 		$searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $idreal));
@@ -185,7 +190,7 @@ class FilmStorageDB implements FilmStorage {
 		foreach($searchReal as $projet){
 			$real .= $projet['direc'];
 		}
-		return new Film($name, $poster, $background, $synopsis, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate=null, $modifDate=null);
+		return new Film($name, $poster, $background, $synopsis, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate, $modifDate);
 	}
 
 	/* Renvoie un tableau associatif id => Film
