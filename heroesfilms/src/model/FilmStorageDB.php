@@ -79,7 +79,7 @@ class FilmStorageDB implements FilmStorage {
 		$tab["duree"] = $f->getDuree();
 		$tab["univers"] = $idUnivers;
 		$tab["reali"] = $idreal;
-		$tab["background"] = "URLbackground";
+		$tab["background"] = $background;
 		$tab["modif"] = $f->getModifDate()->format('Y-m-d H:i:s');;
 		$tab["creation"] = $f->getCreationDate()->format('Y-m-d H:i:s');
 
@@ -156,14 +156,16 @@ class FilmStorageDB implements FilmStorage {
 		}
 		$name = "";
 		$poster = "";
-	    $date_sortie = "";
-	    $duree = "";
-	    $idreal = "";
-	    $univers = "";
-	    $genre = "";
+		$background = "";
+		$date_sortie = "";
+		$duree = "";
+		$idreal = "";
+		$univers = "";
+		$genre = "";
 		foreach($searchProject as $projet) {
 		    $name = $projet['nom'];
 		    $poster = $projet['poster'];
+		    $background = $projet['background'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
 		    $idreal = $projet['realisateur'];
@@ -177,7 +179,7 @@ class FilmStorageDB implements FilmStorage {
 		foreach($searchReal as $projet){
 			$real .= $projet['direc'];
 		}
-		return new Film($name, $poster, $synopsis, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate=null, $modifDate=null);
+		return new Film($name, $poster, $background, $synopsis, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate=null, $modifDate=null);
 	}
 
 	/* Renvoie un tableau associatif id => Film
@@ -195,6 +197,7 @@ class FilmStorageDB implements FilmStorage {
 			}
 		    $name = $projet['nom'];
 		    $poster = $projet['poster'];
+		    $background = $projet['background'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
 		    $realisateur = $projet['realisateur'];
@@ -204,7 +207,7 @@ class FilmStorageDB implements FilmStorage {
 
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
 		    
-		    array_push($array, new Film($name, $poster, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
+		    array_push($array, new Film($name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
 		}
 		return $array;
 	}
