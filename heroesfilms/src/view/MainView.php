@@ -122,9 +122,8 @@ class MainView {
 
 	public function makeGalleryPage(array $films) {
 		$this->title = "Tous les films";
-		$this->content = "<p>Click on a film for more details.</p>\n";
 		foreach ($films as $id=>$f) {
-			$this->content .= "<ul class=\"googleCardFilms\">\n<li><div class=\"cardFilms\">\n";
+			$this->content .= "<ul class=\"cardFilms\">\n<li><div class=\"cardFilms\">\n";
 			$this->content .= $this->galleryFilm($id, $f);
 			$this->content .= "<div>\n<li>\n</ul>\n";
 		}
@@ -344,4 +343,3 @@ class MainView {
 
 	}
 }
-

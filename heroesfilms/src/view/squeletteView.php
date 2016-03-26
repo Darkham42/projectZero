@@ -3,7 +3,6 @@
 <head>
 	<title><?php echo $this->title; ?></title>
 	<meta charset="UTF-8" />
-	<!-- <link rel="stylesheet" href="skin/screen.css" /> -->
 	
 	<?php foreach($this->style as $link){
 		echo '<link rel="stylesheet" href="skin/' . $link . '">';

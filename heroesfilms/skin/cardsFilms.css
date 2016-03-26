@@ -1,11 +1,11 @@
-ul.googleCardFilms {
+ul.cardFilms {
 	width: 300px;
 	height: 100%;
 	float: left;
 	margin-left: -5px;
 }
 
-ul.googleCardFilms li {
+ul.cardFilms li {
 	width: 320px;
 	list-style: none;
 }
