@@ -1,3 +1,7 @@
+Time : 21:25:00
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idFilm' in 'where clause'
+Raw SQL : SELECT * FROM REALISATEUR WHERE idFilm = :i
+
 Time : 18:58:03
 SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC date_sortie' at line 1
 Raw SQL : SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id ORDER BY ASC date_sortie
