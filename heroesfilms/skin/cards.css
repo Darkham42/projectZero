@@ -32,7 +32,6 @@ div.card p.plus {
 	background-repeat: no-repeat;
 	padding: 6px 0 0 30px;
 	height: 30px;
-	display: block;
 	margin-top: 5px;
 	margin-bottom: -10px;
 }
@@ -41,7 +40,6 @@ div.card p.lock a {
 	color: #4285F4;
 	text-decoration: none;
 	top: 2px;
-	display: block;
 	position: relative;
 }
 
@@ -49,7 +47,6 @@ div.card p.plus a {
 	color: #4285F4;
 	text-decoration: none;
 	margin-left: 8px;
-	display: block;
 	position: relative;
 }
 
@@ -57,7 +54,6 @@ div.card p.url a {
 	color: #4285F4;
 	text-decoration: none;
 	margin-left: 8px;
-	display: block;
 	position: relative;
 }
 
