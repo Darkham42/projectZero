@@ -18,6 +18,7 @@ class FilmBuilder {
 				"date_sortie" => "",
 				"duree" => "",
 				"poster" => "",
+				"synopsis" => "",
 				"realisateur" => "",
 				"casting" => "",
 				"univers" => "",
@@ -34,6 +35,7 @@ class FilmBuilder {
 		return new FilmBuilder(array(
 			"name" => $film->getName(),
 			"date_sortie" => $film->getDateSortie(),
+			"synopsis" => $film->getSynopsis(),
 			"duree" => $film->getDuree(),
 			"poster" => $film->getPoster(),
 			"realisateur" => $film->getRealisateur(),
@@ -56,8 +58,10 @@ class FilmBuilder {
 			$this->errors["realisateur"] = "Vous devez entrer un realisateur";
 		else if (!isset($this->data["univers"]) || $this->data["univers"] === "")
 			$this->errors["univers"] = "Vous devez entrer un univers";
+		else if (!isset($this->data["synopsis"]) || $this->data["synopsis"] === "")
+			$this->errors["synopsis"] = "Vous devez entrer un synopsis";
 		else if (!isset($this->data["genre"]) || $this->data["genre"] === "")
-			$this->errors["genre"] = "Vous devez entrer un genrer";
+			$this->errors["genre"] = "Vous devez entrer un genre";
 		else if (mb_strlen($this->data["name"], 'UTF-8') >= 30)
 			$this->errors["name"] = "Le nom doit faire moins de 30 caractères";
 		
@@ -96,6 +100,10 @@ class FilmBuilder {
 		return "poster";
 	}
 
+	public function getSynopsisRef(){
+		return "synopsis";
+	}
+
 	/* Renvoie la valeur d'un champ en fonction de la référence passée en argument. */
 	public function getData($ref) {
 		//echo "\n ajout : " . $ref ;
@@ -113,9 +121,9 @@ class FilmBuilder {
 	 * fournies. Si toutes ne sont pas présentes, une exception
 	 * est lancée. */
 	public function createFilm() {
-		echo '<br/>';
+		echo '<br/> DATA : ';
 		var_dump($this->data);
-		echo '<br/>';
+		echo '<br/> ERRORS : ';
 		var_dump($this->errors);
 		echo '<br/>';
 		
@@ -145,15 +153,17 @@ class FilmBuilder {
 		if(!isset($this->data["poster"])){
 			echo "\n erreur poster";
 		}
+		if(!isset($this->data["synopsis"])){
+			echo "\n erreur synopsis";
+		}
 		
-		if (!isset($this->data["name"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting"],
+		if (!isset($this->data["name"], $this->data["date_sortie"],$this->data["synopsis"], $this->data["duree"], $this->data["realisateur"], $this->data["casting"],
 			$this->data["genre"], $this->data["univers"], $this->data["poster"])){
 			echo "Erreur builder";
 			throw new Exception("Missing fields for film creation");
 		}
 		echo "<br/> => Builder pour le Film. <br/>";
-		var_dump($this->data["casting"]);
-		return new Film($this->data["name"], $this->data["poster"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting"], $this->data["univers"], $this->data["genre"]);
+		return new Film($this->data["name"], $this->data["poster"], $this->data["synopsis"], $this->data["date_sortie"], $this->data["duree"], $this->data["realisateur"], $this->data["casting"], $this->data["univers"], $this->data["genre"]);
 	}
 
 	function sayError($txt){

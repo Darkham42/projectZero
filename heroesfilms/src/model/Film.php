@@ -13,12 +13,13 @@ class Film {
 	protected $modifDate;
 	protected $casting;
 	protected $poster;
+	protected $synopsis;
 
 	/* Construit une film. Si les paramètres de date ne sont pas passés,
 	 * la film est considérée comme étant toute nouvelle.
 	 * Le nom et le code hexa doivent être valides, au sens
 	 * de isNameValid et isHexValid, sinon une exception est levée. */
-	public function __construct($name, $poster, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null) {
+	public function __construct($name, $poster, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null) {
 		//echo "Creation film ";
 		if (!self::isValidName($name)){
 			echo "Invalid Name";
@@ -36,6 +37,7 @@ class Film {
 		$this->casting = $casting;
 		$this->univers = $univers;
 		$this->genre = $genre;
+		$this->synopsis = $synopsis;
 		/*if(!self::isValidURL($poster)){
 			echo "Invalid URL";
 			throw new Exception("Invalid url link");
@@ -77,6 +79,10 @@ class Film {
 
 	public function getGenre(){
 		return $this->genre;
+	}
+
+	public function getSynopsis(){
+		return $this->synopsis;
 	}
 
 	/* Renvoie un objet DateTime correspondant à
@@ -137,7 +143,12 @@ class Film {
 
 	public function setPoster($poster){
 		$this->poster = $poster;
-		$this->modifPoster = new DateTime();
+		$this->modifDate = new DateTime();
+	}
+
+	public function setSynopsis($synopsis){
+		$this->synopsis = $synopsis;
+		$this->modifDate = new DateTime();
 	}
 
 

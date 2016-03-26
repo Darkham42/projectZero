@@ -5,6 +5,7 @@
   function addInput(divName){
        if (counter == limit)  {
             alert("You have reached the limit of inputs.");
+            document.getElementById("creer").style.display = "none";
        }
        else {
             var newdiv = document.createElement('label');
@@ -29,4 +30,4 @@
   
 </p>
 
-<input type="button" value="Add champ" onClick="addInput('dynamicInput');">
+<input id="creer" type="button" value="Add champ" onClick="addInput('dynamicInput');">

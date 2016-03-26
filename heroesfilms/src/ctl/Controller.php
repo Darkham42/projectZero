@@ -141,7 +141,7 @@ class Controller {
 					throw new Exception("Identifier has disappeared?!");
 				//$this->v->makeFilmPage($filmId, $film);
 				/* Redirection vers la page de la film */
-				$_SESSION["feedback"] = "La film a bien été modifiée !";
+				$_SESSION["feedback"] = "Le film a bien été modifiée !";
 				unset($_SESSION["modifiedFilmBuilders"][$filmId]);
 				$this->router->POSTredirect($this->router->filmPage($filmId));
 			} else {

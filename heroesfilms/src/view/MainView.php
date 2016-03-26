@@ -47,8 +47,12 @@ class MainView {
 		$s .= '<div class="vueFilm date_sortie"> <span class="labelChamp"> Date de sortie :</span> '.self::htmlesc($f->getDateSortie()).'</div>';
 		$s .= '<div class="vueFilm casting"> <span class="labelChamp"> Casting :</span>'.self::htmlesc($f->getCasting()).'</div>';
 		$s .= '<div class="vueFilm univers"> <span class="labelChamp"> Univers :</span> '.self::htmlesc($f->getUnivers()).'</div>';
-		$s .= '<div class="vueFilm genre"> <span class="labelChamp"> Genre :</span> #ID (à modifier) '.self::htmlesc($f->getGenre()).'</div>';
-		$s .= "<ul>\n";
+		$s .= '<div class="vueFilm genre"> <span class="labelChamp"> Genre :</span> ';
+		foreach($f->getGenre() as $genre){
+			$s .= self::htmlesc($genre) . "  ";
+		}
+		$s .= '<p class="synopsis"> ' . self::htmlesc($f->getSynopsis()) . '</p>' ;
+		$s .= "</div> <ul>\n";
 		$s .= '<li><a href="'.$this->router->filmModifPage($id).'">Modifier</a></li>'."\n";
 		$s .= '<li><a href="'.$this->router->filmDeletionPage($id).'">Supprimer</a></li>'."\n";
 		$s .= "</ul>\n";
@@ -257,7 +261,12 @@ class MainView {
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
 		$s .="</label></p>\n";
-
+		$synopsis = $builder->getSynopsisRef();
+		$s .='<textarea name="' . $synopsis .'"rows="10" cols="50">Saisir le synopsis ici.</textarea>';
+		$err = $builder->getErrors($synopsis);
+		if ($err !== null)
+			$s .= ' <span class="error">'.$err.'</span>';
+		$s .= "<br/>";
 		return $s;
 	}
 
