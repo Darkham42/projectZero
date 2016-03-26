@@ -1,8 +1,6 @@
 <?php
     
     require_once("lib/password.php");
-
-    echo " isset submit : " . isset($_POST['submit']);
    
     if(isset($_POST['submit'])) {
 
@@ -32,8 +30,11 @@
             if (password_verify($password, $hash)) { 
 					$_SESSION['user'] = $pseudo;
 					$_SESSION["id"] = $id;
+					header('Location: .?action=galerie');
 			}
-            header('Location: .?action=galerie');
+			else{
+            	header('Location: .?action=login');
+            }
             exit();
         }
         else {
@@ -63,6 +64,6 @@
 			<button type="submit" value="Valider" name="submit" ripple>Sign in</button>
 		</div>
 	</form>
-	<p class="url"><a href="#">Need new account ?</a></p>
-	<p class="lock"><a href="#">Forgot Password ?</a></p>
+	<p class="url"><a href=".?action=register">Need new account ?</a></p>
+	<p class="lock"><a href="#" onclick="alert('It\'s a feature)">Forgot Password ?</a></p>
 </div>

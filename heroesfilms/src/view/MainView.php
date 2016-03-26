@@ -164,6 +164,12 @@ class MainView {
 
 	}
 
+	public function about(){
+		$this->title = "About";
+		array_push($this->style, "navbar.css");
+		$this->content = "About blabla.";
+	}
+
 	public function makeLogoutPage() {
 		$this->title = "Logout";
 		ob_start();

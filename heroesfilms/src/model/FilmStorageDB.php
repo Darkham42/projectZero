@@ -218,6 +218,62 @@ class FilmStorageDB implements FilmStorage {
 		return $array;
 	}
 
+	public function readAllMarvel() {
+
+		$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id AND univers = '2'");
+
+		$array = array();
+		foreach($searchProject as $projet) {
+			$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $projet["id"]));
+			$casting = "";
+			foreach($searchCasting as $acteur){
+				$casting = $casting." ".$acteur['cast']." ";
+			}
+		    $name = $projet['nom'];
+		    $poster = $projet['poster'];
+		    $background = $projet['background'];
+		    $date_sortie = $projet['date_sortie'];
+		    $duree = $projet['duree'];
+		    $realisateur = $projet['realisateur'];
+		    $casting = $casting;
+		    $univers = $this->findUnivers($projet['univers']);
+		    $synopsis = $projet['synopsis'];
+
+		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
+		    
+		    array_push($array, new Film($name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
+		}
+		return $array;
+	}
+
+	public function readAllDC() {
+
+		$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id AND univers = '1'");
+
+		$array = array();
+		foreach($searchProject as $projet) {
+			$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $projet["id"]));
+			$casting = "";
+			foreach($searchCasting as $acteur){
+				$casting = $casting." ".$acteur['cast']." ";
+			}
+		    $name = $projet['nom'];
+		    $poster = $projet['poster'];
+		    $background = $projet['background'];
+		    $date_sortie = $projet['date_sortie'];
+		    $duree = $projet['duree'];
+		    $realisateur = $projet['realisateur'];
+		    $casting = $casting;
+		    $univers = $this->findUnivers($projet['univers']);
+		    $synopsis = $projet['synopsis'];
+
+		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
+		    
+		    array_push($array, new Film($name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
+		}
+		return $array;
+	}
+
 	/* Renvoie un tableau associatif id => Film
 	 * contenant toutes les films poste par une personne sur la base. */
 	public function readMy($user) {

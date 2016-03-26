@@ -37,6 +37,20 @@ class Controller {
 		$this->v->makeGalleryPage($films);
 	}
 
+	public function allMarvelPage() {
+		$films = $this->filmdb->readAllMarvel();
+		$this->v->makeGalleryPage($films);
+	}
+
+	public function allDCPage() {
+		$films = $this->filmdb->readAllDC();
+		$this->v->makeGalleryPage($films);
+	}
+
+	public function about() {
+		$this->v->about();
+	}
+
 	public function myFilmsPage($user) {
 		$films = $this->filmdb->readMy($user);
 		$this->v->makeGalleryPage($films);

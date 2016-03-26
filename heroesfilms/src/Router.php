@@ -101,11 +101,18 @@ class Router {
 			case "galerie":
 				$ctl->allFilmsPage();
 				break;
-
+			case "marvel":
+				$ctl->allMarvelPage();
+				break;
+			case "dc":
+				$ctl->allDCPage();
+				break;
 			case "galeriePerso":
 				$ctl->myFilmsPage($user);
 				break;
-
+			case "about":
+				$ctl->about();
+				break;
 			case "accueil":
 				$view->makeHomePage();
 				break;
@@ -164,6 +171,18 @@ class Router {
 	/* URL de la page avec toutes les films */
 	public function allFilmsPage() {
 		return ".?action=galerie";
+	}
+
+	public function filmsMARVELPage(){
+		return ".?action=marvel";
+	}
+
+	public function filmsDCPage(){
+		return ".?action=dc";
+	}
+
+	public function about(){
+		return ".?action=about";
 	}
 
 	/* URL de la page de création d'une film */
