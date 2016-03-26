@@ -16,7 +16,7 @@
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.background > img {
+.background img {
   min-width: 20%;
   min-height: auto;
   max-width: 100px;
@@ -26,11 +26,30 @@
   position: absolute;
   top: 65%;
   left: 77%;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 3px solid white;
 }
 
+.film {
+  background-color: #ECEBE8;
+  padding-bottom: 25px;
+  border-radius: 0px 0px 5px 5px;
+}
+
 .filmInfos {
-  z-index: 1;
   position:relative;
+  margin-left: 15px;
+  width: 75%;
+}
+
+.filmInfos span {
+  font-weight: bold;
+}
+
+.filmInfos p {
+  font-size: 16px;
+}
+
+.filmInfos h4 {
+  font-size: 18px;
 }

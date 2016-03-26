@@ -46,7 +46,7 @@ class MainView {
 						<img src=".self::htmlesc($f->getPoster())." alt=".$alt."/>
 					</div>";
     $s .= '<div class="filmInfos">
-    				<span>Storyline :</span><br><p>'.self::htmlesc($f->getSynopsis()).'</p><br>
+    				<h4>Storyline :</h4><br><p>'.self::htmlesc($f->getSynopsis()).'</p><br>
     				<span>Director : </span> '.self::htmlesc($f->getRealisateur()).'<br>
     				<span>Runtime :</span> '.self::htmlesc($f->getDuree()).'min<br>
     				<span>Release date :</span> '.self::htmlesc($f->getDateSortie()).'<br>
