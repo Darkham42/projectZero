@@ -151,8 +151,14 @@ class FilmStorageDB implements FilmStorage {
 		//var_dump($searchProject);
 		$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $id));
 		$casting = "";
+		$numActors = count($searchCasting);
+		$i = 0;
 		foreach($searchCasting as $projet){
-			$casting .= $projet['cast'] . " ";
+			if(++$i === $numActors) {
+				$casting .= $projet['cast'];
+			} else {
+				$casting .= $projet['cast'].", ";
+			}	
 		}
 		$name = "";
 		$poster = "";
@@ -193,7 +199,7 @@ class FilmStorageDB implements FilmStorage {
 			$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $projet["id"]));
 			$casting = "";
 			foreach($searchCasting as $acteur){
-				$casting = $casting . " " . $acteur['cast'] . " ";
+				$casting = $casting." ".$acteur['cast']." ";
 			}
 		    $name = $projet['nom'];
 		    $poster = $projet['poster'];
