@@ -57,3 +57,29 @@ button[type="submit"] {
 	color: #fff;
 	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
 }
+
+ul {
+  float: right;
+  margin-right: 75px;
+  list-style:none;
+  padding:8px;
+}
+
+.form-control-textarea {
+  display: block;
+  height: 100px;
+  width: 100%;
+  border: none;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 0;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.form-control-textarea:focus {
+  border-bottom: 2px solid rgb(66, 133, 244);
+  outline: none;
+  box-shadow: none;
+  font: normal 14px 'Roboto',arial,sans-serif;
+}

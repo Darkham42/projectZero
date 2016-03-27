@@ -26,14 +26,19 @@ class MainView {
 	/* Méthodes de génération des pages                                           */
 	/******************************************************************************/
 
+/**
+ * Page d'accueil
+ */
 	public function makeHomePage() {
 		
 		$this->title = "HeroesMovies";
-		$this->content = "Soon in theatres\nListe horizontal des prochains films";
 		array_push($this->style, "navbar.css");
 
 	}
 
+/**
+ * Page d'infos sur un film
+ */
 	public function makeFilmPage($id, Film $f) {
 		$fname = self::htmlesc($f->getName());
 		$fclass = "film$id";
@@ -76,12 +81,15 @@ class MainView {
 		array_push($this->style, "fab.css");
 	}
 
+/**
+ * Page d'ajout d'un film
+ */
 	public function makeFilmCreationPage(FilmBuilder $builder) {
-		$this->title = "Ajouter votre film";
+		$this->title = "Add a film";
 		$s = '<form action="'.$this->router->saveCreatedFilm().'" method="POST" class="form-group">'."\n";
 		$s .= self::getFormFields($builder);
-		$s .= "<button>Créer</button>\n";
-		$s .= "</form>\n";
+		$s .= "<div class='form-group'>\n<button type='submit'>Créer</button>\n</div>\n";
+		$s .= "</form>\n<br><br>\n";
 		$this->content = $s;
 
 		array_push($this->style, "cards.css");
@@ -89,6 +97,9 @@ class MainView {
 		array_push($this->style, "form.css");
 	}
 
+/**
+ * Page de confirmation de suppression d'un film
+ */
 	public function makeFilmDeletionPage($id, Film $c) {
 		$fname = self::htmlesc($c->getName());
 
@@ -226,31 +237,44 @@ class MainView {
 	protected function getFormFields(FilmBuilder $builder) {
 		$nameRef = $builder->getNameRef();
 		$s = "";
-		$s .= '<p><label><span class="titrelabel">Nom du film : </span><input type="text" name="'.$nameRef.'" class="form-control" value="';
-		//<input id="username" spellcheck=false class="form-control" name="username" type="email" size="20" alt="login" required="">
-		$s .= self::htmlesc($builder->getData($nameRef)) . "\" />";
+		$s .= '<div class="card">
+						<div class="form-group">
+						<input id="title" spellcheck=false class="form-control" name="'.$nameRef.'" type="text" alt="film" required="">
+						<span class="form-highlight"></span>
+						<span class="form-bar"></span>
+						<label for="title" class="float-label">Title
+					';
+		$s .= self::htmlesc($builder->getData($nameRef));
 		$err = $builder->getErrors($nameRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
-		$s .="</label></p>\n";
+		$s .="</label></div>\n";
 
 		$realRef = $builder->getRealisateurRef();
-		$s .= '<p><label><span class="titrelabel">Realisateur : </span><input type="text" name="'.$realRef.'" value="';
+		$s .= '	<div class="form-group">
+						<input id="director" spellcheck=false class="form-control" name="'.$realRef.'" type="text" alt="film" required="">
+						<span class="form-highlight"></span>
+						<span class="form-bar"></span>
+						<label for="director" class="float-label">Director
+					';
 		$s .= self::htmlesc($builder->getData($realRef));
-		$s .= "\" />";
 		$err = $builder->getErrors($realRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
-		$s .="</label></p>\n";
+		$s .="</label></div>\n";
 
 		$dateRef = $builder->getDateSortieRef();
-		$s .= '<p><label><span class="titrelabel">Date de sortie : </span><input type="date" name="'.$dateRef.'" placeholder="AAAA-MM-JJ" value="';
+		$s .= '	<div class="form-group">
+						<input id="date" spellcheck=false class="form-control" name="'.$dateRef.'" type="date" alt="film" required="">
+						<span class="form-highlight"></span>
+						<span class="form-bar"></span>
+						<label for="date" class="float-label">Release date (YYYY-MM-DD)
+					';
 		$s .= self::htmlesc($builder->getData($dateRef));
-		$s .= "\" />";
 		$err = $builder->getErrors($dateRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
-		$s .="</label></p>\n";
+		$s .="</label></div>\n";
 
 		$poster = $builder->getPosterRef();
 		$s .= '<p><label><span class="titrelabel">Lien URL de l\'affiche : </span><input type="date" name="'.$poster.'" value="';
@@ -263,14 +287,17 @@ class MainView {
 
 		$dureeRef = $builder->getDureeRef();
      	
-
-		$s .= '<p><label><span class="titrelabel">Duree : </span><input type="date" name="'.$dureeRef.'" value="';
+		$s .= '	<div class="form-group">
+						<input id="runtime" spellcheck=false class="form-control" name="'.$dureeRef.'" type="date" alt="film" required="">
+						<span class="form-highlight"></span>
+						<span class="form-bar"></span>
+						<label for="runtime" class="float-label">Runtime (in minutes)
+					';
 		$s .= self::htmlesc($builder->getData($dureeRef));
-		$s .= "\" />";
 		$err = $builder->getErrors($dureeRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
-		$s .="</label></p>\n";
+		$s .="</label></div>\n";
 
 		$castRef = $builder->getCastingRef();
 		
@@ -286,37 +313,44 @@ class MainView {
 
 
 		$universRef = $builder->getUniversRef();
-		$s .= '<p><span class="titrelabel"> Univers : </span><select name="'.$universRef.'">';
-		$s .= '<option value="Marvel">Marvel</option>';
-		$s .= '<option value="DC Comics">DC Comics</option>';
-		$s .= '<option value="Autre">Autres</option>';
-		$s .= '</select>';
+		$s .= '	<div class="form-group">
+						<span>Universe : </span><select name="'.$universRef.'">
+						<option value="Marvel">Marvel</option>
+						<option value="DC Comics">DC Comics</option>
+						</select>
+					';
 		$s .= self::htmlesc($builder->getData($universRef));
 		$err = $builder->getErrors($universRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
-		$s .="</label></p>\n";
+		$s .="</div>\n";
 
 		$genreRef = $builder->getGenreRef();
-		//$s .= '<p><label>Genre du film : <input type="date" name="'.$genreRef.'" value="' ;
-		$s .= '<P><label><span class="titrelabel">Indiquez les genres : </span>';
-		$s .= '	<LABEL ACCESSKEY=C><INPUT TYPE=checkbox name="'.$genreRef.'[]" VALUE="1" CHECKED> Action </LABEL>' ;
-		$s .= '	<LABEL ACCESSKEY=D><INPUT TYPE=checkbox name="'.$genreRef.'[]" VALUE="2"> Aventure </LABEL>';
-		$s .= '	<LABEL ACCESSKEY=M><INPUT TYPE=checkbox name="'.$genreRef.'[]" VALUE="3"> Comédie </LABEL>';
-		$s .= ' <LABEL ACCESSKEY=M><INPUT TYPE=checkbox name="'.$genreRef.'[]" VALUE="4"> Sci-Fi </LABEL>';
-		$s .= ' <LABEL ACCESSKEY=M><INPUT TYPE=checkbox name="'.$genreRef.'[]" VALUE="5"> Fantasy </LABEL>';
-		$s .= '</label></P>';
-		//$s .= $builder->getData($genreRef);
+		$s .= '<div class="form-group">';
+		$s .= '<span>Genres : </span><ul>';
+		$s .= ' <li><label acceskey=C><input type=checkbox name="'.$genreRef.'[]" value="1" checked> Action </label></li>';
+		$s .= '	<li><label acceskey=D><input type=checkbox name="'.$genreRef.'[]" value="2"> Aventure </label></li>';
+		$s .= '</ul><ul>';
+		$s .= '	<li><label acceskey=M><input type=checkbox name="'.$genreRef.'[]" value="3"> Comédie </label></li>';
+		$s .= ' <li><label acceskey=M><input type=checkbox name="'.$genreRef.'[]" value="4"> Sci-Fi </label></li>';
+		$s .= ' <li><label acceskey=M><input type=checkbox name="'.$genreRef.'[]" value="5"> Fantasy </label></li>';
+		$s .= '</ul>';
 		$err = $builder->getErrors($genreRef);
 		if ($err !== null)
-			$s .= ' <span class="error">'.$err.'</span>';
-		$s .="</label></p>\n";
+			$s .= '<span class="error">'.$err.'</span>';
+		$s .="</label></div>\n";
+
+
 		$synopsis = $builder->getSynopsisRef();
-		$s .='<textarea name="' . $synopsis .'"rows="10" cols="50">Saisir le synopsis ici.</textarea>';
+		$s .= '	<br><div class="form-group">
+						<label class"label-textarea" for="storyline">Storyline</label>
+						<span class="form-highlight"></span>
+						<textarea spellcheck=false class="form-control-textarea" name="'.$synopsis.'" maxlength="500" alt="film" required=""></textarea>
+					';
 		$err = $builder->getErrors($synopsis);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
-		$s .= "<br/>";
+		$s .= "</div>";
 		return $s;
 	}
 
