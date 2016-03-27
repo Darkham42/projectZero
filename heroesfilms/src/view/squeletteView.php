@@ -31,7 +31,7 @@
 	<?php if (!empty($this->feedback)) { ?>
 		<div class="feedback"><?php echo $this->feedback; ?></div>
 	<?php } ?>
-	<main class="main">
+	<main class="main" id="top">
 		<?php
 		echo $this->content;
 		?>

@@ -130,15 +130,21 @@ class MainView {
 		foreach ($films as $id=>$f) {
 			$this->content .= "<ul class=\"listCardFilms\">\n<li><div class=\"cardFilms\">\n";
 			$this->content .= $this->galleryFilm($f->getId(), $f);
-			$this->content .= "<div>\n<li>\n</ul>\n";
+			$this->content .= "</div>\n</li>\n</ul>\n";
 		}
+		$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='http://darkham.net/iconeAdd.png' alt='+'/></a>";
+		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='http://darkham.net/iconeUp.png' alt='^'/></a>";
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
+<<<<<<< HEAD
 		switch ( $genre ){
 			case "marvel" : array_push($this->style, "marvel.css"); break;
 			case "dc" : array_push($this->style, "dc.css"); break;
 			default : break;
 		}
+=======
+		array_push($this->style, "fab.css");
+>>>>>>> origin/master
 	}
 
 	public function makeUnknownFilmPage() {
@@ -220,10 +226,9 @@ class MainView {
 	protected function galleryFilm($id, $f) {
 		$fclass = "film".$id;
 		$res = '<p class="card-title">'.self::htmlesc($f->getName()).' ('.substr(self::htmlesc($f->getDateSortie()), 0, 4).')</p>';
-		$res .= '<div class = "text"><br><h3 style="text-transform:uppercase">'.self::htmlesc($f->getName()).'</h3 style="text-transform:uppercase">Director<br>'.self::htmlesc($f->getRealisateur()).'<br><br>Cast<br>'.self::htmlesc($f->getCasting()).'<br><br>Release date<br>'.self::htmlesc($f->getDateSortie()).'<br><br>Universe<br>'.self::htmlesc($f->getUnivers()).'</div>';
+		$res .= '<div class = "text"><br><h3 style="text-transform:uppercase">'.self::htmlesc($f->getName()).'</h3>Director<br>'.self::htmlesc($f->getRealisateur()).'<br><br>Cast<br>'.self::htmlesc($f->getCasting()).'<br><br>Release date<br>'.self::htmlesc($f->getDateSortie()).'<br><br>Universe<br>'.self::htmlesc($f->getUnivers()).'</div>';
 		$res .= '<img src="'.self::htmlesc($f->getPoster()).'" class="posterSize" alt="'.self::htmlesc($f->getName()).' poster" />';
 		$res .= '<p class="plus"><a href="'.$this->router->filmPage($id).'">More details</a></p>';
-		$res .= '</a></li>'."\n";
 		return $res;
 	}
 
