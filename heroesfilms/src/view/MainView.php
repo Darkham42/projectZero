@@ -127,8 +127,11 @@ class MainView {
 			$this->content .= $this->galleryFilm($f->getId(), $f);
 			$this->content .= "</div>\n</li>\n</ul>\n";
 		}
+		$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='http://darkham.net/iconeAdd.png' alt='+'/></a>";
+		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='http://darkham.net/iconeUp.png' alt='^'/></a>";
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
+		array_push($this->style, "fab.css");
 	}
 
 	public function makeUnknownFilmPage() {
