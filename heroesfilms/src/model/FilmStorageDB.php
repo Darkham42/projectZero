@@ -314,8 +314,39 @@ class FilmStorageDB implements FilmStorage {
 	/* Renvoie un tableau associatif id => Film
 	 * contenant toutes les films poste par une personne sur la base. */
 	public function readMy($user) {
-		//A ajouter un where sur id personnes.
-		return $this->db>query("SELECT * FROM FILMS");
+
+		$searchProject = $this->db->query("SELECT * FROM FILMS WHERE idUser = :id ORDER BY date_sortie DESC", array("id"=> $user));
+
+		$array = array();
+		foreach($searchProject as $projet) {
+			$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $projet["id"]));
+			$casting = "";
+			foreach($searchCasting as $acteur){
+				$casting = $casting." ".$acteur['cast']." ";
+			}
+			$searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $projet["id"]));
+			$realisateur = "";
+			foreach($searchReal as $acteur){
+				$realisateur = $acteur['direc'];
+			}
+		    $name = $projet['nom'];
+		    $poster = $projet['poster'];
+		    $background = $projet['background'];
+		    $date_sortie = $projet['date_sortie'];
+		    $duree = $projet['duree'];
+		    //$realisateur = $projet['direc'];
+		    $casting = $casting;
+		    $univers = $this->findUnivers($projet['univers']);
+		    $synopsis = $projet['synopsis'];
+
+		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
+		    $idtable = $projet["id"];
+		    //var_dump($projet);
+
+		     //echo  "<br/>" .$idtable . $name . $realisateur . "<br/>";
+		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null, null, null));
+		}
+		return $array;
 	}
 
 	/* Met à jour une film dans la base. Renvoie

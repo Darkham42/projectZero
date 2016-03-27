@@ -107,7 +107,7 @@ class Router {
 				$ctl->allDCPage();
 				break;
 			case "galeriePerso":
-				$ctl->myFilmsPage($user);
+				$ctl->myFilmsPage($_SESSION['id'], null);
 				break;
 			case "about":
 				$ctl->about();

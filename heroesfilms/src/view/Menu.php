@@ -27,6 +27,7 @@ class Menu {
 		$this->table = array(
 			"MARVEL" => $this->router->filmsMARVELPage(),
 			"DC" => $this->router->filmsDCPage(),
+			"My movies" => $this->router->mesFilmsPage(),
 			"Logout " . $name  => $this->router->logout(),
 			"About" => $this->router->about(),
 		);
@@ -36,7 +37,7 @@ class Menu {
 		$this->table = array(
 			"MARVEL" => $this->router->filmsMARVELPage(),
 			"DC" => $this->router->filmsDCPage(),
-			"Ajouter un film" => $this->router->filmCreationPage(),
+			//"Ajouter un film" => $this->router->filmCreationPage(),
 			"Log In" => $this->router->logIn(),
 			"Register" => $this->router->register(),
 			"About" => $this->router->about(),

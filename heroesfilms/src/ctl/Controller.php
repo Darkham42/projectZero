@@ -53,7 +53,7 @@ class Controller {
 
 	public function myFilmsPage($user) {
 		$films = $this->filmdb->readMy($user);
-		$this->v->makeGalleryPage($films);
+		$this->v->makeGalleryPage($films, null);
 	}
 
 	public function newFilm() {
