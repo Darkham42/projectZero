@@ -103,12 +103,21 @@ class MainView {
 	public function makeFilmDeletionPage($id, Film $c) {
 		$fname = self::htmlesc($c->getName());
 
-		$this->title = "Suppression de la film $fname";
-		$this->content = "<p>Le film « {$fname} » va être supprimée.</p>\n";
-		$this->content .= '<form action="'.$this->router->confirmFilmDeletion($id).'" method="POST">'."\n";
-		$this->content .= "<button>Confirmer</button>\n</form>\n";
+		$this->title = "Delete a film";
+		$this->content = "<div class='card'>
+											<p class='card-title'>Delete {$fname}</p>
+											<img src='http://3.bp.blogspot.com/-pQzj6tREL1E/VozqwO0LboI/AAAAAAAAULg/PYf01Li0zy8/s1600/Deadpool%2B3.jpg' class='full' />
+											<form method='POST' action=".$this->router->confirmFilmDeletion($id).">
+											<p>{$fname} will be erased from the database, do you valide this ?</p>
+												<div class='form-group'>
+													<button type='submit' name='submit' ripple>EX-TER-MIN-ATE</button>
+												</div><br>
+											</form>
+											</div>";
 
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "cards.css");
+		array_push($this->style, "form.css");
 	}
 
 	public function makeFilmDeletedPage() {
