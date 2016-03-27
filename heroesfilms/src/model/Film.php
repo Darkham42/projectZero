@@ -16,12 +16,14 @@ class Film {
 	protected $poster;
 	protected $background;
 	protected $synopsis;
+	protected $idUser;
+	protected $nameUser;
 
 	/* Construit une film. Si les paramètres de date ne sont pas passés,
 	 * la film est considérée comme étant toute nouvelle.
 	 * Le nom et le code hexa doivent être valides, au sens
 	 * de isNameValid et isHexValid, sinon une exception est levée. */
-	public function __construct($id, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null) {
+	public function __construct($id, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null, $idUser=null, $nameUser) {
 		if (!self::isValidName($name)){
 			echo "Invalid Name";
 			throw new Exception("Invalid film name");
@@ -47,6 +49,15 @@ class Film {
 		$this->background = $background;
 		$this->creationDate = $creationDate !== null? $creationDate: new DateTime();
 		$this->modifDate = $modifDate !== null? $modifDate: new DateTime();
+		$this->idUser = $idUser;
+		$this->nameUser = $nameUser;
+	}
+
+	public function getUserId(){
+		return $this->idUser;
+	}
+	public function getUserName(){
+		return $this->nameUser;
 	}
 
 	public function getId(){

@@ -60,17 +60,22 @@ class MainView {
     				<span>Release date :</span> ".self::htmlesc($f->getDateSortie())."<br>
 						<span>Cast :</span> ".self::htmlesc($f->getCasting())."<br>
 						<span>Universe :</span> ".self::htmlesc($f->getUnivers())."<br><br>";
-						if ($fdatem == '0000-00-00'){
-							$s.= '<span>Page created :</span> '.$fdatec;
-						} else {
-							$s.= '<span>Last modification :</span> '.$fdatem;
-						}
-		$s.='</div>
-  			</div>';
-		$this->content = $s;
-		$this->content .= "<a href='".$this->router->filmModifPage($id)."' id ='mod-film' class='fab-button'><img src='http://darkham.net/iconeModify.png' alt='M'/></a>";
-		$this->content .= "<a href='".$this->router->filmDeletionPage($id)."' id ='del-film' class='fab-button'><img src='http://darkham.net/iconeDelete.png' alt='^'/></a>";
+						
+						
 
+						if ($fdatem == '0000-00-00'){
+							$s.= '<span>Page created :</span> '.$fdatec . " by " . $f->getUserName();
+						} else {
+							$s.= '<span>Last modification :</span> '.$fdatem . " by " . $f->getUserName();
+						}
+						
+		$s.='</div> 
+  			</div>';
+		if( isset($_SESSION['id']) && $_SESSION['id'] == $f->getUserId()){
+			$s .= "<a href='".$this->router->filmModifPage($id)."' id ='mod-film' class='fab-button'><img src='http://darkham.net/iconeModify.png' alt='M'/></a>";
+			$s .= "<a href='".$this->router->filmDeletionPage($id)."' id ='del-film' class='fab-button'><img src='http://darkham.net/iconeDelete.png' alt='^'/></a>";
+		}
+		$this->content = $s;
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "film.css");
 		if($f->getUnivers() == "Marvel"){
@@ -123,7 +128,6 @@ class MainView {
 	public function makeFilmDeletedPage() {
 		$this->title = "Movie deleted.";
 		$this->content = "<p>The movie has been correctly deleted : EX-TER-MI-NA-TED.</p>";
-
 		array_push($this->style, "navbar.css");
 	}
 

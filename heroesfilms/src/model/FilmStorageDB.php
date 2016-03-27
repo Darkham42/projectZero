@@ -172,6 +172,8 @@ class FilmStorageDB implements FilmStorage {
 		$modifDate= "";
 		$idtable = "";
 		$synopsis = "";
+		$idUser = "";
+		$pseudoUser = "Uknown";
 
 		foreach($searchProject as $projet) {
 		    $name = $projet['nom'];
@@ -186,6 +188,12 @@ class FilmStorageDB implements FilmStorage {
 		    $creationDate = $projet['date_creation'];
 		    $modifDate = $projet['date_last_modif'];
 		    $idtable = $projet['id'];
+		    $idUser= $projet['idUser'];
+		    $searchUser = $this->db->query("SELECT * FROM USERS WHERE id = :i", array("i"=> $idUser));
+			$realisateur = "";
+			foreach($searchUser as $acteur){
+				$pseudoUser = $acteur['pseudo'];
+			}
 
 		}
 
@@ -194,7 +202,7 @@ class FilmStorageDB implements FilmStorage {
 		foreach($searchReal as $projet){
 			$real .= $projet['direc'];
 		}
-		$film = new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate, $modifDate);
+		$film = new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate, $modifDate, $idUser, $pseudoUser);
 		//var_dump($film);
 		return $film;
 	}
@@ -232,7 +240,7 @@ class FilmStorageDB implements FilmStorage {
 		    //var_dump($projet);
 
 		     //echo  "<br/>" .$idtable . $name . $realisateur . "<br/>";
-		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
+		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null, null, null));
 		}
 		return $array;
 	}
@@ -265,7 +273,7 @@ class FilmStorageDB implements FilmStorage {
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
 		    $idtable = $projet["id"];
 		    //echo $idtable . $name . $realisateur . "<br/>";
-		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
+		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null, null, null));
 		}
 		return $array;
 	}
@@ -298,7 +306,7 @@ class FilmStorageDB implements FilmStorage {
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
 		    $idtable = $projet["id"];
 		    //echo $idtable . $name . $realisateur . $duree. "<br/>";
-		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
+		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null, null, null));
 		}
 		return $array;
 	}
