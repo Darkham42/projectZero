@@ -62,20 +62,14 @@ class MainView {
 						}
 		$s.='</div>
   			</div>';
-/*
-		$s .= '<div class="vueFilm genre"> <span> Genre :</span> ';
-		foreach($f->getGenre() as $genre){
-			$s .= self::htmlesc($genre) . "  ";
-		}
-		$s .= ' ;
-		$s .= "</div> <ul>\n";
-		$s .= '<li><a href="'.$this->router->filmModifPage($id).'">Modifier</a></li>'."\n";
-		$s .= '<li><a href="'.$this->router->filmDeletionPage($id).'">Supprimer</a></li>'."\n";
-		$s .= "</ul>\n";*/
 		$this->content = $s;
 
+		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='http://darkham.net/iconeDelete.png' alt='X'/></a>";
+		$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='http://darkham.net/iconeModify.png' alt='M'/></a>";
+		
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "film.css");
+		array_push($this->style, "fab.css");
 	}
 
 	public function makeFilmCreationPage(FilmBuilder $builder) {
@@ -127,8 +121,9 @@ class MainView {
 			$this->content .= $this->galleryFilm($f->getId(), $f);
 			$this->content .= "</div>\n</li>\n</ul>\n";
 		}
-		$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='http://darkham.net/iconeAdd.png' alt='+'/></a>";
 		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='http://darkham.net/iconeUp.png' alt='^'/></a>";
+		$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='http://darkham.net/iconeAdd.png' alt='+'/></a>";
+
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
 		array_push($this->style, "fab.css");
