@@ -76,6 +76,11 @@ class MainView {
 
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "film.css");
+		if($f->getUnivers() == "Marvel"){
+			array_push($this->style, "marvel.css");
+		} else {
+			array_push($this->style, "dc.css");
+		}
 	}
 
 	public function makeFilmCreationPage(FilmBuilder $builder) {
@@ -120,7 +125,7 @@ class MainView {
 		array_push($this->style, "navbar.css");
 	}
 
-	public function makeGalleryPage(array $films) {
+	public function makeGalleryPage(array $films, $genre) {
 		$this->title = "Tous les films";
 		foreach ($films as $id=>$f) {
 			$this->content .= "<ul class=\"listCardFilms\">\n<li><div class=\"cardFilms\">\n";
@@ -129,6 +134,11 @@ class MainView {
 		}
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
+		switch ( $genre ){
+			case "marvel" : array_push($this->style, "marvel.css"); break;
+			case "dc" : array_push($this->style, "dc.css"); break;
+			default : break;
+		}
 	}
 
 	public function makeUnknownFilmPage() {

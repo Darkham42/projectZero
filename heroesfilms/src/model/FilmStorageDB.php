@@ -239,7 +239,7 @@ class FilmStorageDB implements FilmStorage {
 
 	public function readAllMarvel() {
 
-		$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id AND univers = '2' ORDER BY date_sortie DESC");
+		$searchProject = $this->db->query("SELECT * FROM FILMS WHERE univers = '2' ORDER BY date_sortie DESC");
 
 		$array = array();
 		foreach($searchProject as $projet) {
@@ -253,14 +253,18 @@ class FilmStorageDB implements FilmStorage {
 		    $background = $projet['background'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
-		    $realisateur = $projet['realisateur'];
+		    $searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $projet["id"]));
+			$realisateur = "";
+			foreach($searchReal as $acteur){
+				$realisateur = $acteur['direc'];
+			}
 		    $casting = $casting;
 		    $univers = $this->findUnivers($projet['univers']);
 		    $synopsis = $projet['synopsis'];
 
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
 		    $idtable = $projet["id"];
-		    echo $idtable . $name . $realisateur . "<br/>";
+		    //echo $idtable . $name . $realisateur . "<br/>";
 		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
 		}
 		return $array;
@@ -268,11 +272,11 @@ class FilmStorageDB implements FilmStorage {
 
 	public function readAllDC() {
 
-		$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE  f.realisateur = r.id AND univers = '1' ORDER BY date_sortie DESC");
+		$searchProject = $this->db->query("SELECT * FROM FILMS WHERE univers = '1' ORDER BY date_sortie DESC");
 
 		$array = array();
 		foreach($searchProject as $projet) {
-			var_dump($projet);
+			//var_dump($projet);
 			$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $projet["id"]));
 			$casting = "";
 			foreach($searchCasting as $acteur){
@@ -283,14 +287,17 @@ class FilmStorageDB implements FilmStorage {
 		    $background = $projet['background'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
-		    $realisateur = $projet['realisateur'];
+		    $searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $projet["id"]));
+			$realisateur = "";
+			foreach($searchReal as $acteur){
+				$realisateur = $acteur['direc'];
+			}
 		    $casting = $casting;
 		    $univers = $this->findUnivers($projet['univers']);
 		    $synopsis = $projet['synopsis'];
-
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
 		    $idtable = $projet["id"];
-		    echo $idtable . $name . $realisateur . $duree. "<br/>";
+		    //echo $idtable . $name . $realisateur . $duree. "<br/>";
 		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null));
 		}
 		return $array;

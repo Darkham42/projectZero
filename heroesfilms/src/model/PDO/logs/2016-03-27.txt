@@ -1,0 +1,7 @@
+Time : 11:55:03
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '1' ORDER BY date_sortie DESC' at line 1
+Raw SQL : SELECT * FROM FILMS univers = '1' ORDER BY date_sortie DESC
+
+Time : 11:54:04
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND univers = '2' ORDER BY date_sortie DESC' at line 1
+Raw SQL : SELECT * FROM FILMS AND univers = '2' ORDER BY date_sortie DESC

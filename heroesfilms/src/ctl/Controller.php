@@ -34,17 +34,17 @@ class Controller {
 
 	public function allFilmsPage() {
 		$films = $this->filmdb->readAll();
-		$this->v->makeGalleryPage($films);
+		$this->v->makeGalleryPage($films, null);
 	}
 
 	public function allMarvelPage() {
 		$films = $this->filmdb->readAllMarvel();
-		$this->v->makeGalleryPage($films);
+		$this->v->makeGalleryPage($films, "marvel");
 	}
 
 	public function allDCPage() {
 		$films = $this->filmdb->readAllDC();
-		$this->v->makeGalleryPage($films);
+		$this->v->makeGalleryPage($films, "dc");
 	}
 
 	public function about() {
