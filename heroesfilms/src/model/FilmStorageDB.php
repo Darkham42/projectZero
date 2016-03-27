@@ -79,9 +79,10 @@ class FilmStorageDB implements FilmStorage {
 		$tab["duree"] = $f->getDuree();
 		$tab["univers"] = $idUnivers;
 		$tab["reali"] = $idreal;
-		$tab["background"] = $background;
+		$tab["background"] = $f->getBackground();
 		$tab["modif"] = $f->getModifDate()->format('Y-m-d H:i:s');;
 		$tab["creation"] = $f->getCreationDate()->format('Y-m-d H:i:s');
+		$tab["idUser"] = $_SESSION["id"];
 
 		$i = 1;
 		foreach($f->getGenre() as $genre){
@@ -95,9 +96,9 @@ class FilmStorageDB implements FilmStorage {
 		//Find id for new film
 		$id = 0;
 		foreach($this->db->query("SELECT id FROM FILMS ORDER BY id") as $idFilms) {
-			//echo $id . " " .  $idFilms['id'] . "<br/>";
+			echo $id . " " .  $idFilms['id'] . "<br/>";
 			if($id != $idFilms['id']){
-				$tab["id"] = $idFilms['id'];
+				$tab["id"] = $id;
 				break;
 			}
 			$id ++;
@@ -108,7 +109,6 @@ class FilmStorageDB implements FilmStorage {
 
 		foreach($tab as $key => $value){
 			echo "<br/> - " . $key . " : " . $value ;
-
 		}
 
 		/*
@@ -116,9 +116,9 @@ class FilmStorageDB implements FilmStorage {
 		:creation, :modif*/
 		
 		$this->db->query("INSERT INTO FILMS(
-			id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, background, date_creation, date_last_modif, genre1, genre2, genre3) 
+			id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, background, date_creation, date_last_modif, genre1, genre2, genre3, idUser) 
 			VALUES(
-			:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :background, :creation, :modif, :genre1, :genre2, :genre3)"
+			:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :background, :creation, :modif, :genre1, :genre2, :genre3, :idUser)"
 			, $tab);
 
 		//recuperation de l'id du film
