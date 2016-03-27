@@ -8,8 +8,9 @@
             document.getElementById("creer").style.display = "none";
        }
        else {
-            var newdiv = document.createElement('label');
-            newdiv.innerHTML =  '<p><span class="titrelabel"> Acteur ' +  (counter) + '</span><input type="text" name="casting[]" placeholder="Nom d\'acteur" value="" /></p>';
+            var newdiv = document.createElement('div');
+            newdiv.classList.add('form-group');
+            newdiv.innerHTML =  '<input id="actor'+(counter)+'" spellcheck=false class="form-control" name="casting[]" type="text" alt="film"required=""><span class="form-highlight"></span><span class="form-bar"></span><label for="actor1" class="float-label">Actor ' + (counter) + ' :</label>';
             document.getElementById(divName).appendChild(newdiv);
             counter++;
        }
@@ -17,17 +18,31 @@
 
 </script>
 
-<p>
-  <label><span class="titrelabel">Acteur 1 : </span><input type="text" name="casting[]" placeholder="Nom acteur" value="" />
-</p>
-<p>
-  <label><span class="titrelabel">Acteur 2 : </span><input type="text" name="casting[]" placeholder="Nom acteur" value="" /></label>
-<p>
-<p>
-  <label><span class="titrelabel">Acteur 3 : </span><input type="text" name="casting[]" placeholder="Nom acteur" value="" /></label>
-<p>
-<p id="dynamicInput">
-  
-</p>
+<div class="form-group">
+  <input id="actor1" spellcheck=false class="form-control" name="casting[]" type="text" alt="film"required="">
+  <span class="form-highlight"></span>
+  <span class="form-bar"></span>
+  <label for="actor1" class="float-label">Actor 1 :</label>
+</div>
 
-<input id="creer" type="button" value="Add champ" onClick="addInput('dynamicInput');">
+<div class="form-group">
+  <input id="actor2" spellcheck=false class="form-control" name="casting[]" type="text" alt="film" required="">
+  <span class="form-highlight"></span>
+  <span class="form-bar"></span>
+  <label for="actor2" class="float-label">Actor 2 :</label>
+</div>
+
+<div class="form-group">
+  <input id="actor3" spellcheck=false class="form-control" name="casting[]" type="text" alt="film" required="">
+  <span class="form-highlight"></span>
+  <span class="form-bar"></span>
+  <label for="actor3" class="float-label">Actor 3 :</label>
+</div>
+
+<div id="dynamicInput"></div>
+
+
+<div class="form-group">
+  <input class="buttonActor" id="creer" type="button" value="Add an actor" onClick="addInput('dynamicInput');">
+  <br>
+</div>

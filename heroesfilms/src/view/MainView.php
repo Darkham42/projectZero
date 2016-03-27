@@ -60,22 +60,17 @@ class MainView {
     				<span>Release date :</span> ".self::htmlesc($f->getDateSortie())."<br>
 						<span>Cast :</span> ".self::htmlesc($f->getCasting())."<br>
 						<span>Universe :</span> ".self::htmlesc($f->getUnivers())."<br><br>";
-						
-						
-
 						if ($fdatem == '0000-00-00'){
-							$s.= '<span>Page created :</span> '.$fdatec . " by " . $f->getUserName();
+							$s.= '<span>Page created :</span> '.$fdatec;
 						} else {
-							$s.= '<span>Last modification :</span> '.$fdatem . " by " . $f->getUserName();
+							$s.= '<span>Last modification :</span> '.$fdatem;
 						}
-						
-		$s.='</div> 
+		$s.='</div>
   			</div>';
-		if( isset($_SESSION['id']) && $_SESSION['id'] == $f->getUserId()){
-			$s .= "<a href='".$this->router->filmModifPage($id)."' id ='mod-film' class='fab-button'><img src='http://darkham.net/iconeModify.png' alt='M'/></a>";
-			$s .= "<a href='".$this->router->filmDeletionPage($id)."' id ='del-film' class='fab-button'><img src='http://darkham.net/iconeDelete.png' alt='^'/></a>";
-		}
 		$this->content = $s;
+		$this->content .= "<a href='".$this->router->filmModifPage($id)."' id ='mod-film' class='fab-button'><img src='http://darkham.net/iconeModify.png' alt='M'/></a>";
+		$this->content .= "<a href='".$this->router->filmDeletionPage($id)."' id ='del-film' class='fab-button'><img src='http://darkham.net/iconeDelete.png' alt='^'/></a>";
+
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "film.css");
 		if($f->getUnivers() == "Marvel"){
@@ -94,7 +89,7 @@ class MainView {
 		$s = '<form action="'.$this->router->saveCreatedFilm().'" method="POST" class="form-group">'."\n";
 		$s .= self::getFormFields($builder);
 		$s .= "<div class='form-group'>\n<button type='submit'>Créer</button>\n</div>\n";
-		$s .= "</form>\n<br><br>\n";
+		$s .= "<br><br></div></form>\n";
 		$this->content = $s;
 
 		array_push($this->style, "cards.css");
@@ -128,6 +123,7 @@ class MainView {
 	public function makeFilmDeletedPage() {
 		$this->title = "Movie deleted.";
 		$this->content = "<p>The movie has been correctly deleted : EX-TER-MI-NA-TED.</p>";
+
 		array_push($this->style, "navbar.css");
 	}
 
@@ -291,8 +287,9 @@ class MainView {
 			$s .= ' <span class="error">'.$err.'</span>';
 		$s .="</label></div>\n";
 
+
 		$poster = $builder->getPosterRef();
-		$s .= '<p><label><span class="titrelabel">Lien URL de l\'affiche : </span><input type="date" name="'.$poster.'" value="';
+		$s .= 'TO:DO REMPLACER PAR TEST<p><label><span class="titrelabel">Lien URL de l\'affiche : </span><input type="date" name="'.$poster.'" value="';
 		$s .= self::htmlesc($builder->getData($poster));
 		$s .= "\" />";
 		$err = $builder->getErrors($poster);
@@ -300,8 +297,8 @@ class MainView {
 			$s .= ' <span class="error">'.$err.'</span>';
 		$s .="</label></p>\n";
 
-		$dureeRef = $builder->getDureeRef();
-     	
+
+		$dureeRef = $builder->getDureeRef(); 	
 		$s .= '	<div class="form-group">
 						<input id="runtime" spellcheck=false class="form-control" name="'.$dureeRef.'" type="date" alt="film" required="">
 						<span class="form-highlight"></span>
@@ -324,8 +321,6 @@ class MainView {
 		$err = $builder->getErrors($castRef);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
-		$s .="</label></p>\n";
-
 
 		$universRef = $builder->getUniversRef();
 		$s .= '	<div class="form-group">
@@ -358,7 +353,7 @@ class MainView {
 
 		$synopsis = $builder->getSynopsisRef();
 		$s .= '	<br><div class="form-group">
-						<label class"label-textarea" for="storyline">Storyline</label>
+						<label for="storyline">Storyline</label>
 						<span class="form-highlight"></span>
 						<textarea spellcheck=false class="form-control-textarea" name="'.$synopsis.'" maxlength="500" alt="film" required=""></textarea>
 					';
