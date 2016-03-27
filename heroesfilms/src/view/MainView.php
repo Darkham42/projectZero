@@ -121,14 +121,14 @@ class MainView {
 	}
 
 	public function makeFilmDeletedPage() {
-		$this->title = "Suppression effectuée";
-		$this->content = "<p>La film a été correctement supprimée.</p>";
+		$this->title = "Movie deleted.";
+		$this->content = "<p>The movie has been correctly deleted : EX-TER-MI-NA-TED.</p>";
 
 		array_push($this->style, "navbar.css");
 	}
 
 	public function makeFilmModifPage($id, FilmBuilder $builder) {
-		$this->title = "Modifier le film";
+		$this->title = "Modify movie";
 
 		$this->content = '<form action="'.$this->router->updateModifiedFilm($id).'" method="POST">'."\n";
 		$this->content .= self::getFormFields($builder);
@@ -141,7 +141,7 @@ class MainView {
 	}
 
 	public function makeGalleryPage(array $films, $genre) {
-		$this->title = "Tous les films";
+		$this->title = "Every Movies";
 		foreach ($films as $id=>$f) {
 			$this->content .= "<ul class=\"listCardFilms\">\n<li><div class=\"cardFilms\">\n";
 			$this->content .= $this->galleryFilm($f->getId(), $f);
@@ -162,14 +162,14 @@ class MainView {
 
 	public function makeUnknownFilmPage() {
 		$this->title = "Error";
-		$this->content = "La film demandée n'existe pas.";
+		$this->content = "The movie doesn't exist. 404 not found.";
 
 		array_push($this->style, "navbar.css");
 	}
 
 	public function makeUnknownActionPage() {
 		$this->title = "Error";
-		$this->content = "La page demandée n'existe pas.";
+		$this->content = "The page doesn't exist. What do you want to see ?! ";
 
 		array_push($this->style, "navbar.css");
 	}
@@ -202,7 +202,7 @@ class MainView {
 	public function about(){
 		$this->title = "About";
 		array_push($this->style, "navbar.css");
-		$this->content = "About blabla.";
+		$this->content = "Numb3rs :  <ul><li>21102326</li> <li>21303622</li></ul>";
 	}
 
 	public function makeLogoutPage() {
@@ -223,7 +223,7 @@ class MainView {
 	 * en paramètre, mais n'en fait rien pour l'instant. */
 	public function makeUnexpectedErrorPage(Exception $e=null) {
 		$this->title = "Erreur";
-		$this->content = "Une erreur inattendue s'est produite.";
+		$this->content = "An unexpected error has been detected.";
 
 		array_push($this->style, "navbar.css");
 	}
@@ -339,12 +339,12 @@ class MainView {
 		$genreRef = $builder->getGenreRef();
 		$s .= '<div class="form-group">';
 		$s .= '<span>Genres : </span><ul>';
-		$s .= ' <li><label><input type=checkbox name="'.$genreRef.'[]" value="1"> Action </label></li>';
-		$s .= '	<li><label><input type=checkbox name="'.$genreRef.'[]" value="2"> Adventure </label></li>';
+		$s .= ' <li><label acceskey=C><input type=checkbox name="'.$genreRef.'[]" value="1" checked> Action </label></li>';
+		$s .= '	<li><label acceskey=D><input type=checkbox name="'.$genreRef.'[]" value="2"> Adventure </label></li>';
 		$s .= '</ul><ul>';
-		$s .= '	<li><label><input type=checkbox name="'.$genreRef.'[]" value="3" checked> Comedy </label></li>';
-		$s .= ' <li><label><input type=checkbox name="'.$genreRef.'[]" value="4"> Sci-Fi </label></li>';
-		$s .= ' <li><label><input type=checkbox name="'.$genreRef.'[]" value="5"> Fantasy </label></li>';
+		$s .= '	<li><label acceskey=M><input type=checkbox name="'.$genreRef.'[]" value="3"> Comedy </label></li>';
+		$s .= ' <li><label acceskey=M><input type=checkbox name="'.$genreRef.'[]" value="4"> Sci-Fi </label></li>';
+		$s .= ' <li><label acceskey=M><input type=checkbox name="'.$genreRef.'[]" value="5"> Fantasy </label></li>';
 		$s .= '</ul>';
 		$err = $builder->getErrors($genreRef);
 		if ($err !== null)
