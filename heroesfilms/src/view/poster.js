@@ -13,5 +13,6 @@ function infoFilm(e) {
   } else {
     $txt.style.opacity = "1" ;
   }
-  
+  console.log($poster)
+  console.log($txt)
 }

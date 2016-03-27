@@ -1,11 +1,11 @@
-ul.cardFilms {
+ul.listCardFilms {
 	width: 300px;
 	height: 100%;
 	float: left;
 	margin-left: -5px;
 }
 
-ul.cardFilms li {
+ul.listCardFilms li {
 	width: 320px;
 	list-style: none;
 }
