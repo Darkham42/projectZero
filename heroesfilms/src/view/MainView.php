@@ -62,7 +62,6 @@ class MainView {
 						}
 		$s.='</div>
   			</div>';
-		$s .= '<li><a href="'.$this->router->filmModifPage($id).'">Modifier</a></li>'."\n";
 		$this->content = $s;
 		$this->content .= "<a href='".$this->router->filmModifPage($id)."' id ='mod-film' class='fab-button'><img src='http://darkham.net/iconeModify.png' alt='M'/></a>";
 		$this->content .= "<a href='".$this->router->filmDeletionPage($id)."' id ='del-film' class='fab-button'><img src='http://darkham.net/iconeDelete.png' alt='^'/></a>";
