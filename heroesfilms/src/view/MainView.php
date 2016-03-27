@@ -136,15 +136,15 @@ class MainView {
 		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='http://darkham.net/iconeUp.png' alt='^'/></a>";
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
-<<<<<<< HEAD
+
 		switch ( $genre ){
 			case "marvel" : array_push($this->style, "marvel.css"); break;
 			case "dc" : array_push($this->style, "dc.css"); break;
 			default : break;
 		}
-=======
+
 		array_push($this->style, "fab.css");
->>>>>>> origin/master
+
 	}
 
 	public function makeUnknownFilmPage() {
