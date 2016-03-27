@@ -62,17 +62,10 @@ class MainView {
 						}
 		$s.='</div>
   			</div>';
-/*
-		$s .= '<div class="vueFilm genre"> <span> Genre :</span> ';
-		foreach($f->getGenre() as $genre){
-			$s .= self::htmlesc($genre) . "  ";
-		}
-		$s .= ' ;
-		$s .= "</div> <ul>\n";
 		$s .= '<li><a href="'.$this->router->filmModifPage($id).'">Modifier</a></li>'."\n";
-		$s .= '<li><a href="'.$this->router->filmDeletionPage($id).'">Supprimer</a></li>'."\n";
-		$s .= "</ul>\n";*/
 		$this->content = $s;
+		$this->content .= "<a href='".$this->router->filmModifPage($id)."' id ='mod-film' class='fab-button'><img src='http://darkham.net/iconeModify.png' alt='M'/></a>";
+		$this->content .= "<a href='".$this->router->filmDeletionPage($id)."' id ='del-film' class='fab-button'><img src='http://darkham.net/iconeDelete.png' alt='^'/></a>";
 
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "film.css");
@@ -81,6 +74,7 @@ class MainView {
 		} else {
 			array_push($this->style, "dc.css");
 		}
+		array_push($this->style, "fab.css");
 	}
 
 	public function makeFilmCreationPage(FilmBuilder $builder) {
@@ -136,13 +130,11 @@ class MainView {
 		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='http://darkham.net/iconeUp.png' alt='^'/></a>";
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
-
 		switch ( $genre ){
 			case "marvel" : array_push($this->style, "marvel.css"); break;
 			case "dc" : array_push($this->style, "dc.css"); break;
 			default : break;
 		}
-
 		array_push($this->style, "fab.css");
 
 	}

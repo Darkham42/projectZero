@@ -32,3 +32,24 @@
 #top {
   margin-bottom: 100px;
 }
+
+#top img {
+  margin-top: 5px;
+}
+
+#mod-film {
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+#mod-film img {
+  margin-top: 5px;
+}
+
+#del-film {
+  margin-bottom: 100px;
+}
+
+#del-film img {
+  margin-top: 5px;
+}
