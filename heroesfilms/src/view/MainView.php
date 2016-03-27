@@ -126,7 +126,9 @@ class MainView {
 		$this->content .= '<button>Modifier</button>'."\n";
 		$this->content .= '</form>'."\n";
 
+		array_push($this->style, "cards.css");
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "form.css");
 	}
 
 	public function makeGalleryPage(array $films, $genre) {
