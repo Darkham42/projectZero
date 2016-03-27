@@ -339,12 +339,12 @@ class MainView {
 		$genreRef = $builder->getGenreRef();
 		$s .= '<div class="form-group">';
 		$s .= '<span>Genres : </span><ul>';
-		$s .= ' <li><label acceskey=C><input type=checkbox name="'.$genreRef.'[]" value="1" checked> Action </label></li>';
-		$s .= '	<li><label acceskey=D><input type=checkbox name="'.$genreRef.'[]" value="2"> Adventure </label></li>';
+		$s .= ' <li><label><input type=checkbox name="'.$genreRef.'[]" value="1"> Action </label></li>';
+		$s .= '	<li><label><input type=checkbox name="'.$genreRef.'[]" value="2"> Adventure </label></li>';
 		$s .= '</ul><ul>';
-		$s .= '	<li><label acceskey=M><input type=checkbox name="'.$genreRef.'[]" value="3"> Comedy </label></li>';
-		$s .= ' <li><label acceskey=M><input type=checkbox name="'.$genreRef.'[]" value="4"> Sci-Fi </label></li>';
-		$s .= ' <li><label acceskey=M><input type=checkbox name="'.$genreRef.'[]" value="5"> Fantasy </label></li>';
+		$s .= '	<li><label><input type=checkbox name="'.$genreRef.'[]" value="3" checked> Comedy </label></li>';
+		$s .= ' <li><label><input type=checkbox name="'.$genreRef.'[]" value="4"> Sci-Fi </label></li>';
+		$s .= ' <li><label><input type=checkbox name="'.$genreRef.'[]" value="5"> Fantasy </label></li>';
 		$s .= '</ul>';
 		$err = $builder->getErrors($genreRef);
 		if ($err !== null)
