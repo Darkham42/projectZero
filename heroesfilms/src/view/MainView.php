@@ -152,14 +152,14 @@ class MainView {
 	}
 
 	public function makeUnknownFilmPage() {
-		$this->title = "Erreur";
+		$this->title = "Error";
 		$this->content = "La film demandée n'existe pas.";
 
 		array_push($this->style, "navbar.css");
 	}
 
 	public function makeUnknownActionPage() {
-		$this->title = "Erreur";
+		$this->title = "Error";
 		$this->content = "La page demandée n'existe pas.";
 
 		array_push($this->style, "navbar.css");
@@ -179,7 +179,7 @@ class MainView {
 	}
 
 	public function makeRegisterPage() {
-		$this->title = "Login";
+		$this->title = "Register";
 		
 		array_push($this->style, "form.css");
 		array_push($this->style, "cards.css");
