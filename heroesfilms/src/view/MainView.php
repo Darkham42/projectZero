@@ -300,7 +300,7 @@ class MainView {
 
 		$dureeRef = $builder->getDureeRef(); 	
 		$s .= '	<div class="form-group">
-						<input id="runtime" spellcheck=false class="form-control" name="'.$dureeRef.'" type="date" alt="film" required="">
+						<input id="runtime" spellcheck=false class="form-control" name="'.$dureeRef.'" type="number" min="90" max="240" alt="film" required="">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="runtime" class="float-label">Runtime (in minutes)

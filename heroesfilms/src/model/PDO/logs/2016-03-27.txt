@@ -1,3 +1,10 @@
+Time : 17:40:00
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO FILMS(
+			id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, background, date_creation, date_last_modif, genre1, genre2, genre3, idUser) 
+			VALUES(
+			:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :background, :creation, :modif, :genre1, :genre2, :genre3, :idUser)
+
 Time : 11:55:03
 SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '1' ORDER BY date_sortie DESC' at line 1
 Raw SQL : SELECT * FROM FILMS univers = '1' ORDER BY date_sortie DESC
