@@ -141,7 +141,7 @@ class MainView {
 	}
 
 	public function makeGalleryPage(array $films, $genre) {
-		$this->title = "Every Movies";
+		$this->title = "HeroesMovies";
 		foreach ($films as $id=>$f) {
 			$this->content .= "<ul class=\"listCardFilms\">\n<li><div class=\"cardFilms\">\n";
 			$this->content .= $this->galleryFilm($f->getId(), $f);
@@ -202,7 +202,7 @@ class MainView {
 	public function about(){
 		$this->title = "About";
 		array_push($this->style, "navbar.css");
-		$this->content = "Numb3rs :  <ul><li>21102326</li> <li>21303622</li></ul>";
+		$this->content = "HeroesMovies is developed by agent 21102326 and agent 21303622";
 	}
 
 	public function makeLogoutPage() {
