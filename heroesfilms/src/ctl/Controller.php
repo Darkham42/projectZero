@@ -79,11 +79,11 @@ class Controller {
 			/* On prépare la page de la nouvelle film */
 			//$this->v->makeFilmPage($filmId, $film);
 			unset($_SESSION['currentFilmBuilder']);
-			$_SESSION["feedback"] = "La film a bien été créée !";
+			$_SESSION["feedback"] = "Film create with success.";
 			$this->router->POSTredirect($this->router->filmPage($filmId));
 		} else {
 			//$this->v->makeFilmCreationPage($builder);
-			$_SESSION["feedback"] = "Erreurs dans le formulaire.";
+			$_SESSION["feedback"] = "Error in the form.";
 			$_SESSION['currentFilmBuilder'] = $builder;
 			$this->router->POSTredirect($this->router->filmCreationPage());
 		}
@@ -111,7 +111,7 @@ class Controller {
 		} else {
 			/* Tout s'est bien passé */
 			//$this->v->makeFilmDeletedPage();
-			$_SESSION["feedback"] = "La film a bien été supprimée !";
+			$_SESSION["feedback"] = "Film exterminate.";
 			$this->router->POSTredirect($this->router->allFilmsPage());
 		}
 	}
@@ -155,18 +155,17 @@ class Controller {
 					throw new Exception("Identifier has disappeared?!");
 				//$this->v->makeFilmPage($filmId, $film);
 				/* Redirection vers la page de la film */
-				$_SESSION["feedback"] = "Le film a bien été modifiée !";
+				$_SESSION["feedback"] = "Film modified, thanks.";
 				unset($_SESSION["modifiedFilmBuilders"][$filmId]);
 				$this->router->POSTredirect($this->router->filmPage($filmId));
 			} else {
 				//$this->v->makeFilmModifPage($filmId, $builder);
 				$_SESSION['modifiedFilmBuilders'][$filmId] = $builder;
-				$_SESSION["feedback"] = "Erreurs dans le formulaire.";
+				$_SESSION["feedback"] = "Error in form.";
 				$this->router->POSTredirect($this->router->filmModifPage($filmId));
 			}
 		}
 	}
-
 }
 
 ?>

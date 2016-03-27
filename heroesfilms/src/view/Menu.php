@@ -12,11 +12,6 @@ class Menu {
 		$this->table = array(
 			"All Movies" => $this->router->allFilmsPage(),
 			"DEBUGAjouter un film" => $this->router->filmCreationPage(),
-			//"MARVEL" => $this->router->filmsMARVELPage(),
-			//"DC" => $this->router->filmsDCPage(),
-			//Page profile seulement si connecté
-			//"Profile" => $this->router->profilePage(),
-			//Page de connection
 			"Log In" => $this->router->logIn(),
 			"Register" => $this->router->register(),
 			"Logout" => $this->router->logout(),
@@ -30,7 +25,6 @@ class Menu {
 
 	public function setMenuConnected($name){
 		$this->table = array(
-			//"All Movies" => $this->router->allFilmsPage(),
 			"MARVEL" => $this->router->filmsMARVELPage(),
 			"DC" => $this->router->filmsDCPage(),
 			"Logout " . $name  => $this->router->logout(),
@@ -40,7 +34,6 @@ class Menu {
 
 	public function setMenuDisconnected(){
 		$this->table = array(
-			//"All Movies" => $this->router->allFilmsPage(),
 			"MARVEL" => $this->router->filmsMARVELPage(),
 			"DC" => $this->router->filmsDCPage(),
 			"Ajouter un film" => $this->router->filmCreationPage(),
