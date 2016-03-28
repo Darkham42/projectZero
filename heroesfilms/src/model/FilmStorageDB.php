@@ -474,8 +474,8 @@ class FilmStorageDB implements FilmStorage {
 		$tab = array();
 		$tab["id"] = $id;
 		$request = $this->db->query("DELETE FROM CASTING WHERE idFilm = :id", $tab);
-		$request = $this->db->query("DELETE FROM films WHERE id = :id", $tab);
-		$request = $this->db->query("SELECT id FROM films WHERE id = :id", $tab);
+		$request = $this->db->query("DELETE FROM FILMS WHERE id = :id", $tab);
+		$request = $this->db->query("SELECT id FROM FILMS WHERE id = :id", $tab);
 		$count = 0 ;
 		foreach($request as $recherche) {
 			$count += 1;

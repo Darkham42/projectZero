@@ -60,7 +60,7 @@ class MainView {
     				<span>Release date :</span> ".self::htmlesc($f->getDateSortie())."<br>
 						<span>Cast :</span> ".self::htmlesc($f->getCasting())."<br>
 						<span>Universe :</span> ".self::htmlesc($f->getUnivers())."<br><br>";
-						if ($fdatem == '0000-00-00'){
+						if ($fdatem == '1970-01-01'){
 							$s.= '<span>Page created :</span> '.$fdatec;
 						} else {
 							$s.= '<span>Last modification :</span> '.$fdatem;
