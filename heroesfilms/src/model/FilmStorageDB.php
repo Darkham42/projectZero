@@ -174,7 +174,7 @@ class FilmStorageDB implements FilmStorage {
 		$idtable = "";
 		$synopsis = "";
 		$idUser = "";
-		$pseudoUser = "Uknown";
+		$pseudoUser = "Unknown";
 
 		foreach($searchProject as $projet) {
 		    $name = $projet['nom'];
@@ -198,12 +198,12 @@ class FilmStorageDB implements FilmStorage {
 
 		}
 
-		$searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $idreal));
-		$real = "";
-		foreach($searchReal as $projet){
-			$real .= $projet['direc'];
+		$searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $projet["id"]));
+		$realisateur = "";
+		foreach($searchReal as $acteur){
+			$realisateur = $acteur['direc'];
 		}
-		$film = new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $real, $casting, $univers, $genre, $creationDate, $modifDate, $idUser, $pseudoUser);
+		$film = new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate, $modifDate, $idUser, $pseudoUser);
 		//var_dump($film);
 		return $film;
 	}
@@ -394,6 +394,7 @@ class FilmStorageDB implements FilmStorage {
 		//idreal est normalement ok.
 
 		$tab = array();
+		$tab["id"] = $f->getId();
 		$tab["name"] = $f->getName();
 		$tab["poster"] = $f->getPoster();
 		$tab["descr"] = $f->getSynopsis();
@@ -402,8 +403,8 @@ class FilmStorageDB implements FilmStorage {
 		$tab["univers"] = $idUnivers;
 		$tab["reali"] = $idreal;
 		$tab["background"] = "URLbackground";
-		$tab["modif"] = $f->getModifDate()->format('Y-m-d H:i:s');;
-		$tab["creation"] = $f->getCreationDate()->format('Y-m-d H:i:s');
+		$tab["modif"] = $f->getModifDate();
+		$tab["creation"] = $f->getCreationDate();
 
 		$i = 1;
 		foreach($f->getGenre() as $genre){
@@ -415,50 +416,26 @@ class FilmStorageDB implements FilmStorage {
 			$tab["genre".$j] = 1;
 		}
 		//Find id for new film
-		$id = 0;
-		foreach($this->db->query("SELECT id FROM FILMS ORDER BY id") as $idFilms) {
-			//echo $id . " " .  $idFilms['id'] . "<br/>";
-			if($id != $idFilms['id']){
-				$tab["id"] = $idFilms['id'];
-				break;
-			}
-			$id ++;
-		}
-		if(!isset($tab["id"])) {
-			$tab["id"] = $id;
-		}
 
+/*
 		foreach($tab as $key => $value){
 			echo "<br/> - " . $key . " : " . $value ;
 
-		}
+		}*/
 
 		/*
 		date_creation, date_last_modif
 		:creation, :modif*/
 		
-		$this->db->query("INSERT INTO FILMS(
-			id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, background, date_creation, date_last_modif, genre1, genre2, genre3) 
-			VALUES(
-			:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :background, :creation, :modif, :genre1, :genre2, :genre3)"
+		$this->db->query('UPDATE FILMS SET
+			 nom = "'. $f->getName() . '",
+			 synopsis = "'. $f->getSynopsis() . '",
+			 date_sortie = "'. $f->getDateSortie() . '",
+			 duree = "'. $f->getDuree() . '",
+			 realisateur = "'. $idreal . '",
+			 date_last_modif = "'. $f->getModifDate()->format('Y-m-d H:i:s') . '"
+			 WHERE id = "'.$f->getId().'"'
 			, $tab);
-
-		//recuperation de l'id du film
-		$requestid = $this->db->query("SELECT id FROM FILMS WHERE nom = :titre", array("titre"=> $f->getName()));
-		$json_data=array();
-		$id;
-		foreach($requestid as $recherche) {
-			$id = $recherche['id'];
-		}
-
-		//ajout dans CASTING
-		$tab = array();
-		$tab["id"] = $id;
-		//$tab["casting"] = $f->getCasting();
-		foreach($f->getCasting() as $act) {
-			$tab["act"] = $act;
-			$this->db->query("INSERT INTO CASTING(idFilm, cast) VALUES(:id, :act)", $tab);
-		}
 
 		echo "FIN INSERT";
 		return $id;
