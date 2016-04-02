@@ -255,7 +255,7 @@ class MainView {
 		$s = "";
 		$s .= '<div class="card">
 						<div class="form-group">
-						<input id="title" spellcheck=false class="form-control" name="'.$nameRef.'" type="text" alt="film" required="">
+						<input id="title" spellcheck=false class="form-control" name="'.$nameRef.'" type="text" alt="film" required="" value = "'.$builder->getData($nameRef).'">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="title" class="float-label">Title
@@ -268,7 +268,7 @@ class MainView {
 
 		$realRef = $builder->getRealisateurRef();
 		$s .= '	<div class="form-group">
-						<input id="director" spellcheck=false class="form-control" name="'.$realRef.'" type="text" alt="film" required="">
+						<input id="director" spellcheck=false class="form-control" name="'.$realRef.'" type="text" alt="film" required=""value = "'.$builder->getData($realRef).'">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="director" class="float-label">Director
@@ -281,7 +281,7 @@ class MainView {
 
 		$dateRef = $builder->getDateSortieRef();
 		$s .= '	<div class="form-group">
-						<input id="date" spellcheck=false class="form-control" name="'.$dateRef.'" type="date" alt="film" required="">
+						<input id="date" spellcheck=false class="form-control" name="'.$dateRef.'" type="date" alt="film" required="" value = "'.$builder->getData($dateRef).'">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="date" class="float-label">Release date (YYYY-MM-DD)
@@ -328,7 +328,7 @@ class MainView {
 
 		$dureeRef = $builder->getDureeRef(); 	
 		$s .= '	<div class="form-group">
-						<input id="runtime" spellcheck=false class="form-control" name="'.$dureeRef.'" type="number" min="90" max="240" alt="film" required="">
+						<input id="runtime" spellcheck=false class="form-control" name="'.$dureeRef.'" type="number" min="90" max="240" alt="film" required="" value = "'.$builder->getData($dureeRef).'">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="runtime" class="float-label">Runtime (in minutes)
@@ -352,7 +352,7 @@ class MainView {
 
 		$universRef = $builder->getUniversRef();
 		$s .= '	<div class="form-group">
-						<span>Universe : </span><select name="'.$universRef.'">
+						<span>Universe : </span><select name="'.$universRef.'" selected = "'.$builder->getData($nameRef).'">
 						<option value="Marvel">Marvel</option>
 						<option value="DC Comics">DC Comics</option>
 						</select>
@@ -383,7 +383,7 @@ class MainView {
 		$s .= '	<br><div class="form-group">
 						<label for="storyline">Storyline</label>
 						<span class="form-highlight"></span>
-						<textarea spellcheck=false class="form-control-textarea" name="'.$synopsis.'" maxlength="500" alt="film" required=""></textarea>
+						<textarea spellcheck=false class="form-control-textarea" name="'.$synopsis.'" maxlength="500" alt="film" required="">'.$builder->getData($synopsis).'</textarea>
 					';
 		$err = $builder->getErrors($synopsis);
 		if ($err !== null)

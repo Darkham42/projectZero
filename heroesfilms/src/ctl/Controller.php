@@ -121,6 +121,7 @@ class Controller {
 			$builder = $_SESSION['modifiedFilmBuilders'][$filmId];
 			/* Préparation de la page de formulaire */
 			$this->v->makeFilmModifPage($filmId, $builder);
+			echo "session " . $_SESSION['modifiedFilmBuilders'][$filmId];
 		} else {
 			/* On récupère en BD la film à modifier */
 			$f = $this->filmdb->read($filmId);
@@ -131,6 +132,7 @@ class Controller {
 				$builder = FilmBuilder::buildFromFilm($f);
 				/* Préparation de la page de formulaire */
 				$this->v->makeFilmModifPage($filmId, $builder);
+				echo "builder ";
 			}
 		}
 	}
