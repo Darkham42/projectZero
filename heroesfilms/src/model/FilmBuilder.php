@@ -62,12 +62,7 @@ class FilmBuilder {
 			$this->errors["univers"] = "Add a universe";
 		else if (!isset($this->data["synopsis"]) || $this->data["synopsis"] === "")
 			$this->errors["synopsis"] = "Add some words about the movie";
-		else if ($this->data["poster"] === "") {
-			//TO:DO faire en sorte que lorsque champ vide on met les images vides prensente dans assets
-			//poster ok juste background marche pas
-			$this->data["poster"] = "http://localhost/projectZero/heroesFilms/assets/NoPoster.jpg";
-			$this->data["background"] = "http://localhost/projectZero/heroesFilms/assets/NoBackground.jpg";
-		} else if (!isset($this->data["genre"]) || $this->data["genre"] === "")
+		else if (!isset($this->data["genre"]) || $this->data["genre"] === "")
 			$this->errors["genre"] = "Chek a genre";
 		else if (mb_strlen($this->data["name"], 'UTF-8') >= 30)
 			$this->errors["name"] = "Too many characters, 30 max";

@@ -83,8 +83,12 @@ class FilmStorageDB implements FilmStorage {
 	  $jsonbackground = json_decode($background, true);
 
 		$affiche = 'https://image.tmdb.org/t/p/original'.$jsonData['poster_path'];
-
 		$background = 'https://image.tmdb.org/t/p/original'.$jsonbackground['images']['backdrops'][0]['file_path'];
+
+		if (strcmp($affiche,'https://image.tmdb.org/t/p/original') == 0) {
+			$affiche = "http://localhost/projectZero/heroesFilms/assets/NoPoster.jpg";
+			$background = "http://localhost/projectZero/heroesFilms/assets/NoBackground.jpg";
+		} 
 
 		$tab = array();
 		$tab["name"] = $f->getName();
