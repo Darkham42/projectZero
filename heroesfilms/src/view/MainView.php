@@ -298,25 +298,6 @@ class MainView {
 
 
 		$poster = $builder->getPosterRef();
-		/**
-		 * Recupérer le chiffres pour faire ça avec :
-		 *
-		if(isset($_POST['submit'])) {
-			$film = $_POST['ref'];
-
-		  //Récupération des données du film (titre, genre, affiche)
-		  $filmData = file_get_contents('http://api.themoviedb.org/3/movie/'.$film.'?api_key=0d54fe0f0576cb6a08751326b1ec4a98&language=en&include_image_language=en,null');
-		  $jsonData = json_decode($filmData, true);
-
-		  //Récupération de l'image d'arrière plan le mieux noté
-		  $background = file_get_contents('https://api.themoviedb.org/3/movie/'.$film.'?api_key=0d54fe0f0576cb6a08751326b1ec4a98&append_to_response=images');
-		  $jsonbackground = json_decode($background, true);
-
-			$affiche = 'https://image.tmdb.org/t/p/original'.$jsonData['poster_path'];
-
-			$background = 'https://image.tmdb.org/t/p/original'.$jsonbackground['images']['backdrops'][0]['file_path'];
-  	}
-		 */
 		$s .= ' <div class="form-group">
 						<input id="poster" spellcheck=false class="form-control" name="'.$poster.'" type="number" maxlength="6" placeholder="209112">
 						<span class="form-highlight"></span>

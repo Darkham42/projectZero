@@ -71,15 +71,30 @@ class FilmStorageDB implements FilmStorage {
 
 		//idreal est normalement ok.
 
+		//Usage de TMDB
+		$film = $f->getPoster();
+
+		//Récupération des données du film (titre, genre, affiche) on ne peut pas juste avoir l'affiche
+		$filmData = file_get_contents('http://api.themoviedb.org/3/movie/'.$film.'?api_key=0d54fe0f0576cb6a08751326b1ec4a98&language=en&include_image_language=en,null');
+	  $jsonData = json_decode($filmData, true);
+
+	  //Récupération de l'image d'arrière plan le mieux noté
+	  $background = file_get_contents('https://api.themoviedb.org/3/movie/'.$film.'?api_key=0d54fe0f0576cb6a08751326b1ec4a98&append_to_response=images');
+	  $jsonbackground = json_decode($background, true);
+
+		$affiche = 'https://image.tmdb.org/t/p/original'.$jsonData['poster_path'];
+
+		$background = 'https://image.tmdb.org/t/p/original'.$jsonbackground['images']['backdrops'][0]['file_path'];
+
 		$tab = array();
 		$tab["name"] = $f->getName();
-		$tab["poster"] = $f->getPoster();
+		$tab["poster"] = $affiche;
 		$tab["descr"] = $f->getSynopsis();
 		$tab["sortie"] = $f->getDateSortie();
 		$tab["duree"] = $f->getDuree();
 		$tab["univers"] = $idUnivers;
 		$tab["reali"] = $idreal;
-		$tab["background"] = $f->getBackground();
+		$tab["background"] = $background;
 		//$tab["modif"] = $f->getModifDate()->format('Y-m-d H:i:s');
 		$tab["modif"] = "1970-01-01";
 		$tab["creation"] = $f->getCreationDate()->format('Y-m-d H:i:s');
