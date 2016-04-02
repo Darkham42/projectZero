@@ -145,6 +145,9 @@ class MainView {
 
 	public function makeGalleryPage(array $films, $genre) {
 		$this->title = "HeroesFilms";
+		if(sizeof($films) == 0){
+			$this->content .= "This listing is empty. Fill it ! ;)";
+		}
 		foreach ($films as $id=>$f) {
 			$this->content .= "<ul class=\"listCardFilms\">\n<li><div class=\"cardFilms\">\n";
 			$this->content .= $this->galleryFilm($f->getId(), $f);
@@ -153,7 +156,7 @@ class MainView {
 		if (isset($_SESSION['id'])){
 			$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='assets/icones/iconeAdd.png' alt='+'/></a>";
 		}
-		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='assets/icones/iconeUp.png' alt='^'/></a>";
+		
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
 		switch ( $genre ){
@@ -161,7 +164,7 @@ class MainView {
 			case "dc" : array_push($this->style, "dc.css"); break;
 			default : break;
 		}
-		array_push($this->style, "fab.css");
+
 
 	}
 
@@ -319,7 +322,7 @@ class MainView {
 						<span class="form-bar"></span>
 						<label for="poster" class="float-label">Poster (ref from <a href="https://www.themoviedb.org/movie" target="_blank">TMDb</a>)
 					';
-		$s .= self::htmlesc($builder->getData($poster));
+		//$s .= self::htmlesc($builder->getData($poster));
 		$err = $builder->getErrors($poster);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';
@@ -415,7 +418,20 @@ class MainView {
 		if ($this->title === null || $this->content === null) {
 			$this->makeUnexpectedErrorPage();
 		}
+		if(!isset($_SESSION["vu"])){
+			$this->content  .= '
+			<input type="checkbox" id="checkbox" name="checkbox" value="checkbox" checked="checked" style ="display:none;">
+			<div id="topbar">By closing this message, you consent to our cookies on this device in accordance with our cookie policy unless you have disabled them.
+			 <label for="checkbox" id="hideTop" title="Close"">x</label>
+			</div>';
+			array_push($this->style, "testNotif.css");
 
+		} 
+		$_SESSION["vu"] = "ok";
+		
+
+		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='assets/icones/iconeUp.png' alt='^'/></a>";
+		array_push($this->style, "fab.css");
 		include("squeletteView.php");
 
 	}
