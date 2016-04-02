@@ -157,7 +157,7 @@ class MainView {
 			$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='assets/icones/iconeAdd.png' alt='+'/></a>";
 		}
 		
-		//$this->content .= "<a href='#top' id ='topFAB' class='fab-button'><img src='assets/icones/iconeUp.png' alt='^'/></a>";
+		$this->content .= "<a href='#top' id ='topFAB' class='fab-button'><img src='assets/icones/iconeUp.png' alt='^'/></a>";
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
 		switch ( $genre ){
@@ -430,8 +430,6 @@ class MainView {
 		} 
 		$_SESSION["vu"] = "ok";
 		
-
-		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='assets/icones/iconeUp.png' alt='^'/></a>";
 		array_push($this->style, "fab.css");
 		include("squeletteView.php");
 
