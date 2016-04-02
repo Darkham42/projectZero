@@ -30,7 +30,7 @@ div.cardFilms p.card-title {
 
 div.cardFilms p.lock {
 	border-top: 1px solid #e5e5e5;
-	background-image: url('assets/icones/iconeLock.png');
+	background-image: url('../assets/icones/iconeLock.png');
 	background-repeat: no-repeat;
 	padding: 6px 0 0 30px;
 	height: 30px;
@@ -39,7 +39,7 @@ div.cardFilms p.lock {
 
 div.cardFilms p.plus {
 	border-top: 1px solid #e5e5e5;
-	background-image: url('assets/icones/iconePlus.png');
+	background-image: url('../assets/icones/iconePlus.png');
 	background-repeat: no-repeat;
 	padding: 6px 0 0 30px;
 	height: 30px;
