@@ -68,8 +68,8 @@ class MainView {
 		$s.='</div>
   			</div>';
 		$this->content = $s;
-		$this->content .= "<a href='".$this->router->filmModifPage($id)."' id ='mod-film' class='fab-button'><img src='http://darkham.net/iconeModify.png' alt='M'/></a>";
-		$this->content .= "<a href='".$this->router->filmDeletionPage($id)."' id ='del-film' class='fab-button'><img src='http://darkham.net/iconeDelete.png' alt='^'/></a>";
+		$this->content .= "<a href='".$this->router->filmModifPage($id)."' id ='mod-film' class='fab-button'><img src='assets/icones/iconeModify.png' alt='M'/></a>";
+		$this->content .= "<a href='".$this->router->filmDeletionPage($id)."' id ='del-film' class='fab-button'><img src='assets/icones/iconeDelete.png' alt='^'/></a>";
 
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "film.css");
@@ -88,7 +88,7 @@ class MainView {
 		$this->title = "Add a film";
 		$s = '<form action="'.$this->router->saveCreatedFilm().'" method="POST" class="form-group">'."\n";
 		$s .= self::getFormFields($builder);
-		$s .= "<div class='form-group'>\n<button type='submit'>Créer</button>\n</div>\n";
+		$s .= "<div class='form-group'>\n<button type='submit'>Create</button>\n</div>\n";
 		$s .= "<br><br></div></form>\n";
 		$this->content = $s;
 
@@ -147,8 +147,8 @@ class MainView {
 			$this->content .= $this->galleryFilm($f->getId(), $f);
 			$this->content .= "</div>\n</li>\n</ul>\n";
 		}
-		$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='http://darkham.net/iconeAdd.png' alt='+'/></a>";
-		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='http://darkham.net/iconeUp.png' alt='^'/></a>";
+		$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='assets/icones/iconeAdd.png' alt='+'/></a>";
+		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='assets/icones/iconeUp.png' alt='^'/></a>";
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
 		switch ( $genre ){
@@ -289,9 +289,14 @@ class MainView {
 
 
 		$poster = $builder->getPosterRef();
-		$s .= '<p><label><span class="titrelabel">Lien URL de l\'affiche : </span><input type="date" name="'.$poster.'" value="';
+
+		$s .= ' <div class="form-group">
+						<input id="poster" spellcheck=false class="form-control" name="'.$poster.'" type="text" alt="film" required="" maxlength="6" placeholder="209112">
+						<span class="form-highlight"></span>
+						<span class="form-bar"></span>
+						<label for="poster" class="float-label">Poster (ref from <a href="https://www.themoviedb.org/movie" target="_blank">TMDb</a>)
+					';
 		$s .= self::htmlesc($builder->getData($poster));
-		$s .= "\" />";
 		$err = $builder->getErrors($poster);
 		if ($err !== null)
 			$s .= ' <span class="error">'.$err.'</span>';

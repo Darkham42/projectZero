@@ -18,6 +18,7 @@ class FilmBuilder {
 				"date_sortie" => "",
 				"duree" => "",
 				"poster" => "",
+				"background" => "",
 				"synopsis" => "",
 				"realisateur" => "",
 				"casting" => "",
@@ -38,6 +39,7 @@ class FilmBuilder {
 			"synopsis" => $film->getSynopsis(),
 			"duree" => $film->getDuree(),
 			"poster" => $film->getPoster(),
+			"background" => $film->getBackground(),
 			"realisateur" => $film->getRealisateur(),
 			"casting" => $film->getCasting(),
 			"univers" => $film->getUnivers(),
@@ -51,19 +53,22 @@ class FilmBuilder {
 		$this->errors = array();
 		
 		if (!isset($this->data["name"]) || $this->data["name"] === "")
-			$this->errors["name"] = "Vous devez entrer un nom";
+			$this->errors["name"] = "Add a name";
 		else if (!isset($this->data["date_sortie"]) )					//&& isValidDate($this->data["name"])
-			$this->errors["date_sortie"] = "Vous devez entrer une date";
+			$this->errors["date_sortie"] = "Add a date";
 		else if (!isset($this->data["realisateur"]) || $this->data["realisateur"] === "")
-			$this->errors["realisateur"] = "Vous devez entrer un realisateur";
+			$this->errors["realisateur"] = "Add a director";
 		else if (!isset($this->data["univers"]) || $this->data["univers"] === "")
-			$this->errors["univers"] = "Vous devez entrer un univers";
+			$this->errors["univers"] = "Add a universe";
 		else if (!isset($this->data["synopsis"]) || $this->data["synopsis"] === "")
-			$this->errors["synopsis"] = "Vous devez entrer un synopsis";
-		else if (!isset($this->data["genre"]) || $this->data["genre"] === "")
-			$this->errors["genre"] = "Vous devez entrer un genre";
+			$this->errors["synopsis"] = "Add some words about the movie";
+		else if ($this->data["poster"] === "") {
+			$this->data["poster"] = "test";
+			$this->data["background"] = "test";
+		} else if (!isset($this->data["genre"]) || $this->data["genre"] === "")
+			$this->errors["genre"] = "Chek a genre";
 		else if (mb_strlen($this->data["name"], 'UTF-8') >= 30)
-			$this->errors["name"] = "Le nom doit faire moins de 30 caractères";
+			$this->errors["name"] = "Too many characters, 30 max";
 		
 		return count($this->errors) === 0;
 	}

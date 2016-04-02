@@ -16,7 +16,7 @@ div.card p.card-title {
 
 div.card p.lock {
 	border-top: 1px solid #e5e5e5;
-	background-image: url('http://darkham.net/iconeLock.png');
+	background-image: url('assets/icones/iconeLock.png');
 	background-repeat: no-repeat;
 	padding: 6px 0 0 30px;
 	height: 30px;
@@ -27,7 +27,7 @@ div.card p.lock {
 
 div.card p.plus {
 	border-top: 1px solid #e5e5e5;
-	background-image: url('http://darkham.net/iconePlus.png');
+	background-image: url('assets/icones/iconePlus.png');
 	background-repeat: no-repeat;
 	padding: 6px 0 0 30px;
 	height: 30px;
