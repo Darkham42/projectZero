@@ -46,22 +46,22 @@
 
 <div class="card">
 	<p class="card-title">Log In</p>
-	<img src="http://s3.foxfilm.com/foxmovies/production/films/103/images/gallery/deadpool1-gallery-image.jpg" class="full" />
+	<img src="assets/logIn.jpg" alt="LogIn" class="full" />
 	<form method="POST" action='#'>
 		<div class="form-group">
-		<input id="mail" spellcheck=false class="form-control" name="mail" type="email" size="20" alt="login" required="">
+		<input id="mail" spellcheck=false class="form-control" name="mail" type="email" size="20" required="">
 		<span class="form-highlight"></span>
 		<span class="form-bar"></span>
-		<label for="username" class="float-label">Email</label>
+		<label class="float-label">Email</label>
 		</div>
 		<div class="form-group">
-			<input id="password" class="form-control" spellcheck=false name="password" type="password" size="20" alt="login" required="">
+			<input id="password" class="form-control" spellcheck=false name="password" type="password" size="20" required="">
 			<span class="form-highlight"></span>
 			<span class="form-bar"></span>
 			<label for="password" class="float-label">Password</label>
 		</div>
 		<div class="form-group">
-			<button type="submit" value="Valider" name="submit" ripple>Sign in</button>
+			<button type="submit" value="Valider" name="submit">Sign in</button>
 		</div>
 	</form>
 	<p class="url"><a href=".?action=register">Need new account ?</a></p>

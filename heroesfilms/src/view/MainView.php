@@ -113,7 +113,7 @@ class MainView {
 											<form method='POST' action=".$this->router->confirmFilmDeletion($id).">
 											<p>{$fname} will be erased from the database, do you valide this ?</p>
 												<div class='form-group'>
-													<button type='submit' name='submit' ripple>EX-TER-MIN-ATE</button>
+													<button type='submit' name='submit'>EX-TER-MIN-ATE</button>
 												</div><br>
 											</form>
 											</div>";
