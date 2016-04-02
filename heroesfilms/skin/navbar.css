@@ -54,6 +54,12 @@ body {
   line-height: 25px;
 }
 
+.feedback {
+  float: left;
+  border-radius: 50%;
+  border:1px black solid;
+}
+
 @media screen and (max-width: 770px) {
   .logo {
     display: none;
@@ -84,3 +90,4 @@ body {
     width: 1170px;
   }
 }
+

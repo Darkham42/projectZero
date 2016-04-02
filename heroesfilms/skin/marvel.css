@@ -1,3 +1,13 @@
 .navbar {  
   background-color: #F0141E;
 }
+
+.fab-button {
+  border-radius: 50%;
+  background: #F0141E;
+}
+
+
+.feedback {
+  background: #F0141E;
+}

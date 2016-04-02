@@ -33,6 +33,7 @@ class MainView {
 		
 		$this->title = "HeroesFilms";
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "fab.css");
 
 	}
 
@@ -98,6 +99,7 @@ class MainView {
 		array_push($this->style, "cards.css");
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "form.css");
+		array_push($this->style, "fab.css");
 	}
 
 /**
@@ -121,6 +123,7 @@ class MainView {
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cards.css");
 		array_push($this->style, "form.css");
+		array_push($this->style, "fab.css");
 	}
 
 	public function makeFilmDeletedPage() {
@@ -128,6 +131,7 @@ class MainView {
 		$this->content = "<p>The movie has been correctly deleted : EX-TER-MI-NA-TED.</p>";
 
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "fab.css");
 	}
 
 	public function makeFilmModifPage($id, FilmBuilder $builder) {
@@ -141,6 +145,7 @@ class MainView {
 		array_push($this->style, "cards.css");
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "form.css");
+		array_push($this->style, "fab.css");
 	}
 
 	public function makeGalleryPage(array $films, $genre) {
@@ -160,6 +165,7 @@ class MainView {
 		$this->content .= "<a href='#top' id ='topFAB' class='fab-button'><img src='assets/icones/iconeUp.png' alt='^'/></a>";
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
+		array_push($this->style, "fab.css");
 		switch ( $genre ){
 			case "marvel" : array_push($this->style, "marvel.css"); break;
 			case "dc" : array_push($this->style, "dc.css"); break;
@@ -174,6 +180,7 @@ class MainView {
 		$this->content = "The movie doesn't exist. 404 not found.";
 
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "fab.css");
 	}
 
 	public function makeUnknownActionPage() {
@@ -181,6 +188,7 @@ class MainView {
 		$this->content = "The page doesn't exist. What do you want to see ?! ";
 
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "fab.css");
 	}
 
 	public function makeLoginPage() {
@@ -194,6 +202,7 @@ class MainView {
 		$this->content = ob_get_clean(); 
 
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "fab.css");
 	}
 
 	public function makeRegisterPage() {
@@ -202,6 +211,7 @@ class MainView {
 		array_push($this->style, "form.css");
 		array_push($this->style, "cards.css");
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "fab.css");
 		ob_start();
 		include 'registerForm.php';
 		$this->content = ob_get_clean(); 
@@ -211,7 +221,10 @@ class MainView {
 	public function about(){
 		$this->title = "About";
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "fab.css");
 		$this->content = "HeroesFilms is developed by agent 21102326 and agent 21303622";
+		$this->content .= "<p>Add on the site-web :</p>" ;
+		$this->content .= "<ul><li>Find poster and background with TMDB</li><li>JS script to add between 3 and 8 actors per movie</li><li>Various displays of lists (per universe, per member)</li><li>CSS which change with pages (Marvel/DC/Others)</li><li>With first connexion, a pop-up appears to prevent for uses of cookies.</li></ul>";
 	}
 
 	public function makeLogoutPage() {
@@ -225,6 +238,7 @@ class MainView {
 		$this->title = "Disconnected";
 		$this->content = "You have been disconnected.";
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "fab.css");
 	}
 
 	/* Génère une page d'erreur inattendue. Peut optionnellement
@@ -235,6 +249,7 @@ class MainView {
 		$this->content = "An unexpected error has been detected.";
 
 		array_push($this->style, "navbar.css");
+		array_push($this->style, "fab.css");
 	}
 
 	/******************************************************************************/
@@ -411,7 +426,7 @@ class MainView {
 		} 
 		$_SESSION["vu"] = "ok";
 		
-		array_push($this->style, "fab.css");
+		
 		include("squeletteView.php");
 
 	}
