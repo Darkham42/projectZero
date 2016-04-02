@@ -156,7 +156,11 @@ class MainView {
 		if (isset($_SESSION['id'])){
 			$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='assets/icones/iconeAdd.png' alt='+'/></a>";
 		}
+<<<<<<< HEAD
 		
+=======
+		$this->content .= "<a href='#top' id ='topFAB' class='fab-button'><img src='assets/icones/iconeUp.png' alt='^'/></a>";
+>>>>>>> origin/master
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");
 		switch ( $genre ){
