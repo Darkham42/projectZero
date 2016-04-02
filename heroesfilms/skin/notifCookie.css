@@ -1,7 +1,6 @@
-/* Styling the bar itself */
 #topbar {
 	position: fixed;
-	bottom: -100px;
+	bottom: -130px;
 	display: block;
 	box-sizing: border-box;
 	width: 100%;
@@ -10,14 +9,9 @@
 	color: #ffffff;
 	font-size: 14px;
 	border-radius: 5px;
-	margin-left: 10px;
+	margin-left: -100px;
 	max-width: 40%;
-	/* verif si marche toujours sans une fois intégré*/
 	font: normal 14px 'Roboto',arial,sans-serif;
-}
-
-#checkbox {
- /*display: none;*/
 }
 
 #hideTop {

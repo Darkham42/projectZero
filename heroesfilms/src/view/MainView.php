@@ -425,7 +425,7 @@ class MainView {
 			<div id="topbar">By closing this message, you consent to our cookies on this device in accordance with our cookie policy unless you have disabled them.
 			 <label for="checkbox" id="hideTop" title="Close"">x</label>
 			</div>';
-			array_push($this->style, "testNotif.css");
+			array_push($this->style, "notifCookie.css");
 
 		} 
 		$_SESSION["vu"] = "ok";
