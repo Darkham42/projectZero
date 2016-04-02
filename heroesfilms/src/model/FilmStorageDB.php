@@ -80,7 +80,8 @@ class FilmStorageDB implements FilmStorage {
 		$tab["univers"] = $idUnivers;
 		$tab["reali"] = $idreal;
 		$tab["background"] = $f->getBackground();
-		$tab["modif"] = $f->getModifDate()->format('Y-m-d H:i:s');;
+		//$tab["modif"] = $f->getModifDate()->format('Y-m-d H:i:s');
+		$tab["modif"] = "1970-01-01";
 		$tab["creation"] = $f->getCreationDate()->format('Y-m-d H:i:s');
 		$tab["idUser"] = $_SESSION["id"];
 

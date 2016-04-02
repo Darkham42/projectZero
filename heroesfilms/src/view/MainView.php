@@ -68,8 +68,11 @@ class MainView {
 		$s.='</div>
   			</div>';
 		$this->content = $s;
-		$this->content .= "<a href='".$this->router->filmModifPage($id)."' id ='mod-film' class='fab-button'><img src='assets/icones/iconeModify.png' alt='M'/></a>";
-		$this->content .= "<a href='".$this->router->filmDeletionPage($id)."' id ='del-film' class='fab-button'><img src='assets/icones/iconeDelete.png' alt='^'/></a>";
+
+		if (isset($_SESSION['id']) && ($_SESSION['id'] === $f->getUserId())){
+			$this->content .= "<a href='".$this->router->filmModifPage($id)."' id ='mod-film' class='fab-button'><img src='assets/icones/iconeModify.png' alt='M'/></a>";
+			$this->content .= "<a href='".$this->router->filmDeletionPage($id)."' id ='del-film' class='fab-button'><img src='assets/icones/iconeDelete.png' alt='^'/></a>";
+		}
 
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "film.css");
@@ -147,7 +150,9 @@ class MainView {
 			$this->content .= $this->galleryFilm($f->getId(), $f);
 			$this->content .= "</div>\n</li>\n</ul>\n";
 		}
-		$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='assets/icones/iconeAdd.png' alt='+'/></a>";
+		if (isset($_SESSION['id'])){
+			$this->content .= "<a href='".$this->router->filmCreationPage()."' id ='add-film' class='fab-button'><img src='assets/icones/iconeAdd.png' alt='+'/></a>";
+		}
 		$this->content .= "<a href='#top' id ='top' class='fab-button'><img src='assets/icones/iconeUp.png' alt='^'/></a>";
 		array_push($this->style, "navbar.css");
 		array_push($this->style, "cardsFilms.css");

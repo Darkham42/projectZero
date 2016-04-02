@@ -4,7 +4,7 @@
    
     if(isset($_POST['submit'])) {
         
-        $pseudo = $_POST['nom'] . $_POST['prenom'];
+        $pseudo = $_POST['pseudo'];
         $password = $_POST['password'];
         $mail = $_POST['mail'];
 
