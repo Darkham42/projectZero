@@ -179,11 +179,26 @@ class FilmBuilder {
 
 	/* Met à jour une instance de Film avec les données
 	 * fournies. */
-	public function updateFilm(Film $c) {
+	public function updateFilm(Film $f) {
 		if (isset($this->data["name"]))
-			$c->setName($this->data["name"]);
-		if (isset($this->data["date_sortie"]))
-			$c->setDateSortie($this->data["date_sortie"]);
+			$f->setName($this->data["name"]);
+		if (isset($this->data["duree"]))
+			$f->setDuree($this->data["duree"]);
+		if (isset($this->data["poster"]))
+			$f->setPoster($this->data["poster"]);
+		if (isset($this->data["background"]))
+			$f->setBackground($this->data["background"]);
+		if (isset($this->data["synopsis"]))
+			$f->setSynopsis($this->data["synopsis"]);
+		if (isset($this->data["realisateur"]))
+			$f->setRealisateur($this->data["realisateur"]);
+		if (isset($this->data["casting"]))
+			$f->setCasting($this->data["casting"]);
+		if (isset($this->data["univers"]))
+			$f->setUnivers($this->data["univers"]);
+		if (isset($this->data["genre"]))
+			$f->setGenre($this->data["genre"]);
+
 	}
 
 	public function isValidDate($date){

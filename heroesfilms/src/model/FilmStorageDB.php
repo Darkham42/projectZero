@@ -406,7 +406,18 @@ class FilmStorageDB implements FilmStorage {
 				$idUnivers = 3; break;
 		}
 
-		//idreal est normalement ok.
+		//on supprime le casting
+		$searchCasting = $this->db->query("DELETE FROM CASTING WHERE idFilm = :i", array("i"=> $id));
+
+		//ajout dans CASTING
+		$tab = array();
+		$tab["id"] = $id;
+		//$tab["casting"] = $f->getCasting();
+		foreach($f->getCasting() as $act) {
+			$tab["act"] = $act;
+			$this->db->query("INSERT INTO CASTING(idFilm, cast) VALUES(:id, :act)", $tab);
+		}
+
 
 		$tab = array();
 		$tab["id"] = $f->getId();
@@ -441,22 +452,24 @@ class FilmStorageDB implements FilmStorage {
 		/*
 		date_creation, date_last_modif
 		:creation, :modif*/
-		
+		echo " new " . $f->getSynopsis();
 		$this->db->query('UPDATE FILMS SET
 			 nom = "'. $f->getName() . '",
 			 synopsis = "'. $f->getSynopsis() . '",
 			 date_sortie = "'. $f->getDateSortie() . '",
 			 duree = "'. $f->getDuree() . '",
 			 realisateur = "'. $idreal . '",
+			 genre1 = "'. $tab["genre1"] . '",
+			 genre2 = "'. $tab["genre2"] . '",
+			 genre3 = "'. $tab["genre3"] . '",
 			 date_last_modif = "'. $f->getModifDate()->format('Y-m-d H:i:s') . '"
 			 WHERE id = "'.$f->getId().'"'
 			, $tab);
 
 		echo "FIN INSERT";
+
+		//univers = "'. $f->getUnivers() . '",
 		return $id;
-
-
-
 	}
 
 	/* Supprime une film. Renvoie

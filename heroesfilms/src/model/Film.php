@@ -139,7 +139,7 @@ class Film {
 	}
 
 	public function setRealisateur($realisateur) {
-		if (!self::isNameValid($realisateur))
+		if (!self::isValidName($realisateur))
 			throw new Exception("Invalid realisator name");
 		$this->realisateur = $realisateur;
 		$this->modifDate = new DateTime();

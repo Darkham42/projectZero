@@ -1,3 +1,18 @@
+Time : 18:31:56
+SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_1` FOREIGN KEY (`univers`) REFERENCES `univers` (`id`))
+Raw SQL : UPDATE FILMS SET
+			 nom = "Batman Begins new",
+			 synopsis = "True Storyline NEW",
+			 date_sortie = "2005-06-15",
+			 duree = "97",
+			 realisateur = "2",
+			 univers = "DC Comics",
+			 genre1 = "2",
+			 genre2 = "1",
+			 genre3 = "1",
+			 date_last_modif = "2016-04-02 18:31:56"
+			 WHERE id = "2"
+
 Time : 16:59:06
 SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`heroesfilms`.`films`, CONSTRAINT `films_ibfk_1` FOREIGN KEY (`univers`) REFERENCES `univers` (`id`))
 Raw SQL : UPDATE FILMS SET
