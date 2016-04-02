@@ -109,7 +109,7 @@ class MainView {
 		$this->title = "Delete a film";
 		$this->content = "<div class='card'>
 											<p class='card-title'>Delete {$fname}</p>
-											<img src='http://3.bp.blogspot.com/-pQzj6tREL1E/VozqwO0LboI/AAAAAAAAULg/PYf01Li0zy8/s1600/Deadpool%2B3.jpg' class='full' />
+											<img src='assets/delete.jpg' class='full' />
 											<form method='POST' action=".$this->router->confirmFilmDeletion($id).">
 											<p>{$fname} will be erased from the database, do you valide this ?</p>
 												<div class='form-group'>
@@ -259,7 +259,7 @@ class MainView {
 		$s = "";
 		$s .= '<div class="card">
 						<div class="form-group">
-						<input id="title" spellcheck=false class="form-control" name="'.$nameRef.'" type="text" alt="film" required="" value = "'.$builder->getData($nameRef).'">
+						<input id="title" spellcheck=false class="form-control" name="'.$nameRef.'" type="text" required="" value = "'.$builder->getData($nameRef).'">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="title" class="float-label">Title
@@ -272,7 +272,7 @@ class MainView {
 
 		$realRef = $builder->getRealisateurRef();
 		$s .= '	<div class="form-group">
-						<input id="director" spellcheck=false class="form-control" name="'.$realRef.'" type="text" alt="film" required=""value = "'.$builder->getData($realRef).'">
+						<input id="director" spellcheck=false class="form-control" name="'.$realRef.'" type="text" required=""value = "'.$builder->getData($realRef).'">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="director" class="float-label">Director
@@ -285,7 +285,7 @@ class MainView {
 
 		$dateRef = $builder->getDateSortieRef();
 		$s .= '	<div class="form-group">
-						<input id="date" spellcheck=false class="form-control" name="'.$dateRef.'" type="date" alt="film" required="" value = "'.$builder->getData($dateRef).'">
+						<input id="date" spellcheck=false class="form-control" name="'.$dateRef.'" type="date" required="" value = "'.$builder->getData($dateRef).'">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="date" class="float-label">Release date (YYYY-MM-DD)
@@ -318,7 +318,7 @@ class MainView {
   	}
 		 */
 		$s .= ' <div class="form-group">
-						<input id="poster" spellcheck=false class="form-control" name="'.$poster.'" type="number" alt="film" maxlength="6" placeholder="209112">
+						<input id="poster" spellcheck=false class="form-control" name="'.$poster.'" type="number" maxlength="6" placeholder="209112">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="poster" class="float-label">Poster (ref from <a href="https://www.themoviedb.org/movie" target="_blank">TMDb</a>)
@@ -332,7 +332,7 @@ class MainView {
 
 		$dureeRef = $builder->getDureeRef(); 	
 		$s .= '	<div class="form-group">
-						<input id="runtime" spellcheck=false class="form-control" name="'.$dureeRef.'" type="number" min="90" max="240" alt="film" required="" value = "'.$builder->getData($dureeRef).'">
+						<input id="runtime" spellcheck=false class="form-control" name="'.$dureeRef.'" type="number" min="90" max="240" required="" value = "'.$builder->getData($dureeRef).'">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="runtime" class="float-label">Runtime (in minutes)
@@ -370,10 +370,10 @@ class MainView {
 		$genreRef = $builder->getGenreRef();
 		$s .= '<div class="form-group">';
 		$s .= '<span>Genres : </span><ul>';
-		$s .= ' <li><label><input type=checkbox name="'.$genreRef.'[]" value="1" checked> Action </label></li>';
+		$s .= ' <li><label><input type=checkbox name="'.$genreRef.'[]" value="1"> Action </label></li>';
 		$s .= '	<li><label><input type=checkbox name="'.$genreRef.'[]" value="2"> Adventure </label></li>';
 		$s .= '</ul><ul>';
-		$s .= '	<li><label><input type=checkbox name="'.$genreRef.'[]" value="3"> Comedy </label></li>';
+		$s .= '	<li><label><input type=checkbox name="'.$genreRef.'[]" value="3" checked> Comedy </label></li>';
 		$s .= ' <li><label><input type=checkbox name="'.$genreRef.'[]" value="4"> Sci-Fi </label></li>';
 		$s .= ' <li><label><input type=checkbox name="'.$genreRef.'[]" value="5"> Fantasy </label></li>';
 		$s .= '</ul>';
@@ -387,7 +387,7 @@ class MainView {
 		$s .= '	<br><div class="form-group">
 						<label for="storyline">Storyline</label>
 						<span class="form-highlight"></span>
-						<textarea spellcheck=false class="form-control-textarea" name="'.$synopsis.'" maxlength="500" alt="film" required="">'.$builder->getData($synopsis).'</textarea>
+						<textarea spellcheck=false class="form-control-textarea" name="'.$synopsis.'" maxlength="500" required="">'.$builder->getData($synopsis).'</textarea>
 					';
 		$err = $builder->getErrors($synopsis);
 		if ($err !== null)
