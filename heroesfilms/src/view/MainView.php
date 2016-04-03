@@ -300,7 +300,7 @@ class MainView {
 
 		$dateRef = $builder->getDateSortieRef();
 		$s .= '	<div class="form-group">
-						<input id="date" spellcheck=false class="form-control" name="'.$dateRef.'" type="date" required="" value = "'.$builder->getData($dateRef).'">
+						<input id="date" spellcheck=false class="form-control" name="'.$dateRef.'" type="date" required="" value = "'.$builder->getData($dateRef).'" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])">
 						<span class="form-highlight"></span>
 						<span class="form-bar"></span>
 						<label for="date" class="float-label">Release date (YYYY-MM-DD)
