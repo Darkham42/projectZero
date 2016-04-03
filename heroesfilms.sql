@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 03 Avril 2016 à 12:21
+-- Généré le :  Dim 03 Avril 2016 à 12:29
 -- Version du serveur :  5.6.24
 -- Version de PHP :  5.6.8
 
@@ -113,7 +113,7 @@ INSERT INTO `films` (`id`, `nom`, `poster`, `synopsis`, `date_sortie`, `duree`, 
 (4, 'Iron Man', 'https://image.tmdb.org/t/p/original/s2IG9qXfhJYxIttKyroYFBsHwzQ.jpg', 'Tony Stark. Genius, billionaire, playboy, philanthropist. Son of legendary inventor and weapons contractor Howard Stark. When Tony Stark is assigned to give a weapons presentation to an Iraqi, he''s given a ride on enemy lines. That ride ends badly he survives with a chest full of shrapnel and a car battery attached to his heart. In order to survive he comes up with a way to miniaturize the battery and figures out that the battery can power something else. Thus Iron Man is born.', '2008-05-02', 126, 2, 4, 'https://image.tmdb.org/t/p/original/hqLNDL7ugQzAbK79uvzjIkmfDN2.jpg', '1970-01-01', '1970-01-01', 1, 2, 5, 0),
 (5, 'Guardians of the Galaxy', 'https://image.tmdb.org/t/p/original/y31QB9kn3XSudA15tV7UWQ9XLuW.jpg', 'Light years from Earth, 26 years after being abducted, Peter Quill finds himself the prime target of a manhunt after discovering an orb wanted by Ronan the Accuser.', '2014-07-21', 121, 2, 5, 'https://image.tmdb.org/t/p/original/sDaFgf32B9FBfZM1hjAxaj8USdI.jpg', '1970-01-01', '1970-01-01', 1, 3, 4, 0),
 (6, 'Batman v Superman', 'https://image.tmdb.org/t/p/original/6bCplVkhowCjTHXWv49UjRPn0eK.jpg', 'Fearing the actions of a god-like Super Hero left unchecked, Gotham City’s own formidable, forceful vigilante takes on Metropolis’s most revered, modern-day savior, while the world wrestles with what sort of hero it really needs. And with Batman and Superman at war with one another, a new threat quickly arises, putting mankind in greater danger than it’s ever known before.', '2016-03-25', 151, 1, 0, 'https://image.tmdb.org/t/p/original/5WQ4T1FXRkWQB4xA6LCsHmpcPfy.jpg', '2016-03-20', '2016-04-03', 1, 2, 5, 0),
-(7, 'Captain America: Civil War', 'https://image.tmdb.org/t/p/original/ekn1f67hThCrsZOqt9cKzBYTeiw.jpg', 'Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies.', '2015-05-06', 146, 2, 6, 'https://image.tmdb.org/t/p/original/imSjsW6QRkH7fvhnqhQgjnbBBtd.jpg', '2016-04-03 12:17:08', '2016-04-03 12:21:01', 1, 4, 1, 0);
+(7, 'Captain America: Civil War', 'https://image.tmdb.org/t/p/original/ekn1f67hThCrsZOqt9cKzBYTeiw.jpg', 'Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies.', '2016-05-06', 146, 2, 6, 'https://image.tmdb.org/t/p/original/imSjsW6QRkH7fvhnqhQgjnbBBtd.jpg', '2016-04-03 12:17:08', '2016-04-03 12:21:01', 1, 4, 1, 0);
 
 -- --------------------------------------------------------
 
