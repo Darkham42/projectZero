@@ -14,6 +14,10 @@
 	font: normal 14px 'Roboto',arial,sans-serif;
 }
 
+.checkbox {
+	style ="display:none;"
+}
+
 #hideTop {
  float: right;
  display: inline-block;

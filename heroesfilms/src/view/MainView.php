@@ -409,9 +409,9 @@ class MainView {
 		}
 		if(!isset($_SESSION["vu"])){
 			$this->content  .= '
-			<input type="checkbox" id="checkbox" name="checkbox" value="checkbox" checked="checked" style ="display:none;">
+			<input type="checkbox" id="checkbox" name="checkbox" value="checkbox" checked="checked">
 			<div id="topbar">By closing this message, you consent to our cookies on this device in accordance with our cookie policy unless you have disabled them.
-			 <label for="checkbox" id="hideTop" title="Close"">x</label>
+			 <label id="hideTop" title="Close"">x</label>
 			</div>';
 			array_push($this->style, "notifCookie.css");
 
