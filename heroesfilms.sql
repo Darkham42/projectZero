@@ -198,8 +198,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `email`, `password`) VALUES
-(0, 'Darkham', 'darkham@heroesfilm.com', '$2y$10$akErPOiRzBWTM7VFfUppzOUQ.PCXyom58nIrDwHlboxsUUxaNxcs2'),
-(1, 'Senayan', 'senayan@heroesfilm.com', '$2y$10$5tur0JlgRJsU1DfUUSAMOublTIl8/8Vfzt9905dkbTg4cvekSHwLC');
+(0, 'Darkham', 'darkham@heroesfilms.com', '$2y$10$akErPOiRzBWTM7VFfUppzOUQ.PCXyom58nIrDwHlboxsUUxaNxcs2'),
+(1, 'Senayan', 'senayan@heroesfilms.com', '$2y$10$5tur0JlgRJsU1DfUUSAMOublTIl8/8Vfzt9905dkbTg4cvekSHwLC');
 
 --
 -- Index pour les tables exportées
