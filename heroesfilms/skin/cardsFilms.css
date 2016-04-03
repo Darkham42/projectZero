@@ -25,7 +25,7 @@ div.cardFilms p {
 }
 
 div.cardFilms p.card-title {
-	font-size: 20px;
+	font-size: 1.3vw;
 }
 
 div.cardFilms p.lock {
