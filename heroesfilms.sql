@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.2.12deb2+deb8u1
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Dim 03 Avril 2016 à 12:29
--- Version du serveur :  5.6.24
--- Version de PHP :  5.6.8
+-- Client :  mysql.info.unicaen.fr:3306
+-- Généré le :  Dim 03 Avril 2016 à 15:43
+-- Version du serveur :  5.5.47-0+deb7u1-log
+-- Version de PHP :  5.6.17-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `heroesfilms`
+-- Base de données :  `21303622_dev`
 --
 
 -- --------------------------------------------------------
@@ -209,37 +209,37 @@ INSERT INTO `users` (`id`, `pseudo`, `email`, `password`) VALUES
 -- Index pour la table `casting`
 --
 ALTER TABLE `casting`
-  ADD KEY `idFilm` (`idFilm`);
+ ADD KEY `idFilm` (`idFilm`);
 
 --
 -- Index pour la table `films`
 --
 ALTER TABLE `films`
-  ADD PRIMARY KEY (`id`), ADD KEY `univers` (`univers`), ADD KEY `realisateur` (`realisateur`), ADD KEY `genre1` (`genre1`), ADD KEY `genre2` (`genre2`), ADD KEY `genre3` (`genre3`), ADD KEY `idUser` (`idUser`);
+ ADD PRIMARY KEY (`id`), ADD KEY `univers` (`univers`), ADD KEY `realisateur` (`realisateur`), ADD KEY `genre1` (`genre1`), ADD KEY `genre2` (`genre2`), ADD KEY `genre3` (`genre3`), ADD KEY `idUser` (`idUser`);
 
 --
 -- Index pour la table `genres`
 --
 ALTER TABLE `genres`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `realisateur`
 --
 ALTER TABLE `realisateur`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `univers`
 --
 ALTER TABLE `univers`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Contraintes pour les tables exportées

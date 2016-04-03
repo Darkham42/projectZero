@@ -283,11 +283,12 @@ class FilmStorageDB implements FilmStorage {
 		    $background = $projet['background'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
-		    $searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $projet["id"]));
-			$realisateur = "";
-			foreach($searchReal as $acteur){
-				$realisateur = $acteur['direc'];
-			}
+		    $idreal = $projet['realisateur'];
+		    $searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $idreal));
+				$realisateur = "";
+				foreach($searchReal as $real){
+					$realisateur = $real['direc'];
+				}
 		    $casting = $casting;
 		    $univers = $this->findUnivers($projet['univers']);
 		    $synopsis = $projet['synopsis'];
@@ -317,11 +318,12 @@ class FilmStorageDB implements FilmStorage {
 		    $background = $projet['background'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
-		    $searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $projet["id"]));
-			$realisateur = "";
-			foreach($searchReal as $acteur){
-				$realisateur = $acteur['direc'];
-			}
+		    $idreal = $projet['realisateur'];
+		    $searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $idreal));
+				$realisateur = "";
+				foreach($searchReal as $real){
+					$realisateur = $real['direc'];
+				}
 		    $casting = $casting;
 		    $univers = $this->findUnivers($projet['univers']);
 		    $synopsis = $projet['synopsis'];
