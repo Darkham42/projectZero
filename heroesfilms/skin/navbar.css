@@ -55,9 +55,17 @@ body {
 }
 
 .feedback {
+  height: 40px;
   float: left;
-  border-radius: 50%;
-  border:1px black solid;
+  width: 150px;  
+  color: white;
+  display: block; 
+  margin-top: 20px;
+  text-align: center;
+  line-height: 40px;    
+  background-color: #4285F4;
+  position: absolute;
+  z-index: 3;
 }
 
 @media screen and (max-width: 770px) {

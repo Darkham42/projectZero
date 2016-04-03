@@ -79,7 +79,7 @@ class Controller {
 			/* On prépare la page de la nouvelle film */
 			//$this->v->makeFilmPage($filmId, $film);
 			unset($_SESSION['currentFilmBuilder']);
-			$_SESSION["feedback"] = "Film create with success.";
+			$_SESSION["feedback"] = "Film created with success.";
 			$this->router->POSTredirect($this->router->filmPage($filmId));
 		} else {
 			//$this->v->makeFilmCreationPage($builder);
@@ -111,7 +111,7 @@ class Controller {
 		} else {
 			/* Tout s'est bien passé */
 			//$this->v->makeFilmDeletedPage();
-			$_SESSION["feedback"] = "Film exterminate.";
+			$_SESSION["feedback"] = "Film deleted.";
 			$this->router->POSTredirect($this->router->allFilmsPage());
 		}
 	}
