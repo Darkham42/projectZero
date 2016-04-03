@@ -11,8 +11,8 @@
         $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
         $db = new Db();
-        $reqTest = $db->query("SELECT * FROM USERS WHERE pseudo = :user", array("user"=>$pseudo));
-        $reqCount = $db->query("SELECT * FROM USERS");
+        $reqTest = $db->query("SELECT * FROM users WHERE pseudo = :user", array("user"=>$pseudo));
+        $reqCount = $db->query("SELECT * FROM users");
 
         $errmail = false;
         $count = 0;
@@ -30,7 +30,7 @@
         //Pas d'utilisateur connu
         if ($find == 0 && !$errmail) {
             $db = new Db();
-            $addMember = $db->query("INSERT INTO USERS (id, pseudo, email, password) values (:id, :user, :mail, :pass)", 
+            $addMember = $db->query("INSERT INTO users (id, pseudo, email, password) values (:id, :user, :mail, :pass)", 
                 array("id" => $count, "user"=>$pseudo, "mail"=>$mail, "pass"=>$hash));
             $db->CloseConnection();
             $_SESSION['user'] = $pseudo;

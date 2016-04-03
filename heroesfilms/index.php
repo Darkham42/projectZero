@@ -11,7 +11,7 @@ $r->main();
 include_once ('model/PDO/db.class.php');
 
 $db = new Db();
-$searchProject = $db->query("SELECT * FROM FILMS");
+$searchProject = $db->query("SELECT * FROM films");
 $db->CloseConnection();
 
 ?>

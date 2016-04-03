@@ -9,8 +9,8 @@
         $password = $_POST['password'];
 
         $db = new Db();
-        $reqTest = $db->query("SELECT * FROM USERS WHERE password = :pass", array("pass"=>$password));
-        $req = $db->query("SELECT * FROM USERS");
+        $reqTest = $db->query("SELECT * FROM users WHERE password = :pass", array("pass"=>$password));
+        $req = $db->query("SELECT * FROM users");
 
         $findmail = false;
         $hash;

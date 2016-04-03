@@ -126,14 +126,6 @@ class MainView {
 		array_push($this->style, "fab.css");
 	}
 
-	public function makeFilmDeletedPage() {
-		$this->title = "Movie deleted.";
-		$this->content = "<p>The movie has been correctly deleted : EX-TER-MI-NA-TED.</p>";
-
-		array_push($this->style, "navbar.css");
-		array_push($this->style, "fab.css");
-	}
-
 	public function makeFilmModifPage($id, FilmBuilder $builder) {
 		$this->title = "Modify movie";
 

@@ -34,7 +34,7 @@ class FilmStorageDB implements FilmStorage {
 
 		$tab = array();
 		$tab["reali"] = $f->getRealisateur();
-		$requestreal = $this->db->query("SELECT id FROM REALISATEUR WHERE direc = :reali", $tab);
+		$requestreal = $this->db->query("SELECT id FROM realisateur WHERE direc = :reali", $tab);
 		$json_data=array();
 		$idreal = -1;
 		foreach($requestreal as $recherche) {
@@ -45,15 +45,15 @@ class FilmStorageDB implements FilmStorage {
 			$tab = array();
 			$tab["real2"] = $f->getRealisateur();
 
-			foreach($this->db->query("SELECT count(*) as nb FROM REALISATEUR") as $count) {
+			foreach($this->db->query("SELECT count(*) as nb FROM realisateur") as $count) {
 				$tab["id"] = $count['nb'];
 			}
 
-			$this->db->query("INSERT INTO REALISATEUR(id, direc) VALUES(:id,:real2)", $tab);
+			$this->db->query("INSERT INTO realisateur(id, direc) VALUES(:id,:real2)", $tab);
 			
 			$newtab = array();
 			$newtab["real2"] = $f->getRealisateur();
-			$requestid = $this->db->query("SELECT id FROM REALISATEUR WHERE direc = :real2", $newtab);
+			$requestid = $this->db->query("SELECT id FROM realisateur WHERE direc = :real2", $newtab);
 			foreach($requestid as $recherche) {
 				$idreal = $recherche['id'];
 			}
@@ -115,7 +115,7 @@ class FilmStorageDB implements FilmStorage {
 		}
 		//Find id for new film
 		$id = 0;
-		foreach($this->db->query("SELECT id FROM FILMS ORDER BY id") as $idFilms) {
+		foreach($this->db->query("SELECT id FROM films ORDER BY id") as $idFilms) {
 			echo $id . " " .  $idFilms['id'] . "<br/>";
 			if($id != $idFilms['id']){
 				$tab["id"] = $id;
@@ -135,14 +135,14 @@ class FilmStorageDB implements FilmStorage {
 		date_creation, date_last_modif
 		:creation, :modif*/
 		
-		$this->db->query("INSERT INTO FILMS(
+		$this->db->query("INSERT INTO films(
 			id, nom, poster, synopsis, date_sortie, duree, univers, realisateur, background, date_creation, date_last_modif, genre1, genre2, genre3, idUser) 
 			VALUES(
 			:id, :name, :poster, :descr, :sortie, :duree, :univers, :reali, :background, :creation, :modif, :genre1, :genre2, :genre3, :idUser)"
 			, $tab);
 
 		//recuperation de l'id du film
-		$requestid = $this->db->query("SELECT id FROM FILMS WHERE nom = :titre", array("titre"=> $f->getName()));
+		$requestid = $this->db->query("SELECT id FROM films WHERE nom = :titre", array("titre"=> $f->getName()));
 		$json_data=array();
 		$id;
 		foreach($requestid as $recherche) {
@@ -155,7 +155,7 @@ class FilmStorageDB implements FilmStorage {
 		//$tab["casting"] = $f->getCasting();
 		foreach($f->getCasting() as $act) {
 			$tab["act"] = $act;
-			$this->db->query("INSERT INTO CASTING(idFilm, cast) VALUES(:id, :act)", $tab);
+			$this->db->query("INSERT INTO casting(idFilm, cast) VALUES(:id, :act)", $tab);
 		}
 
 		echo "FIN INSERT";
@@ -167,9 +167,9 @@ class FilmStorageDB implements FilmStorage {
 	public function read($id) {
 		//$id = $id +1;
 		//$searchProject = $this->db->query("SELECT * FROM FILMS as f, REALISATEUR as r WHERE f.id = :i AND f.realisateur = r.id", array("i"=> $id));
-		$searchProject = $this->db->query("SELECT * FROM FILMS WHERE id = :i", array("i"=> $id));
+		$searchProject = $this->db->query("SELECT * FROM films WHERE id = :i", array("i"=> $id));
 		//var_dump($searchProject);
-		$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $id));
+		$searchCasting = $this->db->query("SELECT * FROM casting WHERE idFilm = :i", array("i"=> $id));
 		$casting = "";
 		$numActors = count($searchCasting);
 		$i = 0;
@@ -209,7 +209,7 @@ class FilmStorageDB implements FilmStorage {
 		    $modifDate = $projet['date_last_modif'];
 		    $idtable = $projet['id'];
 		    $idUser= $projet['idUser'];
-		    $searchUser = $this->db->query("SELECT * FROM USERS WHERE id = :i", array("i"=> $idUser));
+		    $searchUser = $this->db->query("SELECT * FROM users WHERE id = :i", array("i"=> $idUser));
 			$realisateur = "";
 			foreach($searchUser as $acteur){
 				$pseudoUser = $acteur['pseudo'];
@@ -217,7 +217,7 @@ class FilmStorageDB implements FilmStorage {
 
 		}
 
-		$searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $projet["id"]));
+		$searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $projet["id"]));
 		$realisateur = "";
 		foreach($searchReal as $acteur){
 			$realisateur = $acteur['direc'];
@@ -231,16 +231,16 @@ class FilmStorageDB implements FilmStorage {
 	 * contenant toutes les films de la base. */
 	public function readAll() {
 
-		$searchProject = $this->db->query("SELECT * FROM FILMS ORDER BY date_sortie DESC");
+		$searchProject = $this->db->query("SELECT * FROM films ORDER BY date_sortie DESC");
 
 		$array = array();
 		foreach($searchProject as $projet) {
-			$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $projet["id"]));
+			$searchCasting = $this->db->query("SELECT * FROM casting WHERE idFilm = :i", array("i"=> $projet["id"]));
 			$casting = "";
 			foreach($searchCasting as $acteur){
 				$casting = $casting." ".$acteur['cast']." ";
 			}
-			$searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $projet["id"]));
+			$searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $projet["id"]));
 			$realisateur = "";
 			foreach($searchReal as $acteur){
 				$realisateur = $acteur['direc'];
@@ -267,11 +267,11 @@ class FilmStorageDB implements FilmStorage {
 
 	public function readAllMarvel() {
 
-		$searchProject = $this->db->query("SELECT * FROM FILMS WHERE univers = '2' ORDER BY date_sortie DESC");
+		$searchProject = $this->db->query("SELECT * FROM films WHERE univers = '2' ORDER BY date_sortie DESC");
 
 		$array = array();
 		foreach($searchProject as $projet) {
-			$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $projet["id"]));
+			$searchCasting = $this->db->query("SELECT * FROM casting WHERE idFilm = :i", array("i"=> $projet["id"]));
 			$casting = "";
 			foreach($searchCasting as $acteur){
 				$casting = $casting." ".$acteur['cast']." ";
@@ -281,7 +281,7 @@ class FilmStorageDB implements FilmStorage {
 		    $background = $projet['background'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
-		    $searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $projet["id"]));
+		    $searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $projet["id"]));
 			$realisateur = "";
 			foreach($searchReal as $acteur){
 				$realisateur = $acteur['direc'];
@@ -300,12 +300,12 @@ class FilmStorageDB implements FilmStorage {
 
 	public function readAllDC() {
 
-		$searchProject = $this->db->query("SELECT * FROM FILMS WHERE univers = '1' ORDER BY date_sortie DESC");
+		$searchProject = $this->db->query("SELECT * FROM films WHERE univers = '1' ORDER BY date_sortie DESC");
 
 		$array = array();
 		foreach($searchProject as $projet) {
 			//var_dump($projet);
-			$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $projet["id"]));
+			$searchCasting = $this->db->query("SELECT * FROM casting WHERE idFilm = :i", array("i"=> $projet["id"]));
 			$casting = "";
 			foreach($searchCasting as $acteur){
 				$casting = $casting." ".$acteur['cast']." ";
@@ -315,7 +315,7 @@ class FilmStorageDB implements FilmStorage {
 		    $background = $projet['background'];
 		    $date_sortie = $projet['date_sortie'];
 		    $duree = $projet['duree'];
-		    $searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $projet["id"]));
+		    $searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $projet["id"]));
 			$realisateur = "";
 			foreach($searchReal as $acteur){
 				$realisateur = $acteur['direc'];
@@ -335,16 +335,16 @@ class FilmStorageDB implements FilmStorage {
 	 * contenant toutes les films poste par une personne sur la base. */
 	public function readMy($user) {
 
-		$searchProject = $this->db->query("SELECT * FROM FILMS WHERE idUser = :id ORDER BY date_sortie DESC", array("id"=> $user));
+		$searchProject = $this->db->query("SELECT * FROM films WHERE idUser = :id ORDER BY date_sortie DESC", array("id"=> $user));
 
 		$array = array();
 		foreach($searchProject as $projet) {
-			$searchCasting = $this->db->query("SELECT * FROM CASTING WHERE idFilm = :i", array("i"=> $projet["id"]));
+			$searchCasting = $this->db->query("SELECT * FROM casting WHERE idFilm = :i", array("i"=> $projet["id"]));
 			$casting = "";
 			foreach($searchCasting as $acteur){
 				$casting = $casting." ".$acteur['cast']." ";
 			}
-			$searchReal = $this->db->query("SELECT * FROM REALISATEUR WHERE id = :i", array("i"=> $projet["id"]));
+			$searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $projet["id"]));
 			$realisateur = "";
 			foreach($searchReal as $acteur){
 				$realisateur = $acteur['direc'];
@@ -375,7 +375,7 @@ class FilmStorageDB implements FilmStorage {
 	public function update($id, Film $f) {
 		$tab = array();
 		$tab["reali"] = $f->getRealisateur();
-		$requestreal = $this->db->query("SELECT id FROM REALISATEUR WHERE direc = :reali", $tab);
+		$requestreal = $this->db->query("SELECT id FROM realisateur WHERE direc = :reali", $tab);
 		$json_data=array();
 		$idreal = -1;
 		foreach($requestreal as $recherche) {
@@ -386,15 +386,15 @@ class FilmStorageDB implements FilmStorage {
 			$tab = array();
 			$tab["real2"] = $f->getRealisateur();
 
-			foreach($this->db->query("SELECT count(*) as nb FROM REALISATEUR") as $count) {
+			foreach($this->db->query("SELECT count(*) as nb FROM realisateur") as $count) {
 				$tab["id"] = $count['nb'];
 			}
 
-			$this->db->query("INSERT INTO REALISATEUR(id, direc) VALUES(:id,:real2)", $tab);
+			$this->db->query("INSERT INTO realisateur(id, direc) VALUES(:id,:real2)", $tab);
 			
 			$newtab = array();
 			$newtab["real2"] = $f->getRealisateur();
-			$requestid = $this->db->query("SELECT id FROM REALISATEUR WHERE direc = :real2", $newtab);
+			$requestid = $this->db->query("SELECT id FROM realisateur WHERE direc = :real2", $newtab);
 			foreach($requestid as $recherche) {
 				$idreal = $recherche['id'];
 			}
@@ -411,7 +411,7 @@ class FilmStorageDB implements FilmStorage {
 		}
 
 		//on supprime le casting
-		$searchCasting = $this->db->query("DELETE FROM CASTING WHERE idFilm = :i", array("i"=> $id));
+		$searchCasting = $this->db->query("DELETE FROM casting WHERE idFilm = :i", array("i"=> $id));
 
 		//ajout dans CASTING
 		$tab = array();
@@ -419,7 +419,7 @@ class FilmStorageDB implements FilmStorage {
 		//$tab["casting"] = $f->getCasting();
 		foreach($f->getCasting() as $act) {
 			$tab["act"] = $act;
-			$this->db->query("INSERT INTO CASTING(idFilm, cast) VALUES(:id, :act)", $tab);
+			$this->db->query("INSERT INTO casting(idFilm, cast) VALUES(:id, :act)", $tab);
 		}
 
 		//Usage de TMDB
@@ -475,7 +475,7 @@ class FilmStorageDB implements FilmStorage {
 		date_creation, date_last_modif
 		:creation, :modif*/
 		echo " new " . $f->getSynopsis();
-		$this->db->query('UPDATE FILMS SET
+		$this->db->query('UPDATE films SET
 			 nom = "'. $f->getName() . '",
 			 synopsis = "'. $f->getSynopsis() . '",
 			 date_sortie = "'. $f->getDateSortie() . '",
@@ -501,9 +501,9 @@ class FilmStorageDB implements FilmStorage {
 
 		$tab = array();
 		$tab["id"] = $id;
-		$request = $this->db->query("DELETE FROM CASTING WHERE idFilm = :id", $tab);
-		$request = $this->db->query("DELETE FROM FILMS WHERE id = :id", $tab);
-		$request = $this->db->query("SELECT id FROM FILMS WHERE id = :id", $tab);
+		$request = $this->db->query("DELETE FROM casting WHERE idFilm = :id", $tab);
+		$request = $this->db->query("DELETE FROM films WHERE id = :id", $tab);
+		$request = $this->db->query("SELECT id FROM films WHERE id = :id", $tab);
 		$count = 0 ;
 		foreach($request as $recherche) {
 			$count += 1;
