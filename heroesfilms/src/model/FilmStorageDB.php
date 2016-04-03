@@ -210,17 +210,17 @@ class FilmStorageDB implements FilmStorage {
 		    $idtable = $projet['id'];
 		    $idUser= $projet['idUser'];
 		    $searchUser = $this->db->query("SELECT * FROM users WHERE id = :i", array("i"=> $idUser));
-			$realisateur = "";
+				$realisateur = "";
 			foreach($searchUser as $acteur){
 				$pseudoUser = $acteur['pseudo'];
 			}
 
 		}
 
-		$searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $projet["id"]));
+		$searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $idreal));
 		$realisateur = "";
-		foreach($searchReal as $acteur){
-			$realisateur = $acteur['direc'];
+		foreach($searchReal as $real){
+			$realisateur = $real['direc'];
 		}
 		$film = new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate, $modifDate, $idUser, $pseudoUser);
 		//var_dump($film);
@@ -240,11 +240,7 @@ class FilmStorageDB implements FilmStorage {
 			foreach($searchCasting as $acteur){
 				$casting = $casting." ".$acteur['cast']." ";
 			}
-			$searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $projet["id"]));
-			$realisateur = "";
-			foreach($searchReal as $acteur){
-				$realisateur = $acteur['direc'];
-			}
+			
 		    $name = $projet['nom'];
 		    $poster = $projet['poster'];
 		    $background = $projet['background'];
@@ -254,10 +250,16 @@ class FilmStorageDB implements FilmStorage {
 		    $casting = $casting;
 		    $univers = $this->findUnivers($projet['univers']);
 		    $synopsis = $projet['synopsis'];
-
+		    $idreal = $projet['realisateur'];
 		    $genre = array($this->findGenre($projet['genre1']),$this->findGenre($projet['genre2']),$this->findGenre($projet['genre3']));
 		    $idtable = $projet["id"];
 		    //var_dump($projet);
+		    
+		    $searchReal = $this->db->query("SELECT * FROM realisateur WHERE id = :i", array("i"=> $idreal));
+				$realisateur = "";
+				foreach($searchReal as $real){
+					$realisateur = $real['direc'];
+				}
 
 		     //echo  "<br/>" .$idtable . $name . $realisateur . "<br/>";
 		    array_push($array, new Film($idtable, $name, $poster, $background, $synopsis, $date_sortie, $duree, $realisateur, $casting, $univers, $genre, $creationDate=null, $modifDate=null, null, null));
