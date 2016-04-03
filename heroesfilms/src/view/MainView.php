@@ -137,10 +137,10 @@ class MainView {
 	public function makeFilmModifPage($id, FilmBuilder $builder) {
 		$this->title = "Modify movie";
 
-		$this->content = '<form action="'.$this->router->updateModifiedFilm($id).'" method="POST">'."\n";
+		$this->content = "<form action='".$this->router->updateModifiedFilm($id)."' method='POST'>\n";
 		$this->content .= self::getFormFields($builder);
-		$this->content .= '<button>Modifier</button>'."\n";
-		$this->content .= '</form>'."\n";
+		$this->content .= "<div class='form-group'>\n<button type='submit'>Update</button>\n</div>\n";
+		$this->content .= "<br><br></div>\n</form>\n";
 
 		array_push($this->style, "cards.css");
 		array_push($this->style, "navbar.css");
